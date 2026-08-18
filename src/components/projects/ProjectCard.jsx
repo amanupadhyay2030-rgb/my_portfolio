@@ -12,32 +12,26 @@ export const ProjectCard = ({ project, onOpenCaseStudy }) => {
       case 'live':
         return (
           <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5 shadow-md">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live System
           </span>
         );
       case 'github':
         return (
           <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center gap-1.5 shadow-md">
-            <Github className="w-3 h-3" /> Public Repository
+            <Github className="w-3.5 h-3.5" /> Public Repo
           </span>
         );
       case 'in-development':
         return (
           <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center gap-1.5 shadow-md">
-            <Wrench className="w-3 h-3" /> In Development
-          </span>
-        );
-      case 'archived':
-        return (
-          <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-800 text-slate-400 border border-slate-700 flex items-center gap-1.5 shadow-md">
-            <Archive className="w-3 h-3" /> Archived
+            <Wrench className="w-3.5 h-3.5" /> In Development
           </span>
         );
       case 'private':
       default:
         return (
           <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 flex items-center gap-1.5 shadow-md">
-            <Lock className="w-3 h-3" /> Private Source
+            <Lock className="w-3 h-3 text-indigo-400" /> Private Source
           </span>
         );
     }
@@ -46,90 +40,76 @@ export const ProjectCard = ({ project, onOpenCaseStudy }) => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.4 }}
-      className={`rounded-3xl border transition-all duration-300 flex flex-col justify-between overflow-hidden group ${
-        project.isFlagship
-          ? 'bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-950 light:from-white light:to-indigo-50/30 border-indigo-500/40 light:border-indigo-300 shadow-2xl lg:col-span-2'
-          : 'bg-slate-900/60 light:bg-white border-slate-800/80 light:border-slate-200/80 hover:border-slate-700 light:hover:border-slate-300 shadow-xl'
-      }`}
+      className="group relative rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800/80 light:border-slate-200/90 hover:border-cyan-500/40 light:hover:border-indigo-400/50 transition-all duration-300 shadow-2xl overflow-hidden flex flex-col justify-between h-full"
     >
-      <div>
-        {/* Visual Header Banner */}
-        <div className="relative h-48 sm:h-56 bg-slate-950 light:bg-slate-900 overflow-hidden border-b border-slate-800/80 p-5 flex flex-col justify-between">
-          <div className="absolute inset-0 bg-grid-pattern opacity-40" />
+      {/* Top Subtle Gradient Accent Line */}
+      <div className="h-1 w-full bg-gradient-to-r from-indigo-500 via-cyan-400 to-teal-400" />
 
-          {/* Top Bar Status Badges */}
-          <div className="relative z-10 flex items-center justify-between">
-            <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-900/90 text-cyan-400 border border-cyan-500/30 shadow-md">
-              {project.category}
-            </span>
+      <div className="p-6 sm:p-8 flex flex-col justify-between h-full space-y-6">
+        <div>
+          {/* Card Top Header: Category & Badges */}
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-4 border-b border-slate-800/60 light:border-slate-200">
+            <div className="flex items-center gap-2">
+              <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                {project.category}
+              </span>
+              <span className="text-xs font-mono text-slate-400 flex items-center gap-1">
+                <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+                {project.subCategory}
+              </span>
+            </div>
 
             <div className="flex items-center gap-2">
               {getStatusBadge()}
               {project.isFlagship && (
-                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 hidden sm:flex items-center gap-1.5 shadow-md">
-                  <Sparkles className="w-3.5 h-3.5" /> Flagship Platform
+                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 flex items-center gap-1 shadow-md">
+                  <Sparkles className="w-3 h-3 text-indigo-300" /> Flagship
                 </span>
               )}
             </div>
           </div>
 
-          {/* Banner Graphic Title Area */}
-          <div className="relative z-10 my-auto flex items-center justify-between">
-            <div className="flex flex-col gap-1">
-              <span className="text-xs font-mono text-slate-400 flex items-center gap-1">
-                <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-                {project.subCategory}
-              </span>
-              <h4 className="font-heading font-extrabold text-lg sm:text-xl text-slate-100 line-clamp-1">
-                {project.title}
-              </h4>
-            </div>
+          {/* Project Title (Single clean title, no duplicates!) */}
+          <div className="flex items-start justify-between gap-4 mb-3">
+            <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-slate-100 light:text-slate-900 group-hover:text-cyan-400 light:group-hover:text-indigo-600 transition-colors">
+              {project.title}
+            </h3>
 
-            <div className="w-12 h-12 rounded-2xl bg-slate-900/90 border border-slate-700 flex items-center justify-center text-cyan-400 shadow-inner group-hover:scale-110 transition-transform">
+            <div className="w-10 h-10 rounded-2xl bg-slate-950/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 flex items-center justify-center text-cyan-400 light:text-indigo-600 shrink-0 group-hover:scale-110 transition-transform">
               {project.category === 'IoT' ? (
-                <Cpu className="w-6 h-6" />
+                <Cpu className="w-5 h-5" />
               ) : (
-                <Code2 className="w-6 h-6" />
+                <Code2 className="w-5 h-5" />
               )}
             </div>
           </div>
 
-          {/* Bottom Tech Pills */}
-          <div className="relative z-10 flex flex-wrap gap-1.5 pt-2">
-            {project.technologies.slice(0, 5).map((tech, idx) => (
-              <span key={idx} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900/80 text-slate-300 border border-slate-800">
+          {/* Project Description */}
+          <p className="text-xs sm:text-sm text-slate-300 light:text-slate-600 leading-relaxed font-sans mb-5">
+            {project.shortDescription}
+          </p>
+
+          {/* Technologies Stack Pills */}
+          <div className="flex flex-wrap gap-1.5 mb-6">
+            {project.technologies.map((tech, idx) => (
+              <span
+                key={idx}
+                className="text-[11px] font-mono px-2.5 py-1 rounded-xl bg-slate-950/80 light:bg-slate-100 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-200"
+              >
                 {tech}
               </span>
             ))}
-            {project.technologies.length > 5 && (
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900/80 text-slate-400 border border-slate-800">
-                +{project.technologies.length - 5}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Content Body */}
-        <div className="p-6 sm:p-8 space-y-6">
-          <div>
-            <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-slate-100 light:text-slate-900 mb-2 group-hover:text-cyan-400 light:group-hover:text-indigo-600 transition-colors">
-              {project.title}
-            </h3>
-
-            <p className="text-sm text-slate-300 light:text-slate-600 leading-relaxed font-sans">
-              {project.shortDescription}
-            </p>
           </div>
 
-          {/* Highlights List */}
+          {/* Implemented Modules & Scope */}
           {project.highlights && project.highlights.length > 0 && (
-            <div className="space-y-2 pt-2 border-t border-slate-800/60 light:border-slate-200">
-              <span className="text-xs font-mono uppercase tracking-wider text-slate-400 light:text-slate-500 font-semibold block mb-2">
-                Implemented Modules & Scope:
+            <div className="pt-4 border-t border-slate-800/60 light:border-slate-200 space-y-2">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 light:text-slate-500 font-semibold block mb-2">
+                Implemented Scope & Features:
               </span>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -143,40 +123,36 @@ export const ProjectCard = ({ project, onOpenCaseStudy }) => {
             </div>
           )}
         </div>
-      </div>
 
-      {/* Action Buttons */}
-      <div className="px-6 pb-6 pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-slate-800/40 light:border-slate-100">
-        <button
-          onClick={() => onOpenCaseStudy(project)}
-          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-medium text-xs sm:text-sm shadow-md hover:shadow-indigo-500/20 hover:-translate-y-0.5 transition-all"
-        >
-          <BookOpen className="w-4 h-4" />
-          <span>Case Study</span>
-        </button>
+        {/* Footer Actions */}
+        <div className="pt-6 border-t border-slate-800/60 light:border-slate-200 flex items-center justify-between gap-3">
+          <button
+            onClick={() => onOpenCaseStudy(project)}
+            className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all"
+          >
+            <BookOpen className="w-4 h-4" />
+            <span>Explore Case Study</span>
+          </button>
 
-        <div className="flex items-center gap-2">
-          {/* GitHub button rendered ONLY if real repository URL exists */}
           {hasGithub && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="View Source Code on GitHub"
-              className="p-2.5 rounded-xl bg-slate-800/80 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-white light:hover:text-slate-900 border border-slate-700 light:border-slate-300 transition-colors"
+              title="View GitHub Repository"
+              className="p-3 rounded-xl bg-slate-950/80 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-white border border-slate-800 light:border-slate-200 transition-colors"
             >
               <Github className="w-4 h-4" />
             </a>
           )}
 
-          {/* Live Demo button rendered ONLY if real publicly accessible URL exists */}
           {hasLiveDemo && (
             <a
               href={project.liveDemo}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="View Live Demo"
-              className="p-2.5 rounded-xl bg-slate-800/80 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-cyan-400 light:hover:text-indigo-600 border border-slate-700 light:border-slate-300 transition-colors"
+              title="View Live Demo"
+              className="p-3 rounded-xl bg-slate-950/80 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-cyan-400 border border-slate-800 light:border-slate-200 transition-colors"
             >
               <ExternalLink className="w-4 h-4" />
             </a>
