@@ -145,6 +145,38 @@ export const ContactSection = () => {
                 </div>
               )}
 
+              {/* LinkedIn Profile Card */}
+              {hasLinkedIn && (
+                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 flex items-center justify-between">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 light:text-indigo-600 shrink-0">
+                      <Linkedin className="w-5 h-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="text-xs text-slate-400 font-mono block">LinkedIn ID</span>
+                      <a
+                        href={PROFILE.socials.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-cyan-400 hover:text-cyan-300 hover:underline truncate block font-mono"
+                      >
+                        amanupadhyay2030
+                      </a>
+                    </div>
+                  </div>
+
+                  <a
+                    href={PROFILE.socials.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Visit LinkedIn Profile"
+                    className="px-3 py-1.5 rounded-xl bg-slate-800 light:bg-white hover:bg-slate-700 text-cyan-400 text-xs font-mono font-medium transition-colors border border-slate-700 light:border-slate-200 shrink-0"
+                  >
+                    Open ↗
+                  </a>
+                </div>
+              )}
+
               {/* Phone Card (Rendered if phone is provided) */}
               {hasPhone && (
                 <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 flex items-center gap-3">
