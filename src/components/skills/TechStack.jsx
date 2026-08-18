@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { SKILLS_CATEGORIES } from '../../data/skills';
 import { SkillCategoryCard } from './SkillCategoryCard';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LayoutGrid, Layers, Cpu, Sparkles, ChevronLeft, ChevronRight, Code2, Layout, Database, GraduationCap, Wrench } from 'lucide-react';
+import { LayoutGrid, Layers, Cpu, Sparkles, ChevronLeft, ChevronRight, Play, Pause, Code2, Layout, Database, GraduationCap, Wrench } from 'lucide-react';
 
 const iconMap = {
   Code2: Code2,
@@ -14,27 +14,59 @@ const iconMap = {
 };
 
 export const TechStack = () => {
-  const [viewMode, setViewMode] = useState('carousel'); // 'carousel' | 'grid' | 'matrix'
+  const [viewMode, setViewMode] = useState('slider'); // 'slider' | 'grid' | 'matrix'
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [activePageIndex, setActivePageIndex] = useState(0);
+  const [isAutoPlay, setIsAutoPlay] = useState(false);
   const scrollContainerRef = useRef(null);
 
   const filteredCategories = selectedCategory === 'all'
     ? SKILLS_CATEGORIES
     : SKILLS_CATEGORIES.filter(c => c.id === selectedCategory);
 
-  const handleScrollLeft = () => {
+  // Sync scroll position with pagination dots
+  const handleScroll = () => {
     if (scrollContainerRef.current) {
-      const width = scrollContainerRef.current.clientWidth;
-      scrollContainerRef.current.scrollBy({ left: -width, behavior: 'smooth' });
+      const { scrollLeft, clientWidth } = scrollContainerRef.current;
+      if (clientWidth > 0) {
+        const page = Math.round(scrollLeft / clientWidth);
+        setActivePageIndex(page);
+      }
     }
   };
 
-  const handleScrollRight = () => {
+  const totalPages = Math.ceil(filteredCategories.length / 3) || 1;
+
+  const scrollToPage = (pageIndex) => {
     if (scrollContainerRef.current) {
       const width = scrollContainerRef.current.clientWidth;
-      scrollContainerRef.current.scrollBy({ left: width, behavior: 'smooth' });
+      scrollContainerRef.current.scrollTo({ left: pageIndex * width, behavior: 'smooth' });
+      setActivePageIndex(pageIndex);
     }
   };
+
+  const handlePrevSlide = () => {
+    const nextIndex = activePageIndex > 0 ? activePageIndex - 1 : totalPages - 1;
+    scrollToPage(nextIndex);
+  };
+
+  const handleNextSlide = () => {
+    const nextIndex = activePageIndex < totalPages - 1 ? activePageIndex + 1 : 0;
+    scrollToPage(nextIndex);
+  };
+
+  // Auto-play timer effect
+  useEffect(() => {
+    let interval = null;
+    if (isAutoPlay && viewMode === 'slider') {
+      interval = setInterval(() => {
+        handleNextSlide();
+      }, 4000);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isAutoPlay, activePageIndex, viewMode, totalPages]);
 
   return (
     <section id="skills" className="pt-24 pb-16 lg:pt-32 lg:pb-20 scroll-mt-24 relative overflow-hidden bg-slate-950/40 light:bg-slate-50/50">
@@ -43,7 +75,7 @@ export const TechStack = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header & Controls */}
+        {/* Section Header & View Controls */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 pb-6 border-b border-slate-800/80 light:border-slate-200">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -69,7 +101,7 @@ export const TechStack = () => {
             </p>
           </motion.div>
 
-          {/* View Mode Switcher */}
+          {/* Interactive Layout View Switcher */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -78,19 +110,19 @@ export const TechStack = () => {
             className="flex items-center gap-1 p-1.5 rounded-2xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 shadow-lg backdrop-blur-md shrink-0 self-start lg:self-auto"
           >
             <button
-              onClick={() => { setViewMode('carousel'); setSelectedCategory('all'); }}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-medium transition-all ${
-                viewMode === 'carousel'
+              onClick={() => { setViewMode('slider'); setSelectedCategory('all'); }}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium transition-all ${
+                viewMode === 'slider'
                   ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold shadow-md'
                   : 'text-slate-400 light:text-slate-600 hover:text-slate-200'
               }`}
             >
-              <Layers className="w-3.5 h-3.5" /> Compact Deck
+              <Layers className="w-3.5 h-3.5" /> Interactive Slider
             </button>
 
             <button
               onClick={() => { setViewMode('grid'); setSelectedCategory('all'); }}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium transition-all ${
                 viewMode === 'grid'
                   ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold shadow-md'
                   : 'text-slate-400 light:text-slate-600 hover:text-slate-200'
@@ -101,7 +133,7 @@ export const TechStack = () => {
 
             <button
               onClick={() => { setViewMode('matrix'); setSelectedCategory('all'); }}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium transition-all ${
                 viewMode === 'matrix'
                   ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold shadow-md'
                   : 'text-slate-400 light:text-slate-600 hover:text-slate-200'
@@ -141,20 +173,34 @@ export const TechStack = () => {
             ))}
           </div>
 
-          {/* Carousel Arrow Navigation Buttons (Desktop) */}
-          {viewMode === 'carousel' && (
-            <div className="hidden sm:flex items-center gap-2 shrink-0">
+          {/* Slider Auto-Play & Arrow Controls */}
+          {viewMode === 'slider' && (
+            <div className="flex items-center gap-2 shrink-0">
               <button
-                onClick={handleScrollLeft}
-                aria-label="Scroll left"
-                className="p-2 rounded-xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 text-slate-300 light:text-slate-700 hover:text-cyan-400 hover:border-cyan-500/30 transition-all shadow-md"
+                onClick={() => setIsAutoPlay(!isAutoPlay)}
+                title={isAutoPlay ? 'Pause Auto-Slide' : 'Start Auto-Slide'}
+                className={`hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-medium border transition-all ${
+                  isAutoPlay
+                    ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40 font-semibold'
+                    : 'bg-slate-900 light:bg-white text-slate-400 border-slate-800 light:border-slate-200 hover:text-slate-200'
+                }`}
+              >
+                {isAutoPlay ? <Pause className="w-3.5 h-3.5 text-cyan-400" /> : <Play className="w-3.5 h-3.5 text-slate-400" />}
+                <span>Auto</span>
+              </button>
+
+              <button
+                onClick={handlePrevSlide}
+                aria-label="Previous slide"
+                className="p-2 rounded-xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 text-slate-300 light:text-slate-700 hover:text-cyan-400 hover:border-cyan-500/30 transition-all shadow-md active:scale-95"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
+
               <button
-                onClick={handleScrollRight}
-                aria-label="Scroll right"
-                className="p-2 rounded-xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 text-slate-300 light:text-slate-700 hover:text-cyan-400 hover:border-cyan-500/30 transition-all shadow-md"
+                onClick={handleNextSlide}
+                aria-label="Next slide"
+                className="p-2 rounded-xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 text-slate-300 light:text-slate-700 hover:text-cyan-400 hover:border-cyan-500/30 transition-all shadow-md active:scale-95"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -164,19 +210,52 @@ export const TechStack = () => {
 
         {/* Dynamic Layout Renderers */}
         <AnimatePresence mode="wait">
-          {viewMode === 'carousel' ? (
-            /* Mode 1: Compact Horizontal Carousel Deck (Minimal height, zero excessive scroll!) */
+          {viewMode === 'slider' ? (
+            /* Mode 1: Interactive Animated Slider Deck with Pagination Dots */
             <motion.div
-              key="carousel"
+              key="slider"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
-              ref={scrollContainerRef}
-              className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none max-w-full"
+              className="space-y-6"
+              onMouseEnter={() => setIsAutoPlay(false)}
+              onMouseLeave={() => setIsAutoPlay(true)}
             >
-              {filteredCategories.map((category, idx) => (
-                <SkillCategoryCard key={category.id} category={category} index={idx} isCarousel={true} />
-              ))}
+              {/* Slider Track */}
+              <div
+                ref={scrollContainerRef}
+                onScroll={handleScroll}
+                className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none max-w-full"
+              >
+                {filteredCategories.map((category, idx) => (
+                  <SkillCategoryCard key={category.id} category={category} index={idx} isCarousel={true} />
+                ))}
+              </div>
+
+              {/* Slider Bottom Pagination Dots & Progress Bar */}
+              <div className="flex items-center justify-between pt-2">
+                <div className="flex items-center gap-2">
+                  {Array.from({ length: totalPages }).map((_, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      onClick={() => scrollToPage(dotIdx)}
+                      aria-label={`Go to slide page ${dotIdx + 1}`}
+                      className={`h-2.5 rounded-full transition-all duration-300 ${
+                        activePageIndex === dotIdx
+                          ? 'w-8 bg-gradient-to-r from-indigo-500 to-cyan-400 shadow-md'
+                          : 'w-2.5 bg-slate-800 light:bg-slate-300 hover:bg-slate-700'
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <div className="text-xs font-mono text-slate-400 light:text-slate-600 flex items-center gap-2">
+                  <span>Slide Page</span>
+                  <span className="px-2.5 py-1 rounded-full bg-slate-900 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-cyan-400 light:text-indigo-600 font-bold">
+                    0{activePageIndex + 1} / 0{totalPages}
+                  </span>
+                </div>
+              </div>
             </motion.div>
           ) : viewMode === 'matrix' ? (
             /* Mode 3: High-Density Compact Badges */
