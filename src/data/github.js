@@ -12,13 +12,23 @@ export const FALLBACK_GITHUB_DATA = {
     login: "amanupadhyay2030-rgb",
     avatar_url: "https://avatars.githubusercontent.com/u/234408891?v=4",
     bio: "Software Developer | Web Development, Core PHP, MySQL, IoT & LMS Platforms",
-    public_repos: 6,
+    public_repos: 7,
     followers: 0,
     following: 0,
     location: "India",
     html_url: "https://github.com/amanupadhyay2030-rgb",
   },
   repositories: [
+    {
+      id: 999000111,
+      name: "my_portfolio",
+      description: "Personal developer portfolio website built with React, Vite, Tailwind CSS, and Framer Motion.",
+      html_url: "https://github.com/amanupadhyay2030-rgb/my_portfolio",
+      stargazers_count: 0,
+      forks_count: 0,
+      language: "JavaScript",
+      topics: ["react", "portfolio", "vite", "tailwind"]
+    },
     {
       id: 1121475283,
       name: "abhi",
@@ -68,16 +78,6 @@ export const FALLBACK_GITHUB_DATA = {
       forks_count: 0,
       language: "HTML",
       topics: ["reports", "data"]
-    },
-    {
-      id: 1090196836,
-      name: "waterConjumptionReports",
-      description: "Water consumption tracking and report system",
-      html_url: "https://github.com/amanupadhyay2030-rgb/waterConjumptionReports",
-      stargazers_count: 0,
-      forks_count: 0,
-      language: "HTML",
-      topics: ["tracking", "reports"]
     }
   ]
 };
