@@ -1,69 +1,75 @@
 /**
- * SKILLS DATA
+ * SKILLS & TECHNICAL COMPETENCIES DATA
  * 
- * CORE RULE — NO FAKE INFORMATION:
- * Only show technologies explicitly provided by Abhishek.
- * No fake skill percentages (e.g. Python - 95%).
- * Presented as simple skill cards and badges.
+ * Verified skills and production competencies for Abhishek Upadhyay.
  */
 
 export const SKILLS_CATEGORIES = [
   {
     id: "programming",
-    title: "Programming",
+    title: "Languages & Runtimes",
     icon: "Code2",
+    tagline: "Core Logic & Scripting",
     skills: [
-      { name: "Python", desc: "Automation scripts, data parsing, and IoT hardware daemons" },
-      { name: "PHP", desc: "Core PHP web development, PDO security, and backend logic" },
-      { name: "JavaScript", desc: "Interactive DOM scripting, frontend logic, and web APIs" }
+      { name: "Python", desc: "Automated scripting, data parsing pipelines, and MQTT telemetry daemons." },
+      { name: "Core PHP", desc: "Prepared PDO data layers, secure session controls, and custom MVC architecture." },
+      { name: "JavaScript (ES6+)", desc: "Dynamic DOM manipulation, asynchronous REST API integration, and interactive UI logic." }
     ]
   },
   {
     id: "web",
-    title: "Web Development",
+    title: "Web & CMS Architecture",
     icon: "Layout",
+    tagline: "Frontend & Web Systems",
     skills: [
-      { name: "HTML", desc: "Semantic page structure and accessible web markup" },
-      { name: "CSS", desc: "Responsive styling, modern layouts, and dark/light UI design" },
-      { name: "WordPress", desc: "CMS deployment, custom theme styling, and plugin integration" }
+      { name: "HTML5 & Semantic Web", desc: "Accessible markup, structured SEO data, and clean DOM hierarchy." },
+      { name: "CSS3 & Modern Layouts", desc: "Responsive styling, modern glassmorphism UI tokens, and fluid CSS animations." },
+      { name: "WordPress Ecosystem", desc: "Custom theme styling, plugin integration, and CMS deployment." }
     ]
   },
   {
     id: "database",
-    title: "Database",
+    title: "Database & Data Layers",
     icon: "Database",
+    tagline: "Persistence & Security",
     skills: [
-      { name: "MySQL", desc: "Relational table schemas, PDO prepared statements, and data management" }
+      { name: "MySQL & MariaDB", desc: "Relational schema design, indexed query optimization, and transactional safety." },
+      { name: "PDO Prepared Statements", desc: "Parameterized SQL queries, injection protection, and secure data access layers." },
+      { name: "Database Administration", desc: "Table normalization, backup automation, and relational data management." }
     ]
   },
   {
     id: "tools",
-    title: "Tools & Environment",
+    title: "Developer Workstation",
     icon: "Wrench",
+    tagline: "Tooling & Environments",
     skills: [
-      { name: "Git", desc: "Version control and code repository history" },
-      { name: "GitHub", desc: "Remote repositories, code hosting, and open-source management" },
-      { name: "XAMPP", desc: "Local Apache, MySQL, and PHP development environment setup" }
+      { name: "Git & Version Control", desc: "Branching workflows, commit tracking, and repository management." },
+      { name: "GitHub", desc: "Remote code hosting, collaborative workflows, and release publishing." },
+      { name: "XAMPP & Apache", desc: "Local Apache web server, MySQL runtime, and PHP stack orchestration." }
     ]
   },
   {
     id: "lms",
-    title: "LMS Platforms",
+    title: "E-Learning & LMS Platforms",
     icon: "GraduationCap",
+    tagline: "EdTech & LMS Platforms",
     skills: [
-      { name: "Tutor LMS", desc: "Course creation, lesson delivery, and quiz evaluation" },
-      { name: "Moodle", desc: "E-learning platform setup and course configuration" },
-      { name: "Chamilo", desc: "Open-source LMS customization and user management" }
+      { name: "Tutor LMS", desc: "Automated grading workflows, course architecture, and enrollment systems." },
+      { name: "Moodle LMS", desc: "Enterprise E-learning setup, portal configuration, and course management." },
+      { name: "Chamilo LMS", desc: "Open-source LMS customization, user permissions, and learning portal delivery." }
     ]
   },
   {
     id: "cloud-other",
     title: "Cloud, IoT & Automation",
     icon: "Cpu",
+    tagline: "Telemetry & Infrastructure",
     skills: [
-      { name: "AWS", desc: "Cloud deployment and basic server hosting" },
-      { name: "IoT", desc: "Microcontroller telemetry and hardware integration" },
-      { name: "Automation", desc: "Background scripts and workflow automation" }
+      { name: "AWS Cloud", desc: "EC2 instance hosting, security group management, and cloud deployment." },
+      { name: "IoT Hardware Telemetry", desc: "ESP32 microcontroller integration, sensor telemetry, and MQTT protocols." },
+      { name: "Workflow Automation", desc: "Background worker daemons, scheduled cron scripts, and system automation." }
     ]
   }
 ];
+

@@ -47,10 +47,20 @@ export const ContactSection = () => {
 
     setIsSubmitting(true);
 
+    const recipientEmail = PROFILE.email || 'amanupadhyay2030@gmail.com';
+    const mailtoUrl = `mailto:${recipientEmail}?subject=${encodeURIComponent(
+      `[Portfolio Inquiry] ${formData.subject}`
+    )}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nSender Email: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`
+    )}`;
+
+    // Trigger direct email sending via user's email client
+    window.location.href = mailtoUrl;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setToast({
-        message: 'Thank you! Your message has been sent successfully. Abhishek will reply shortly.',
+        message: `Thank you, ${formData.name}! Your message has been directed to ${recipientEmail}.`,
         type: 'success',
       });
       setFormData({ name: '', email: '', subject: '', message: '' });

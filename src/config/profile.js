@@ -7,14 +7,14 @@ export const PROFILE = {
   subheading: "Software developer focused on web development, backend systems, IoT, LMS platforms, and automation.",
   statusBadge: "Available for Opportunities",
   location: "India",
-  email: "",
+  email: "amanupadhyay2030@gmail.com",
   phone: "",
   githubUsername: "amanupadhyay2030-rgb",
   
   socials: {
     github: "https://github.com/amanupadhyay2030-rgb",
-    linkedin: "",
-    email: "",
+    linkedin: "https://www.linkedin.com/in/amanupadhyay2030",
+    email: "mailto:amanupadhyay2030@gmail.com",
     twitter: "",
   },
 

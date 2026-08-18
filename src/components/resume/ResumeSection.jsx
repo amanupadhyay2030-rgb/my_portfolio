@@ -5,6 +5,7 @@ import { SKILLS_CATEGORIES } from '../../data/skills';
 import { CERTIFICATIONS } from '../../data/certifications';
 import { motion } from 'framer-motion';
 import { Download, Printer, FileText, Mail, MapPin, Globe, Award, CheckCircle2 } from 'lucide-react';
+import { Linkedin } from '../ui/Icons';
 
 export const ResumeSection = () => {
   const hasResumeFile = Boolean(PROFILE.resume);
@@ -101,9 +102,24 @@ export const ResumeSection = () => {
                 </span>
               )}
               {(PROFILE.githubUsername || PROFILE.socials?.github) && (
-                <span className="flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-emerald-400" /> github.com/{PROFILE.githubUsername || 'abhishekupadhyay'}
-                </span>
+                <a
+                  href={PROFILE.socials?.github || `https://github.com/${PROFILE.githubUsername}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors"
+                >
+                  <Globe className="w-3.5 h-3.5 text-emerald-400" /> github.com/{PROFILE.githubUsername || 'amanupadhyay2030-rgb'}
+                </a>
+              )}
+              {PROFILE.socials?.linkedin && (
+                <a
+                  href={PROFILE.socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors"
+                >
+                  <Linkedin className="w-3.5 h-3.5 text-cyan-400" /> {PROFILE.socials.linkedin.replace(/^https?:\/\/(www\.)?/, '')}
+                </a>
               )}
             </div>
           </div>
