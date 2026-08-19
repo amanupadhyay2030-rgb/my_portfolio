@@ -1,6 +1,7 @@
 // LocalStorage keys
 const STORAGE_KEYS = {
   AUTH: 'abhishek_dashboard_auth',
+  USERS: 'abhishek_dashboard_users',
   CERTIFICATES: 'abhishek_dashboard_certificates',
   COURSES: 'abhishek_dashboard_courses',
   NOTES: 'abhishek_dashboard_notes',
@@ -12,14 +13,17 @@ const STORAGE_KEYS = {
   SETTINGS: 'abhishek_dashboard_settings',
 };
 
-// Authentic Real-World Data for Abhishek Upadhyay's Learning OS
-const INITIAL_DATA = {
+// Owner Account Email (Abhishek Upadhyay)
+export const OWNER_EMAIL = 'abhishek@portfolio.dev';
+
+// Authentic Real-World Data for Abhishek Upadhyay (Owner Account)
+const ABHISHEK_DATA = {
   auth: {
     isAuthenticated: false,
     user: {
       name: 'Abhishek Upadhyay',
       role: 'Full-Stack Software Developer',
-      email: 'abhishek@portfolio.dev',
+      email: OWNER_EMAIL,
     },
     rememberMe: true,
   },
@@ -351,41 +355,6 @@ async function fetchDashboardStats(apiUrl) {
       createdDate: '2026-01-30',
       updatedDate: '2026-02-12',
     },
-    {
-      id: 'note-aws-s3',
-      title: 'AWS Documentation: S3 Bucket Policies & CloudFront SSL',
-      content: `# Deploying Static Web Apps on AWS S3 & CloudFront
-
-### Steps:
-1. Build production bundle: \`npm run build\`
-2. Upload \`dist/\` static files to an AWS S3 Bucket.
-3. Attach Bucket Policy for public read access.
-4. Distribute via AWS CloudFront CDN with SSL certificate from AWS Certificate Manager (ACM).
-
-### S3 Public Read Bucket Policy:
-\`\`\`json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "PublicReadGetObject",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::abhishek-portfolio-bucket/*"
-    }
-  ]
-}
-\`\`\``,
-      category: 'AWS',
-      tags: ['AWS', 'S3', 'CloudFront', 'Cloud Security'],
-      relatedCourse: 'AWS Certified Cloud Practitioner',
-      relatedProject: 'Developer Portfolio',
-      pinned: false,
-      favorite: false,
-      createdDate: '2026-02-18',
-      updatedDate: '2026-02-18',
-    },
   ],
 
   skills: [
@@ -433,28 +402,6 @@ async function fetchDashboardStats(apiUrl) {
       relatedCerts: 1,
       relatedProjects: 4,
     },
-    {
-      id: 'skill-5',
-      name: 'AWS Cloud Infrastructure (EC2 / S3 / IAM)',
-      category: 'Cloud & DevOps',
-      level: 'Intermediate',
-      progress: 65,
-      experience: '1 Year',
-      relatedCourses: 1,
-      relatedCerts: 1,
-      relatedProjects: 1,
-    },
-    {
-      id: 'skill-6',
-      name: 'IoT Hardware & Serial Microcontrollers',
-      category: 'Embedded Systems',
-      level: 'Intermediate',
-      progress: 75,
-      experience: '1 Year',
-      relatedCourses: 1,
-      relatedCerts: 1,
-      relatedProjects: 1,
-    },
   ],
 
   goals: [
@@ -479,17 +426,6 @@ async function fetchDashboardStats(apiUrl) {
       status: 'In Progress',
       relatedCourse: 'Udemy - Complete Python 3 Masterclass',
       relatedSkill: 'Python Automation & Telemetry',
-    },
-    {
-      id: 'goal-3',
-      title: 'Publish HRMS Enterprise Open-Source Repository',
-      description: 'Clean repository, finalize documentation, write deployment guides, and feature on portfolio.',
-      deadline: '2026-03-31',
-      priority: 'High',
-      progress: 95,
-      status: 'In Progress',
-      relatedCourse: 'W3Schools PHP 8 & MySQL Database Tutorial',
-      relatedSkill: 'Core PHP 8 & PDO Security',
     },
   ],
 
@@ -546,7 +482,6 @@ async function fetchDashboardStats(apiUrl) {
       type: 'Documentation',
       description: 'Official W3Schools guide for PHP 8 PDO drivers, prepared statements, database error modes, and form security.',
       tags: ['W3Schools', 'PHP', 'PDO', 'MySQL', 'Official'],
-      relatedCourse: 'W3Schools PHP 8 & MySQL Certification',
       favorite: true,
     },
     {
@@ -556,7 +491,6 @@ async function fetchDashboardStats(apiUrl) {
       type: 'Course',
       description: 'Udemy active learning dashboard containing registered courses, video modules, and certificate verification.',
       tags: ['Udemy', 'Courses', 'Web Development', 'Python'],
-      relatedCourse: 'Udemy - Complete Python 3 Masterclass',
       favorite: true,
     },
     {
@@ -566,7 +500,6 @@ async function fetchDashboardStats(apiUrl) {
       type: 'Documentation',
       description: 'Mozilla Developer Network documentation for modern ES6+ syntax, Promises, async/await, DOM APIs, and closures.',
       tags: ['MDN', 'JavaScript', 'Web Docs', 'Frontend'],
-      relatedCourse: 'freeCodeCamp Responsive Web & JavaScript',
       favorite: true,
     },
     {
@@ -576,47 +509,6 @@ async function fetchDashboardStats(apiUrl) {
       type: 'Documentation',
       description: 'Official PHP manual documenting PDO class methods, prepared statements, transactions, and security practices.',
       tags: ['PHP.net', 'PHP 8', 'PDO', 'Official'],
-      relatedCourse: 'W3Schools PHP 8 & MySQL Certification',
-      favorite: true,
-    },
-    {
-      id: 'res-fcc-sql',
-      title: 'freeCodeCamp Relational Database & SQL Certification Course',
-      url: 'https://www.freecodecamp.org/learn/relational-database/',
-      type: 'Reference',
-      description: 'freeCodeCamp interactive learning terminal for PostgreSQL, MySQL, database schema design, and bash.',
-      tags: ['freeCodeCamp', 'SQL', 'MySQL', 'Database'],
-      relatedCourse: 'freeCodeCamp Relational Database',
-      favorite: true,
-    },
-    {
-      id: 'res-w3s-tryit',
-      title: 'W3Schools Code Editor & Online Web Compiler',
-      url: 'https://www.w3schools.com/tryit/',
-      type: 'Tool',
-      description: 'W3Schools interactive live editor for testing HTML, CSS, JavaScript, PHP, and SQL code snippets.',
-      tags: ['W3Schools', 'Code Editor', 'PHP', 'HTML'],
-      relatedCourse: 'W3Schools PHP 8 & MySQL Certification',
-      favorite: false,
-    },
-    {
-      id: 'res-py-docs',
-      title: 'Python 3 Official Documentation & Subprocess API',
-      url: 'https://docs.python.org/3/library/subprocess.html',
-      type: 'Documentation',
-      description: 'Official Python 3 reference manual on process management, background worker execution, and IPC streams.',
-      tags: ['Python', 'Python.org', 'Subprocess', 'Automation'],
-      relatedCourse: 'Udemy - Complete Python 3 Masterclass',
-      favorite: false,
-    },
-    {
-      id: 'res-aws-free',
-      title: 'AWS Documentation & Free Tier Cloud Portal',
-      url: 'https://aws.amazon.com/free/',
-      type: 'Reference',
-      description: 'Amazon Web Services documentation for EC2 virtual servers, S3 storage buckets, and IAM security.',
-      tags: ['AWS', 'Cloud', 'EC2', 'S3'],
-      relatedCourse: 'AWS Certified Cloud Practitioner',
       favorite: true,
     },
   ],
@@ -626,8 +518,6 @@ async function fetchDashboardStats(apiUrl) {
     { id: 'act-2', action: 'Completed Course', title: 'W3Schools PHP 8 & MySQL Database Certification', timestamp: '2025-11-10 14:30', icon: 'CheckCircle' },
     { id: 'act-3', action: 'Earned Certificate', title: 'Udemy - Full-Stack Web Development & Modern Architecture', timestamp: '2025-12-10 16:00', icon: 'Award' },
     { id: 'act-4', action: 'Earned Certificate', title: 'Python 3 Masterclass & System Telemetry (Udemy)', timestamp: '2026-01-20 11:20', icon: 'Award' },
-    { id: 'act-5', action: 'Created Note', title: 'W3Schools & PHP.net: PDO Prepared Statements & Security', timestamp: '2026-01-25 12:45', icon: 'FileText' },
-    { id: 'act-6', action: 'Started Course', title: 'AWS Certified Cloud Practitioner - Hands-On Architecture', timestamp: '2026-02-10 09:00', icon: 'BookOpen' },
   ],
 
   streak: {
@@ -646,38 +536,95 @@ async function fetchDashboardStats(apiUrl) {
   },
 };
 
-// Initialize LocalStorage with authentic default data
+// Clean 0 dataset for NEW REGISTERED USERS (Everything starts at 0!)
+const NEW_USER_EMPTY_DATA = {
+  certificates: [],
+  courses: [],
+  notes: [],
+  skills: [],
+  goals: [],
+  projects: [],
+  resources: [],
+  activities: [],
+  streak: {
+    currentStreak: 0,
+    longestStreak: 0,
+    totalDays: 0,
+    totalHours: 0,
+    weeklyHours: 0,
+  },
+  settings: {
+    passwordHash: '',
+    theme: 'dark',
+    notificationsEnabled: true,
+    autoBackup: true,
+  },
+};
+
+// Helper: Get user-scoped storage key
+const getScopedKey = (key, userEmail) => {
+  const isOwner = !userEmail || userEmail === OWNER_EMAIL || userEmail.toLowerCase().includes('abhishek');
+  const baseKey = STORAGE_KEYS[key.toUpperCase()] || key;
+  if (key.toUpperCase() === 'AUTH' || key.toUpperCase() === 'USERS') return baseKey;
+  return isOwner ? baseKey : `${baseKey}_${userEmail.toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
+};
+
+// Get current logged-in user email
+const getCurrentUserEmail = () => {
+  try {
+    const authData = localStorage.getItem(STORAGE_KEYS.AUTH);
+    if (authData) {
+      const parsed = JSON.parse(authData);
+      return parsed?.user?.email || OWNER_EMAIL;
+    }
+  } catch (err) {}
+  return OWNER_EMAIL;
+};
+
+// Initialize LocalStorage
 export const initDashboardStorage = () => {
   try {
-    Object.keys(INITIAL_DATA).forEach((key) => {
-      const storageKey = STORAGE_KEYS[key.toUpperCase()];
-      // Force update default data if empty or contains legacy placeholders
-      const existing = localStorage.getItem(storageKey);
-      if (!existing || existing.includes('UC-PHP-982341')) {
-        localStorage.setItem(storageKey, JSON.stringify(INITIAL_DATA[key]));
-      }
-    });
+    const currentEmail = getCurrentUserEmail();
+    const isOwner = currentEmail === OWNER_EMAIL || currentEmail.toLowerCase().includes('abhishek');
+
+    if (isOwner) {
+      Object.keys(ABHISHEK_DATA).forEach((key) => {
+        const storageKey = getScopedKey(key, OWNER_EMAIL);
+        const existing = localStorage.getItem(storageKey);
+        if (!existing) {
+          localStorage.setItem(storageKey, JSON.stringify(ABHISHEK_DATA[key]));
+        }
+      });
+    }
   } catch (err) {
     console.error('Error initializing dashboard storage:', err);
   }
 };
 
-// Get Data for key
+// Get Data for key (Scoped per user)
 export const getDashboardData = (key) => {
   try {
-    const storageKey = STORAGE_KEYS[key.toUpperCase()];
+    const currentEmail = getCurrentUserEmail();
+    const isOwner = currentEmail === OWNER_EMAIL || currentEmail.toLowerCase().includes('abhishek');
+    const storageKey = getScopedKey(key, currentEmail);
+
     const data = localStorage.getItem(storageKey);
-    return data ? JSON.parse(data) : INITIAL_DATA[key];
+    if (data) return JSON.parse(data);
+
+    // Default fallback
+    if (key.toLowerCase() === 'auth') return ABHISHEK_DATA.auth;
+    return isOwner ? ABHISHEK_DATA[key] : NEW_USER_EMPTY_DATA[key] || [];
   } catch (err) {
     console.error(`Error reading ${key} from storage:`, err);
-    return INITIAL_DATA[key];
+    return NEW_USER_EMPTY_DATA[key] || [];
   }
 };
 
-// Save Data for key
+// Save Data for key (Scoped per user)
 export const saveDashboardData = (key, data) => {
   try {
-    const storageKey = STORAGE_KEYS[key.toUpperCase()];
+    const currentEmail = getCurrentUserEmail();
+    const storageKey = getScopedKey(key, currentEmail);
     localStorage.setItem(storageKey, JSON.stringify(data));
   } catch (err) {
     console.error(`Error saving ${key} to storage:`, err);
@@ -690,43 +637,35 @@ export const addDashboardItem = (key, item) => {
   const newItem = { id: `${key.slice(0, 4)}-${Date.now()}`, ...item };
   const updatedList = [newItem, ...list];
   saveDashboardData(key, updatedList);
-
-  // Add activity log automatically
   addActivityLog(`Added ${key.slice(0, -1)}`, item.title || item.name || 'New Item');
-
   return newItem;
 };
 
-// Update item in array entity
+// Update item
 export const updateDashboardItem = (key, id, updatedFields) => {
   const list = getDashboardData(key) || [];
   const updatedList = list.map((item) => (item.id === id ? { ...item, ...updatedFields } : item));
   saveDashboardData(key, updatedList);
-
-  // Add activity log
   const target = updatedList.find((i) => i.id === id);
   if (target) {
     addActivityLog(`Updated ${key.slice(0, -1)}`, target.title || target.name || 'Item');
   }
-
   return updatedList;
 };
 
-// Delete item from array entity
+// Delete item
 export const deleteDashboardItem = (key, id) => {
   const list = getDashboardData(key) || [];
   const target = list.find((i) => i.id === id);
   const updatedList = list.filter((item) => item.id !== id);
   saveDashboardData(key, updatedList);
-
   if (target) {
     addActivityLog(`Deleted ${key.slice(0, -1)}`, target.title || target.name || 'Item');
   }
-
   return updatedList;
 };
 
-// Helper: Add activity log entry
+// Add activity log
 export const addActivityLog = (action, title) => {
   const activities = getDashboardData('activities') || [];
   const now = new Date();
@@ -741,7 +680,36 @@ export const addActivityLog = (action, title) => {
   saveDashboardData('activities', [newLog, ...activities.slice(0, 49)]);
 };
 
-// Export all dashboard data as JSON string
+// ==========================================
+// OTP Simulation Service (6-Digit Email Verification)
+// ==========================================
+export const sendEmailOTP = (email) => {
+  // Generate random 6-digit verification code
+  const code = Math.floor(100000 + Math.random() * 900000).toString();
+  const otpData = {
+    code,
+    expiresAt: Date.now() + 5 * 60 * 1000, // Valid for 5 minutes
+  };
+  localStorage.setItem(`otp_${email.toLowerCase()}`, JSON.stringify(otpData));
+  return code; // Returns simulated code to show in UI banner
+};
+
+export const verifyEmailOTP = (email, enteredOtp) => {
+  try {
+    const savedObj = localStorage.getItem(`otp_${email.toLowerCase()}`);
+    if (!savedObj) return { success: false, error: 'OTP expired or not sent. Request a new OTP code.' };
+    const { code, expiresAt } = JSON.parse(savedObj);
+    if (Date.now() > expiresAt) return { success: false, error: 'OTP code has expired. Request a new OTP.' };
+    if (code !== enteredOtp.trim()) return { success: false, error: 'Incorrect 6-digit OTP code.' };
+
+    localStorage.removeItem(`otp_${email.toLowerCase()}`);
+    return { success: true };
+  } catch (err) {
+    return { success: false, error: 'Failed to verify OTP' };
+  }
+};
+
+// Export JSON
 export const exportDashboardJSON = () => {
   const exportObject = {};
   Object.keys(STORAGE_KEYS).forEach((key) => {
@@ -750,14 +718,11 @@ export const exportDashboardJSON = () => {
   return JSON.stringify(exportObject, null, 2);
 };
 
-// Import dashboard data from JSON object
+// Import JSON
 export const importDashboardJSON = (jsonObject) => {
   try {
     Object.keys(jsonObject).forEach((key) => {
-      const storageKey = STORAGE_KEYS[key.toUpperCase()];
-      if (storageKey) {
-        localStorage.setItem(storageKey, JSON.stringify(jsonObject[key]));
-      }
+      saveDashboardData(key.toLowerCase(), jsonObject[key]);
     });
     return true;
   } catch (err) {
@@ -766,10 +731,13 @@ export const importDashboardJSON = (jsonObject) => {
   }
 };
 
-// Reset to default data
+// Reset
 export const resetDashboardToDefault = () => {
-  Object.keys(INITIAL_DATA).forEach((key) => {
-    const storageKey = STORAGE_KEYS[key.toUpperCase()];
-    localStorage.setItem(storageKey, JSON.stringify(INITIAL_DATA[key]));
+  const currentEmail = getCurrentUserEmail();
+  const isOwner = currentEmail === OWNER_EMAIL || currentEmail.toLowerCase().includes('abhishek');
+  const targetData = isOwner ? ABHISHEK_DATA : NEW_USER_EMPTY_DATA;
+
+  Object.keys(targetData).forEach((key) => {
+    saveDashboardData(key, targetData[key]);
   });
 };

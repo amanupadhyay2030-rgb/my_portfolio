@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { useDashboard } from '../../context/DashboardContext';
-import { motion } from 'framer-motion';
-import { Lock, ShieldAlert, ArrowRight, KeyRound, Sparkles, User, Mail, Briefcase, UserPlus, LogIn } from 'lucide-react';
+import { sendEmailOTP, verifyEmailOTP } from '../../services/dashboardStorage';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Lock, ShieldAlert, ArrowRight, KeyRound, Sparkles, User, Mail, Briefcase, UserPlus, LogIn, Key, Send, CheckCircle2 } from 'lucide-react';
 
 export const DashboardLogin = () => {
-  const { login, signup } = useDashboard();
-  const [mode, setMode] = useState('login'); // 'login' or 'signup'
+  const { login, signup, loginWithOTP } = useDashboard();
+  const [mode, setMode] = useState('password'); // 'password', 'otp', 'signup'
 
-  // Login form state
+  // Form states
   const [loginEmail, setLoginEmail] = useState('abhishek@portfolio.dev');
   const [loginPassword, setLoginPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(true);
+
+  // OTP state
+  const [otpEmail, setOtpEmail] = useState('abhishek@portfolio.dev');
+  const [otpCode, setOtpCode] = useState('');
+  const [generatedOtp, setGeneratedOtp] = useState('');
+  const [isOtpSent, setIsOtpSent] = useState(false);
 
   // Signup form state
   const [signupName, setSignupName] = useState('');
@@ -21,7 +28,8 @@ export const DashboardLogin = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLoginSubmit = (e) => {
+  // Password Submit
+  const handlePasswordSubmit = (e) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
@@ -35,6 +43,38 @@ export const DashboardLogin = () => {
     }, 400);
   };
 
+  // Send OTP handler
+  const handleSendOTP = () => {
+    setError('');
+    if (!otpEmail.trim() || !otpEmail.includes('@')) {
+      setError('Please enter a valid email address to receive OTP');
+      return;
+    }
+    const code = sendEmailOTP(otpEmail);
+    setGeneratedOtp(code);
+    setIsOtpSent(true);
+  };
+
+  // OTP Submit
+  const handleOTPSubmit = (e) => {
+    e.preventDefault();
+    setError('');
+    if (!otpCode.trim() || otpCode.length < 6) {
+      setError('Please enter the 6-digit OTP code');
+      return;
+    }
+
+    setIsLoading(true);
+    setTimeout(() => {
+      const res = loginWithOTP(otpEmail, otpCode);
+      if (!res.success) {
+        setError(res.error || 'Invalid or expired OTP code');
+      }
+      setIsLoading(false);
+    }, 400);
+  };
+
+  // Signup Submit
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     setError('');
@@ -73,7 +113,7 @@ export const DashboardLogin = () => {
       >
         {/* Header Icon */}
         <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 text-cyan-400 light:text-indigo-600 border border-cyan-500/30 flex items-center justify-center mx-auto mb-6 shadow-sm">
-          {mode === 'login' ? <Lock className="w-6 h-6" /> : <UserPlus className="w-6 h-6" />}
+          {mode === 'signup' ? <UserPlus className="w-6 h-6" /> : mode === 'otp' ? <Mail className="w-6 h-6" /> : <Lock className="w-6 h-6" />}
         </div>
 
         {/* Title */}
@@ -84,41 +124,56 @@ export const DashboardLogin = () => {
           </div>
 
           <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-100 light:text-slate-900 tracking-tight">
-            {mode === 'login' ? 'Welcome Back' : 'Create Account'}
+            {mode === 'signup' ? 'Create Account' : mode === 'otp' ? 'Email OTP Login' : 'Password Login'}
           </h2>
 
           <p className="text-xs sm:text-sm text-slate-400 light:text-slate-600 mt-1">
-            {mode === 'login'
-              ? 'Access your personal learning certificates & developer notes.'
-              : 'Register your developer profile to start tracking courses & notes.'}
+            {mode === 'signup'
+              ? 'Register your profile. New accounts start with clean 0-stat workspace.'
+              : mode === 'otp'
+              ? 'Receive a 6-digit verification code directly to your email.'
+              : 'Unlock personal learning certificates, courses & developer notes.'}
           </p>
         </div>
 
-        {/* Mode Switcher Tabs (Login vs Sign Up) */}
-        <div className="grid grid-cols-2 gap-1 p-1 mb-6 rounded-2xl bg-slate-950/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 font-mono text-xs">
+        {/* Mode Switcher Tabs (Password vs Email OTP vs Sign Up) */}
+        <div className="grid grid-cols-3 gap-1 p-1 mb-6 rounded-2xl bg-slate-950/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 font-mono text-[11px]">
           <button
             type="button"
-            onClick={() => { setMode('login'); setError(''); }}
-            className={`py-2 rounded-xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-              mode === 'login'
+            onClick={() => { setMode('password'); setError(''); }}
+            className={`py-2 rounded-xl font-bold flex items-center justify-center gap-1 transition-all cursor-pointer ${
+              mode === 'password'
                 ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md'
                 : 'text-slate-400 light:text-slate-600 hover:text-slate-200'
             }`}
           >
-            <LogIn className="w-3.5 h-3.5" />
-            <span>Log In</span>
+            <Key className="w-3 h-3" />
+            <span>Password</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => { setMode('otp'); setError(''); }}
+            className={`py-2 rounded-xl font-bold flex items-center justify-center gap-1 transition-all cursor-pointer ${
+              mode === 'otp'
+                ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md'
+                : 'text-slate-400 light:text-slate-600 hover:text-slate-200'
+            }`}
+          >
+            <Mail className="w-3 h-3" />
+            <span>Email OTP</span>
           </button>
 
           <button
             type="button"
             onClick={() => { setMode('signup'); setError(''); }}
-            className={`py-2 rounded-xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+            className={`py-2 rounded-xl font-bold flex items-center justify-center gap-1 transition-all cursor-pointer ${
               mode === 'signup'
                 ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md'
                 : 'text-slate-400 light:text-slate-600 hover:text-slate-200'
             }`}
           >
-            <UserPlus className="w-3.5 h-3.5" />
+            <UserPlus className="w-3 h-3" />
             <span>Sign Up</span>
           </button>
         </div>
@@ -135,9 +190,9 @@ export const DashboardLogin = () => {
           </motion.div>
         )}
 
-        {/* LOGIN FORM */}
-        {mode === 'login' ? (
-          <form onSubmit={handleLoginSubmit} className="space-y-4">
+        {/* PASSWORD LOGIN FORM */}
+        {mode === 'password' && (
+          <form onSubmit={handlePasswordSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-mono font-semibold text-slate-300 light:text-slate-700 uppercase tracking-wider mb-1.5">
                 Email Address
@@ -197,8 +252,87 @@ export const DashboardLogin = () => {
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
-        ) : (
-          /* SIGN UP FORM */
+        )}
+
+        {/* EMAIL OTP LOGIN FORM */}
+        {mode === 'otp' && (
+          <form onSubmit={handleOTPSubmit} className="space-y-4">
+            <div>
+              <label className="block text-xs font-mono font-semibold text-slate-300 light:text-slate-700 uppercase tracking-wider mb-1.5">
+                Email Address
+              </label>
+              <div className="flex gap-2">
+                <div className="relative flex-1">
+                  <Mail className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+                  <input
+                    type="email"
+                    required
+                    value={otpEmail}
+                    onChange={(e) => setOtpEmail(e.target.value)}
+                    placeholder="abhishek@portfolio.dev"
+                    className="w-full pl-10 pr-3 py-2.5 rounded-xl bg-slate-950/80 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400 text-xs font-sans"
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleSendOTP}
+                  className="px-3.5 py-2.5 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-bold hover:bg-cyan-500/30 transition-colors shrink-0 flex items-center gap-1 cursor-pointer"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Send OTP</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Generated OTP Banner Alert */}
+            {isOtpSent && generatedOtp && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 space-y-1 text-center"
+              >
+                <div className="flex items-center justify-center gap-1.5 text-xs font-mono font-bold text-cyan-400">
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>OTP Code Generated for {otpEmail}:</span>
+                </div>
+                <div className="text-2xl font-mono font-extrabold text-cyan-300 tracking-widest bg-slate-950/80 py-1.5 rounded-xl border border-cyan-500/40">
+                  {generatedOtp}
+                </div>
+                <div className="text-[10px] font-mono text-slate-400">
+                  Enter the 6-digit code above to complete login.
+                </div>
+              </motion.div>
+            )}
+
+            <div>
+              <label className="block text-xs font-mono font-semibold text-slate-300 light:text-slate-700 uppercase tracking-wider mb-1.5">
+                6-Digit Verification OTP
+              </label>
+              <input
+                type="text"
+                maxLength={6}
+                required
+                value={otpCode}
+                onChange={(e) => setOtpCode(e.target.value)}
+                placeholder="e.g. 849201"
+                className="w-full text-center tracking-widest font-mono text-lg font-bold py-2.5 rounded-xl bg-slate-950/80 light:bg-slate-50 text-cyan-400 light:text-indigo-600 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-medium text-xs sm:text-sm shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer mt-2"
+            >
+              <span>{isLoading ? 'Verifying OTP...' : 'Verify OTP & Unlock Dashboard'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </form>
+        )}
+
+        {/* SIGN UP FORM (NEW USERS START AT 0) */}
+        {mode === 'signup' && (
           <form onSubmit={handleSignupSubmit} className="space-y-3.5">
             <div>
               <label className="block text-xs font-mono font-semibold text-slate-300 light:text-slate-700 uppercase tracking-wider mb-1">
@@ -211,7 +345,7 @@ export const DashboardLogin = () => {
                   required
                   value={signupName}
                   onChange={(e) => setSignupName(e.target.value)}
-                  placeholder="e.g. Abhishek Upadhyay"
+                  placeholder="e.g. Developer Name"
                   className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-950/80 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400 text-xs font-sans"
                 />
               </div>
@@ -267,12 +401,16 @@ export const DashboardLogin = () => {
               </div>
             </div>
 
+            <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-[11px] font-mono text-indigo-300">
+              ⚡ Note: New accounts start with clean 0-stat workspace ready for your personal entries.
+            </div>
+
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-medium text-xs sm:text-sm shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer mt-3"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-medium text-xs sm:text-sm shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer mt-2"
             >
-              <span>{isLoading ? 'Creating Account...' : 'Sign Up & Launch Dashboard'}</span>
+              <span>{isLoading ? 'Creating Account...' : 'Sign Up & Launch Clean Workspace'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>

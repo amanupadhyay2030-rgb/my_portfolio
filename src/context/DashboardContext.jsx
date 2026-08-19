@@ -9,6 +9,8 @@ import {
   exportDashboardJSON,
   importDashboardJSON,
   resetDashboardToDefault,
+  verifyEmailOTP,
+  sendEmailOTP,
 } from '../services/dashboardStorage';
 
 const DashboardContext = createContext();
@@ -42,64 +44,6 @@ export const DashboardProvider = ({ children }) => {
     setTimeout(() => setToastMessage(null), 3500);
   };
 
-  // Auth Methods
-  const login = (password, email = 'abhishek@portfolio.dev', rememberMe = true) => {
-    const currentSettings = getDashboardData('settings');
-    const expectedPassword = currentSettings?.passwordHash || 'abhishek123';
-
-    if (password === expectedPassword || password === 'abhishek123') {
-      const updatedAuth = {
-        isAuthenticated: true,
-        user: {
-          name: currentSettings?.userName || 'Abhishek Upadhyay',
-          role: currentSettings?.userRole || 'Full-Stack Software Developer',
-          email: currentSettings?.userEmail || email || 'abhishek@portfolio.dev',
-        },
-        rememberMe,
-      };
-      setAuth(updatedAuth);
-      saveDashboardData('auth', updatedAuth);
-      showToast(`Welcome back, ${updatedAuth.user.name}!`);
-      return { success: true };
-    } else {
-      return { success: false, error: 'Incorrect security password' };
-    }
-  };
-
-  const signup = (name, email, password, role = 'Full-Stack Software Developer') => {
-    const updatedAuth = {
-      isAuthenticated: true,
-      user: {
-        name,
-        role,
-        email,
-      },
-      rememberMe: true,
-    };
-    const currentSettings = getDashboardData('settings') || {};
-    const updatedSettings = {
-      ...currentSettings,
-      passwordHash: password,
-      userEmail: email,
-      userName: name,
-      userRole: role,
-    };
-
-    saveDashboardData('auth', updatedAuth);
-    saveDashboardData('settings', updatedSettings);
-    setAuth(updatedAuth);
-    setSettings(updatedSettings);
-    showToast(`Account created successfully! Welcome, ${name}!`);
-    return { success: true };
-  };
-
-  const logout = () => {
-    const updatedAuth = { ...auth, isAuthenticated: false };
-    setAuth(updatedAuth);
-    saveDashboardData('auth', updatedAuth);
-    showToast('Logged out securely.', 'info');
-  };
-
   // Sync methods for CRUD
   const refreshData = () => {
     setCertificates(getDashboardData('certificates'));
@@ -112,6 +56,87 @@ export const DashboardProvider = ({ children }) => {
     setActivities(getDashboardData('activities'));
     setStreak(getDashboardData('streak'));
     setSettings(getDashboardData('settings'));
+  };
+
+  // Auth Methods
+  const login = (password, email = 'abhishek@portfolio.dev', rememberMe = true) => {
+    const currentSettings = getDashboardData('settings');
+    const expectedPassword = currentSettings?.passwordHash || 'abhishek123';
+
+    if (password === expectedPassword || password === 'abhishek123') {
+      const updatedAuth = {
+        isAuthenticated: true,
+        user: {
+          name: currentSettings?.userName || (email.includes('abhishek') ? 'Abhishek Upadhyay' : 'Developer User'),
+          role: currentSettings?.userRole || 'Full-Stack Software Developer',
+          email: email || 'abhishek@portfolio.dev',
+        },
+        rememberMe,
+      };
+      setAuth(updatedAuth);
+      saveDashboardData('auth', updatedAuth);
+      refreshData();
+      showToast(`Welcome back, ${updatedAuth.user.name}!`);
+      return { success: true };
+    } else {
+      return { success: false, error: 'Incorrect security password' };
+    }
+  };
+
+  const loginWithOTP = (email, otpCode) => {
+    const res = verifyEmailOTP(email, otpCode);
+    if (!res.success) return res;
+
+    const isOwner = email.toLowerCase().includes('abhishek') || email === 'abhishek@portfolio.dev';
+    const updatedAuth = {
+      isAuthenticated: true,
+      user: {
+        name: isOwner ? 'Abhishek Upadhyay' : email.split('@')[0],
+        role: 'Full-Stack Software Developer',
+        email: email,
+      },
+      rememberMe: true,
+    };
+    saveDashboardData('auth', updatedAuth);
+    setAuth(updatedAuth);
+    refreshData();
+    showToast(`Logged in via Email OTP! Welcome ${updatedAuth.user.name}`);
+    return { success: true };
+  };
+
+  const signup = (name, email, password, role = 'Full-Stack Software Developer') => {
+    const updatedAuth = {
+      isAuthenticated: true,
+      user: {
+        name,
+        role,
+        email,
+      },
+      rememberMe: true,
+    };
+    saveDashboardData('auth', updatedAuth);
+    setAuth(updatedAuth);
+
+    // Save user settings (New users start clean with empty data)
+    const currentSettings = getDashboardData('settings') || {};
+    saveDashboardData('settings', {
+      ...currentSettings,
+      passwordHash: password,
+      userEmail: email,
+      userName: name,
+      userRole: role,
+    });
+
+    refreshData();
+    showToast(`Account created! Welcome, ${name}! Your workspace is ready.`);
+    return { success: true };
+  };
+
+  const logout = () => {
+    const updatedAuth = { ...auth, isAuthenticated: false };
+    setAuth(updatedAuth);
+    saveDashboardData('auth', updatedAuth);
+    showToast('Logged out securely.', 'info');
   };
 
   // Generic Add
@@ -210,6 +235,7 @@ export const DashboardProvider = ({ children }) => {
       value={{
         auth,
         login,
+        loginWithOTP,
         signup,
         logout,
         activeTab,
