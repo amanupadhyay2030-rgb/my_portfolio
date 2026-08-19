@@ -13,15 +13,15 @@ import {
   Activity,
   Settings,
   Search,
-  Lock,
   LogOut,
   Sun,
   Moon,
   Sparkles,
   ArrowLeft,
-  Flame,
   Maximize2,
   Minimize2,
+  Menu,
+  X,
 } from 'lucide-react';
 
 import { DashboardLogin } from './DashboardLogin';
@@ -50,6 +50,7 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
   } = useDashboard();
 
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -104,6 +105,8 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
     }
   };
 
+  const activeNavItem = navItems.find((i) => i.id === activeTab) || navItems[0];
+
   return (
     <div className="min-h-screen bg-slate-950 light:bg-slate-100 text-slate-100 light:text-slate-900 flex flex-col md:flex-row relative font-sans selection:bg-cyan-500/30">
       
@@ -131,8 +134,152 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
       {/* Global Command Palette */}
       <CommandPalette />
 
-      {/* Left Sidebar Navigation */}
-      <aside className="w-full md:w-64 bg-slate-900/90 light:bg-white border-r border-slate-800/80 light:border-slate-200 shrink-0 p-5 flex flex-col justify-between sticky top-0 md:h-screen z-30">
+      {/* ======================================================== */}
+      {/* MOBILE STICKY TOP BAR (VISIBLE ON SMALL SCREENS) */}
+      {/* ======================================================== */}
+      <div className="md:hidden sticky top-0 z-40 bg-slate-900/95 light:bg-white/95 border-b border-slate-800 light:border-slate-200 backdrop-blur-xl px-4 py-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            {auth?.user?.avatar ? (
+              <img
+                src={auth.user.avatar}
+                alt={auth?.user?.name || 'User'}
+                className="w-9 h-9 rounded-xl object-cover border border-indigo-500 shadow-sm"
+              />
+            ) : (
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 text-white font-mono font-extrabold text-xs flex items-center justify-center shadow-sm">
+                {auth?.user?.name ? auth.user.name.split(' ').map(n=>n[0]).join('').slice(0, 2).toUpperCase() : 'OS'}
+              </div>
+            )}
+
+            <div>
+              <h2 className="font-heading font-extrabold text-sm text-slate-100 light:text-slate-900 leading-tight">
+                {auth?.user?.name || 'Abhishek OS'}
+              </h2>
+              <span className="text-[10px] font-mono text-cyan-400 light:text-indigo-600 font-semibold uppercase">
+                {activeNavItem.label}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsCommandPaletteOpen(true)}
+              className="p-2 rounded-xl bg-slate-800/80 light:bg-slate-100 text-slate-300 light:text-slate-700"
+              title="Search"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className="p-2 rounded-xl bg-slate-800/80 light:bg-slate-100 text-slate-300 light:text-slate-700"
+            >
+              {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-600" />}
+            </button>
+
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md font-bold"
+              aria-label="Toggle Mobile Menu"
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Horizontal Touch Scrollable Quick Bar */}
+        <div className="flex items-center gap-2 overflow-x-auto pt-3 pb-1 no-scrollbar border-t border-slate-800/60 light:border-slate-200 mt-2">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeTab === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => {
+                  setActiveTab(item.id);
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-mono font-semibold shrink-0 flex items-center gap-1.5 transition-all cursor-pointer ${
+                  isActive
+                    ? 'bg-cyan-500/20 text-cyan-300 light:bg-indigo-600 light:text-white border border-cyan-500/30'
+                    : 'bg-slate-950/60 light:bg-slate-100 text-slate-400 light:text-slate-600 border border-slate-800 light:border-slate-200'
+                }`}
+              >
+                <Icon className="w-3.5 h-3.5" />
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Mobile Slide-Down Drawer Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden sticky top-28 z-30 bg-slate-950/95 light:bg-white/95 border-b border-slate-800 light:border-slate-200 backdrop-blur-xl px-5 py-4 shadow-2xl space-y-3"
+          >
+            <div className="grid grid-cols-2 gap-2">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeTab === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      setActiveTab(item.id);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`flex items-center justify-between p-3 rounded-2xl text-xs font-mono font-semibold transition-all cursor-pointer ${
+                      isActive
+                        ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md'
+                        : 'bg-slate-900/60 light:bg-slate-100 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-200'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <Icon className="w-4 h-4" />
+                      <span>{item.label}</span>
+                    </div>
+                    {item.id === 'streak' && (
+                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-amber-500/20 text-amber-300 font-bold">
+                        {streak?.currentStreak || 14}d
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="pt-3 border-t border-slate-800 light:border-slate-200 flex items-center justify-between text-xs font-mono">
+              <a
+                href="#home"
+                className="text-slate-400 hover:text-cyan-400 flex items-center gap-1"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Return to Portfolio</span>
+              </a>
+
+              <button
+                onClick={logout}
+                className="text-rose-400 font-bold flex items-center gap-1"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+                <span>Lock</span>
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ======================================================== */}
+      {/* DESKTOP STICKY SIDEBAR (VISIBLE ON MD+ SCREENS) */}
+      {/* ======================================================== */}
+      <aside className="hidden md:flex w-64 bg-slate-900/90 light:bg-white border-r border-slate-800/80 light:border-slate-200 shrink-0 p-5 flex-col justify-between sticky top-0 h-screen z-30">
         <div>
           {/* Dashboard Header Logo & Profile Avatar */}
           <div className="pb-6 mb-4 border-b border-slate-800/80 light:border-slate-200 flex items-center justify-between">
@@ -269,7 +416,7 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
       </aside>
 
       {/* Main Content Dashboard Workspace */}
-      <main className="flex-1 p-6 sm:p-10 max-w-7xl mx-auto w-full overflow-y-auto">
+      <main className="flex-1 p-4 sm:p-8 lg:p-10 max-w-7xl mx-auto w-full overflow-y-auto">
         <motion.div
           key={activeTab}
           initial={{ opacity: 0, y: 10 }}
