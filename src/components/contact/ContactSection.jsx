@@ -160,7 +160,7 @@ export const ContactSection = () => {
                         rel="noopener noreferrer"
                         className="text-sm font-semibold text-cyan-400 hover:text-cyan-300 hover:underline truncate block font-mono"
                       >
-                        amanupadhyay2030
+                        {PROFILE.socials.linkedin ? PROFILE.socials.linkedin.replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//, '').replace(/\/$/, '') : 'LinkedIn'}
                       </a>
                     </div>
                   </div>

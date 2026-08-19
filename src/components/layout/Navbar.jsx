@@ -120,8 +120,8 @@ export const Navbar = () => {
                 href={PROFILE.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn Profile (amanupadhyay2030)"
-                title="LinkedIn: amanupadhyay2030"
+                aria-label="LinkedIn Profile"
+                title={`LinkedIn: ${PROFILE.socials.linkedin.replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//, '').replace(/\/$/, '')}`}
                 className="p-2.5 rounded-xl border border-slate-800 light:border-slate-300 bg-slate-900/50 light:bg-white text-slate-400 light:text-slate-600 hover:text-cyan-400 light:hover:text-indigo-600 hover:border-cyan-500/30 transition-all duration-200 hidden sm:flex items-center justify-center hover:scale-105"
               >
                 <Linkedin className="w-5 h-5" />

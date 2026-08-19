@@ -88,7 +88,7 @@ client.loop_start()`;
     } else if (cmd === 'contact') {
       newLogs.push({
         type: 'output',
-        text: 'Email: abhishek.upadhyay.dev@gmail.com | LinkedIn: linkedin.com/in/amanupadhyay2030 | Location: India'
+        text: 'Email: abhishek.upadhyay.dev@gmail.com | LinkedIn: linkedin.com/in/abhishek-upadhyay-a20617376 | Location: India'
       });
     } else {
       newLogs.push({

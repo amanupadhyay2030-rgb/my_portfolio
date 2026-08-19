@@ -13,7 +13,7 @@ export const PROFILE = {
   
   socials: {
     github: "https://github.com/amanupadhyay2030-rgb",
-    linkedin: "https://www.linkedin.com/in/amanupadhyay2030",
+    linkedin: "https://www.linkedin.com/in/abhishek-upadhyay-a20617376",
     email: "mailto:amanupadhyay2030@gmail.com",
     twitter: "",
   },
