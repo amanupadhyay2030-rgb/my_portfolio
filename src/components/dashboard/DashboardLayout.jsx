@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDashboard } from '../../context/DashboardContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -20,6 +20,8 @@ import {
   Sparkles,
   ArrowLeft,
   Flame,
+  Maximize2,
+  Minimize2,
 } from 'lucide-react';
 
 import { DashboardLogin } from './DashboardLogin';
@@ -45,6 +47,28 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
     logout,
     streak,
   } = useDashboard();
+
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch((err) => {
+        console.error('Error attempting to enable fullscreen:', err);
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
 
   if (!auth?.isAuthenticated) {
     return <DashboardLogin />;
@@ -178,23 +202,31 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
           </nav>
         </div>
 
-        {/* Sidebar Footer User Info */}
+        {/* Sidebar Footer Controls */}
         <div className="pt-4 mt-6 border-t border-slate-800/80 light:border-slate-200 flex items-center justify-between text-xs">
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsDarkMode(!isDarkMode)}
               className="p-2 rounded-xl bg-slate-800/60 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-cyan-400 transition-colors cursor-pointer"
-              title="Toggle Theme"
+              title="Toggle Light/Dark Theme"
             >
               {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-600" />}
             </button>
-            <span className="font-mono text-[11px] text-slate-400">Light / Dark</span>
+
+            {/* Native Browser Fullscreen Toggle Button */}
+            <button
+              onClick={toggleFullscreen}
+              className="p-2 rounded-xl bg-slate-800/60 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-cyan-400 transition-colors cursor-pointer"
+              title={isFullscreen ? 'Exit Full Screen' : 'Full Screen Mode'}
+            >
+              {isFullscreen ? <Minimize2 className="w-4 h-4 text-cyan-400" /> : <Maximize2 className="w-4 h-4" />}
+            </button>
           </div>
 
           <button
             onClick={logout}
             className="p-2 rounded-xl text-slate-400 hover:text-rose-400 transition-colors"
-            title="Logout"
+            title="Lock Dashboard / Logout"
           >
             <LogOut className="w-4 h-4" />
           </button>

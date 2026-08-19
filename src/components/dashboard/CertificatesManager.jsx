@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDashboard } from '../../context/DashboardContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Award, Plus, Search, ExternalLink, Download, CheckCircle, Edit, Trash2, X, Filter, SlidersHorizontal, Eye } from 'lucide-react';
+import { Award, Plus, Search, ExternalLink, Download, CheckCircle, Edit, Trash2, X, Filter, SlidersHorizontal, Eye, Maximize2, Minimize2 } from 'lucide-react';
 
 export const CertificatesManager = () => {
   const { certificates, addItem, updateItem, deleteItem } = useDashboard();
@@ -11,6 +11,7 @@ export const CertificatesManager = () => {
 
   // Modals
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isModalFullScreen, setIsModalFullScreen] = useState(false);
   const [viewCert, setViewCert] = useState(null);
   const [editingCert, setEditingCert] = useState(null);
 
@@ -282,19 +283,35 @@ export const CertificatesManager = () => {
 
       {/* Add / Edit Modal */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
+        <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto ${isModalFullScreen ? 'p-0' : ''}`}>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="w-full max-w-xl p-6 sm:p-8 rounded-3xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 shadow-2xl space-y-6 my-8"
+            className={`bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 shadow-2xl transition-all duration-300 ${
+              isModalFullScreen
+                ? 'w-full h-full max-w-none rounded-none p-6 sm:p-10 flex flex-col justify-between my-0'
+                : 'w-full max-w-xl p-6 sm:p-8 rounded-3xl space-y-6 my-8'
+            }`}
           >
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 light:border-slate-200">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-800 light:border-slate-200 shrink-0">
               <h3 className="font-heading font-extrabold text-xl text-slate-100 light:text-slate-900">
                 {editingCert ? 'Edit Certificate' : 'Add New Certificate'}
               </h3>
-              <button onClick={() => setIsAddModalOpen(false)} className="text-slate-400 hover:text-white">
-                <X className="w-5 h-5" />
-              </button>
+              
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsModalFullScreen(!isModalFullScreen)}
+                  className="p-2 rounded-xl bg-slate-800/80 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-cyan-400 transition-colors cursor-pointer"
+                  title={isModalFullScreen ? 'Restore Window Size' : 'Expand to Full Screen'}
+                >
+                  {isModalFullScreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+                </button>
+
+                <button onClick={() => setIsAddModalOpen(false)} className="p-2 rounded-xl bg-slate-800/80 light:bg-slate-100 text-slate-400 hover:text-white transition-colors cursor-pointer">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4 text-xs font-sans">

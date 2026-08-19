@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDashboard } from '../../context/DashboardContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Plus, Search, Pin, Star, Tag, Code, Trash2, Edit, X, Copy, Check } from 'lucide-react';
+import { FileText, Plus, Search, Pin, Star, Tag, Code, Trash2, Edit, X, Copy, Check, Maximize2, Minimize2 } from 'lucide-react';
 
 export const NotesManager = () => {
   const { notes, addItem, updateItem, deleteItem } = useDashboard();
@@ -11,6 +11,7 @@ export const NotesManager = () => {
 
   // Modals
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isModalFullScreen, setIsModalFullScreen] = useState(false);
   const [editingNote, setEditingNote] = useState(null);
   const [copiedId, setCopiedId] = useState(null);
 
@@ -41,6 +42,7 @@ export const NotesManager = () => {
 
   const handleOpenAdd = () => {
     setEditingNote(null);
+    setIsModalFullScreen(false);
     setFormData({
       title: '',
       content: '# Note Title\n\nWrite your developer notes or code snippet here...\n\n```php\n$pdo = new PDO($dsn, $user, $pass);\n```',
@@ -56,6 +58,7 @@ export const NotesManager = () => {
 
   const handleOpenEdit = (note) => {
     setEditingNote(note);
+    setIsModalFullScreen(false);
     setFormData({
       ...note,
       tags: Array.isArray(note.tags) ? note.tags.join(', ') : note.tags,
@@ -98,10 +101,10 @@ export const NotesManager = () => {
         <div>
           <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-100 light:text-slate-900 tracking-tight flex items-center gap-2">
             <FileText className="w-7 h-7 text-indigo-400 light:text-indigo-600" />
-            <span>Developer Notes System</span>
+            <span>Developer & Personal Notes</span>
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 light:text-slate-600 mt-1">
-            Notion-inspired developer workspace, markdown notes, code snippets, and study guides.
+            Notion-inspired markdown notes, code snippets, study guides, and personal scratchpad.
           </p>
         </div>
 
@@ -122,7 +125,7 @@ export const NotesManager = () => {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search developer notes by title, content or tags..."
+            placeholder="Search notes by title, content or tags..."
             className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-950/80 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400 text-xs sm:text-sm"
           />
         </div>
@@ -221,102 +224,129 @@ export const NotesManager = () => {
         ))}
       </div>
 
-      {/* Add / Edit Note Modal */}
+      {/* Add / Edit Note Modal with FULL SCREEN Option */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
+        <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto ${isModalFullScreen ? 'p-0' : ''}`}>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="w-full max-w-2xl p-6 sm:p-8 rounded-3xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 shadow-2xl space-y-6 my-8"
+            className={`bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 shadow-2xl transition-all duration-300 ${
+              isModalFullScreen
+                ? 'w-full h-full max-w-none rounded-none p-6 sm:p-10 flex flex-col justify-between my-0'
+                : 'w-full max-w-2xl p-6 sm:p-8 rounded-3xl space-y-6 my-8'
+            }`}
           >
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 light:border-slate-200">
-              <h3 className="font-heading font-extrabold text-xl text-slate-100 light:text-slate-900">
-                {editingNote ? 'Edit Developer Note' : 'Create New Note'}
-              </h3>
-              <button onClick={() => setIsAddModalOpen(false)} className="text-slate-400 hover:text-white">
-                <X className="w-5 h-5" />
-              </button>
+            <div className="flex items-center justify-between pb-4 border-b border-slate-800 light:border-slate-200 shrink-0">
+              <div className="flex items-center gap-2">
+                <FileText className="w-5 h-5 text-cyan-400 light:text-indigo-600" />
+                <h3 className="font-heading font-extrabold text-xl text-slate-100 light:text-slate-900">
+                  {editingNote ? 'Edit Developer Note' : 'Create New Note'}
+                </h3>
+              </div>
+
+              {/* Header Action Controls: Full Screen Expand & Close */}
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsModalFullScreen(!isModalFullScreen)}
+                  className="p-2 rounded-xl bg-slate-800/80 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-cyan-400 light:hover:text-indigo-600 transition-colors cursor-pointer"
+                  title={isModalFullScreen ? 'Restore Window Size' : 'Expand to Full Screen Editor'}
+                >
+                  {isModalFullScreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setIsAddModalOpen(false)}
+                  className="p-2 rounded-xl bg-slate-800/80 light:bg-slate-100 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                  title="Close Window"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4 text-xs font-sans">
-              <div>
-                <label className="block text-slate-300 light:text-slate-700 font-mono font-semibold mb-1">Note Title</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  placeholder="e.g. PDO Prepared Statements & Security Best Practices"
-                  className="w-full px-3 py-2.5 rounded-xl bg-slate-950 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className={`space-y-4 text-xs font-sans ${isModalFullScreen ? 'flex-1 flex flex-col justify-between pt-4 overflow-y-auto' : ''}`}>
+              <div className="space-y-4">
                 <div>
-                  <label className="block text-slate-300 light:text-slate-700 font-mono font-semibold mb-1">Category</label>
-                  <select
-                    value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-xl bg-slate-950 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400"
-                  >
-                    <option value="Personal">Personal</option>
-                    <option value="PHP">PHP</option>
-                    <option value="Python">Python</option>
-                    <option value="JavaScript">JavaScript</option>
-                    <option value="MySQL">MySQL</option>
-                    <option value="AWS">AWS</option>
-                    <option value="IoT">IoT</option>
-                    <option value="Ideas">Ideas</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-slate-300 light:text-slate-700 font-mono font-semibold mb-1">Tags (Comma separated)</label>
+                  <label className="block text-slate-300 light:text-slate-700 font-mono font-semibold mb-1">Note Title</label>
                   <input
                     type="text"
-                    value={formData.tags}
-                    onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
-                    placeholder="Security, PDO, Best Practices"
+                    required
+                    value={formData.title}
+                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    placeholder="e.g. PDO Prepared Statements & Security Best Practices"
                     className="w-full px-3 py-2.5 rounded-xl bg-slate-950 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400"
                   />
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-slate-300 light:text-slate-700 font-mono font-semibold mb-1">Content (Markdown & Code blocks supported)</label>
-                <textarea
-                  rows={8}
-                  required
-                  value={formData.content}
-                  onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                  placeholder="Write your markdown note or code snippet..."
-                  className="w-full px-3 py-2.5 rounded-xl bg-slate-950 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400 font-mono text-xs leading-relaxed"
-                />
-              </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-slate-300 light:text-slate-700 font-mono font-semibold mb-1">Category</label>
+                    <select
+                      value={formData.category}
+                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                      className="w-full px-3 py-2.5 rounded-xl bg-slate-950 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400"
+                    >
+                      <option value="Personal">Personal</option>
+                      <option value="PHP">PHP</option>
+                      <option value="Python">Python</option>
+                      <option value="JavaScript">JavaScript</option>
+                      <option value="MySQL">MySQL</option>
+                      <option value="AWS">AWS</option>
+                      <option value="IoT">IoT</option>
+                      <option value="Ideas">Ideas</option>
+                    </select>
+                  </div>
 
-              <div className="flex items-center gap-6 text-xs text-slate-300 light:text-slate-700">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={formData.pinned}
-                    onChange={(e) => setFormData({ ...formData, pinned: e.target.checked })}
-                    className="rounded bg-slate-950 border-slate-800 text-indigo-600"
+                  <div>
+                    <label className="block text-slate-300 light:text-slate-700 font-mono font-semibold mb-1">Tags (Comma separated)</label>
+                    <input
+                      type="text"
+                      value={formData.tags}
+                      onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
+                      placeholder="Security, PDO, Best Practices"
+                      className="w-full px-3 py-2.5 rounded-xl bg-slate-950 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-slate-300 light:text-slate-700 font-mono font-semibold mb-1">Content (Markdown & Code blocks supported)</label>
+                  <textarea
+                    rows={isModalFullScreen ? 18 : 8}
+                    required
+                    value={formData.content}
+                    onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                    placeholder="Write your markdown note or code snippet..."
+                    className="w-full px-3 py-2.5 rounded-xl bg-slate-950 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400 font-mono text-xs leading-relaxed"
                   />
-                  <span>Pin Note to Top</span>
-                </label>
+                </div>
 
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={formData.favorite}
-                    onChange={(e) => setFormData({ ...formData, favorite: e.target.checked })}
-                    className="rounded bg-slate-950 border-slate-800 text-amber-500"
-                  />
-                  <span>Mark as Favorite</span>
-                </label>
+                <div className="flex items-center gap-6 text-xs text-slate-300 light:text-slate-700">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={formData.pinned}
+                      onChange={(e) => setFormData({ ...formData, pinned: e.target.checked })}
+                      className="rounded bg-slate-950 border-slate-800 text-indigo-600"
+                    />
+                    <span>Pin Note to Top</span>
+                  </label>
+
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={formData.favorite}
+                      onChange={(e) => setFormData({ ...formData, favorite: e.target.checked })}
+                      className="rounded bg-slate-950 border-slate-800 text-amber-500"
+                    />
+                    <span>Mark as Favorite</span>
+                  </label>
+                </div>
               </div>
 
-              <div className="pt-4 flex items-center justify-end gap-3">
+              <div className="pt-4 flex items-center justify-end gap-3 border-t border-slate-800/80 light:border-slate-200 shrink-0">
                 <button
                   type="button"
                   onClick={() => setIsAddModalOpen(false)}
