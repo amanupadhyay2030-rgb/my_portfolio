@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant light (&:where(.light, .light *));
+
 @layer base {
   :root {
     --font-heading: 'Outfit', sans-serif;
@@ -11,6 +13,19 @@
     font-family: var(--font-sans);
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
+    background-color: #030712;
+    color: #f8fafc;
+  }
+
+  html.light {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    color-scheme: light;
+  }
+
+  html.light body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
   }
 
   h1, h2, h3, h4, h5, h6 {
