@@ -3,6 +3,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 const ThemeContext = createContext({
   theme: 'dark',
   toggleTheme: () => {},
+  isDarkMode: true,
+  setIsDarkMode: () => {},
 });
 
 export const ThemeProvider = ({ children }) => {
@@ -28,11 +30,21 @@ export const ThemeProvider = ({ children }) => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
+  const isDarkMode = theme === 'dark';
+  const setIsDarkMode = (val) => {
+    if (typeof val === 'function') {
+      setTheme((prev) => (val(prev === 'dark') ? 'dark' : 'light'));
+    } else {
+      setTheme(val ? 'dark' : 'light');
+    }
+  };
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, isDarkMode, setIsDarkMode, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 };
 
 export const useTheme = () => useContext(ThemeContext);
+

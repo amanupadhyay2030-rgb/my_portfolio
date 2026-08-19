@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useDashboard } from '../../context/DashboardContext';
+import { useTheme } from '../../context/ThemeContext';
 import { motion } from 'framer-motion';
-import { Settings, Download, Upload, RefreshCw, KeyRound, User, LogOut, ShieldCheck, FileSpreadsheet } from 'lucide-react';
+import { Settings, Download, Upload, RefreshCw, KeyRound, User, LogOut, ShieldCheck, FileSpreadsheet, Sun, Moon } from 'lucide-react';
 import { saveDashboardData } from '../../services/dashboardStorage';
 
 export const DashboardSettings = () => {
+  const { theme, setTheme } = useTheme();
   const {
     auth,
     settings,
@@ -76,10 +78,10 @@ export const DashboardSettings = () => {
       <div>
         <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-100 light:text-slate-900 tracking-tight flex items-center gap-2">
           <Settings className="w-7 h-7 text-indigo-400 light:text-indigo-600" />
-          <span>Dashboard Settings & Backup</span>
+          <span>Dashboard Settings & Appearance</span>
         </h1>
         <p className="text-xs sm:text-sm text-slate-400 light:text-slate-600 mt-1">
-          Manage local storage persistence, security authentication password, and JSON backups.
+          Manage day/night visual mode, local storage persistence, security password, and JSON backups.
         </p>
       </div>
 
@@ -149,7 +151,6 @@ export const DashboardSettings = () => {
                 const reader = new FileReader();
                 reader.onload = (evt) => {
                   const base64 = evt.target.result;
-                  const { saveDashboardData } = require('../../services/dashboardStorage');
                   saveDashboardData('auth', {
                     ...auth,
                     user: { ...auth.user, avatar: base64 },
@@ -169,6 +170,67 @@ export const DashboardSettings = () => {
           >
             <LogOut className="w-4 h-4" />
             <span>Lock Dashboard</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Theme & Appearance (Day / Night Mode) Card */}
+      <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 shadow-xl space-y-4">
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <h2 className="font-heading font-extrabold text-lg text-slate-100 light:text-slate-900 flex items-center gap-2">
+              {theme === 'dark' ? (
+                <Moon className="w-5 h-5 text-indigo-400 light:text-indigo-600" />
+              ) : (
+                <Sun className="w-5 h-5 text-amber-400 light:text-amber-500" />
+              )}
+              <span>Dashboard Theme & Appearance</span>
+            </h2>
+            <p className="text-xs text-slate-400 light:text-slate-600 mt-1">
+              Switch between Day (Light) and Night (Dark) visual themes for the dashboard workspace.
+            </p>
+          </div>
+
+          <div className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 light:bg-slate-100 text-slate-300 light:text-slate-700 border border-slate-700 light:border-slate-300">
+            Active: <span className="capitalize text-cyan-400 light:text-indigo-600">{theme} Mode</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <button
+            type="button"
+            onClick={() => setTheme('dark')}
+            className={`p-4 rounded-2xl border flex items-center gap-3 transition-all cursor-pointer ${
+              theme === 'dark'
+                ? 'bg-gradient-to-r from-indigo-900/80 to-slate-900 border-indigo-500 text-white shadow-lg ring-2 ring-indigo-500/30'
+                : 'bg-slate-950/60 light:bg-slate-50 border-slate-800 light:border-slate-200 text-slate-400 light:text-slate-600 hover:border-slate-600'
+            }`}
+          >
+            <div className="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
+              <Moon className="w-5 h-5" />
+            </div>
+            <div className="text-left">
+              <div className="font-heading font-bold text-sm text-slate-100 light:text-slate-900">Night (Dark) Mode</div>
+              <div className="text-[11px] text-slate-400 light:text-slate-500">Sleek, dark workspace aesthetic</div>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setTheme('light')}
+            className={`p-4 rounded-2xl border flex items-center gap-3 transition-all cursor-pointer ${
+              theme === 'light'
+                ? 'bg-gradient-to-r from-amber-500/10 to-indigo-50/80 light:bg-slate-100 border-amber-500 text-slate-900 shadow-lg ring-2 ring-amber-500/30'
+                : 'bg-slate-950/60 light:bg-slate-50 border-slate-800 light:border-slate-200 text-slate-400 light:text-slate-600 hover:border-slate-600'
+            }`}
+          >
+            <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-500 flex items-center justify-center shrink-0">
+              <Sun className="w-5 h-5" />
+            </div>
+            <div className="text-left">
+              <div className="font-heading font-bold text-sm text-slate-100 light:text-slate-900">Day (Light) Mode</div>
+              <div className="text-[11px] text-slate-400 light:text-slate-500">Clean, high-contrast light aesthetic</div>
+            </div>
           </button>
         </div>
       </div>

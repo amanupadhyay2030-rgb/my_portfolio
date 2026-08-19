@@ -38,7 +38,21 @@ import { ActivityStreak } from './ActivityStreak';
 import { DashboardSettings } from './DashboardSettings';
 import { saveDashboardData } from '../../services/dashboardStorage';
 
-export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
+export const DashboardLayout = ({ isDarkMode: isDarkModeProp, setIsDarkMode: setIsDarkModeProp }) => {
+  const { theme, toggleTheme, isDarkMode: isDarkModeContext, setIsDarkMode: setIsDarkModeContext } = useTheme();
+
+  const isDarkMode = isDarkModeProp !== undefined ? isDarkModeProp : isDarkModeContext;
+
+  const handleToggleTheme = () => {
+    if (typeof setIsDarkModeProp === 'function') {
+      setIsDarkModeProp(!isDarkMode);
+    } else if (typeof setIsDarkModeContext === 'function') {
+      setIsDarkModeContext(!isDarkModeContext);
+    } else {
+      toggleTheme();
+    }
+  };
+
   const {
     auth,
     activeTab,
@@ -177,8 +191,9 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
             </button>
 
             <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-2 rounded-xl bg-slate-800/80 light:bg-slate-100 text-slate-300 light:text-slate-700"
+              onClick={handleToggleTheme}
+              className="p-2 rounded-xl bg-slate-800/80 light:bg-slate-100 text-slate-300 light:text-slate-700 cursor-pointer"
+              title={isDarkMode ? 'Switch to Day (Light) Mode' : 'Switch to Night (Dark) Mode'}
             >
               {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-600" />}
             </button>
@@ -378,9 +393,9 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
         <div className="pt-4 mt-6 border-t border-slate-800/80 light:border-slate-200 flex items-center justify-between text-xs">
           <div className="flex items-center gap-2">
             <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
+              onClick={handleToggleTheme}
               className="p-2 rounded-xl bg-slate-800/60 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-cyan-400 transition-colors cursor-pointer"
-              title="Toggle Light/Dark Theme"
+              title={isDarkMode ? 'Switch to Day (Light) Mode' : 'Switch to Night (Dark) Mode'}
             >
               {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-600" />}
             </button>
