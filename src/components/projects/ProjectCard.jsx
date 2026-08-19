@@ -112,11 +112,11 @@ export const ProjectCard = ({ project, onOpenCaseStudy }) => {
                 Implemented Scope & Features:
               </span>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="space-y-1.5">
                 {project.highlights.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-2 text-xs text-slate-300 light:text-slate-700">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 light:text-indigo-600 shrink-0 mt-0.5" />
-                    <span className="line-clamp-1">{item}</span>
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>
