@@ -44,7 +44,7 @@ export const ProjectsSection = () => {
           </h2>
 
           <p className="text-slate-400 light:text-slate-600 text-base sm:text-lg mt-4">
-            Real-world projects combining development, automation and problem solving — featuring the PRAYAS Student Recruitment Portal & PRAYAS Automation Academy.
+            Real-world projects combining development, enterprise software and problem solving — featuring HRMS, PRAYAS Student Recruitment Portal & PRAYAS Automation Academy.
           </p>
         </motion.div>
 

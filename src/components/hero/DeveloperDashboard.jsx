@@ -80,10 +80,10 @@ client.loop_start()`;
         type: 'output',
         text: 'Core Stacks: Python, Core PHP, MySQL, PDO, React, WordPress/Tutor LMS, IoT, AWS'
       });
-    } else if (cmd === 'projects' || cmd === 'prayas') {
+    } else if (cmd === 'projects' || cmd === 'prayas' || cmd === 'hrms') {
       newLogs.push({
         type: 'output',
-        text: 'Flagship Projects: [1] PRAYAS Student Recruitment Portal (PHP/MySQL) [2] PRAYAS Automation Academy (LMS)'
+        text: 'Featured Projects: [1] HRMS – Human Resource Management System (PHP/MySQL) [2] PRAYAS Recruitment Portal (PHP/MySQL) [3] PRAYAS Automation Academy (LMS)'
       });
     } else if (cmd === 'contact') {
       newLogs.push({

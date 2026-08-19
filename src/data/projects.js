@@ -15,6 +15,58 @@
 
 export const PROJECTS_DATA = [
   {
+    id: "hrms-management-system",
+    featured: true,
+    isFlagship: true,
+    title: "HRMS – Human Resource Management System",
+    status: "private",
+    category: "Web",
+    subCategory: "Core PHP & MySQL Enterprise HR System",
+    shortDescription: "A centralized, real-world Human Resource Management System engineered to simplify and digitize HR operations, employee records, attendance tracking, leave management, department structures, and role-based access control.",
+    technologies: [
+      "PHP",
+      "MySQL",
+      "PDO",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Bootstrap"
+    ],
+    highlights: [
+      "Employee Profile & Personal Information Management",
+      "Department & Designation Hierarchy Management",
+      "Role-Based Access Control & Secure Authentication",
+      "Attendance Management & Daily Record Tracking",
+      "Leave Request Application & Approval Workflow",
+      "HR & Admin Dashboard with Search & Data Filtering"
+    ],
+    github: "",
+    liveDemo: "",
+    screenshots: [],
+    caseStudy: {
+      overview: "HRMS (Human Resource Management System) is a web-based enterprise software system designed to simplify and digitize HR and employee-management processes through a centralized web platform.",
+      problem: "Organizations often struggle with fragmented employee records, manual leave approval delays, untracked attendance logs, and inefficient administrative workflows across departments.",
+      solution: "Developed a database-driven HR platform using PHP and MySQL PDO featuring secure role-based login, comprehensive employee profile management, department structures, attendance logging, leave approval workflows, and administrative search filtering.",
+      technologies: ["PHP", "MySQL", "PDO", "HTML", "CSS", "JavaScript", "Bootstrap"],
+      features: [
+        { name: "Employee Management", desc: "Centralized employee record management and profile tracking." },
+        { name: "Personal Information Management", desc: "Detailed tracking of employee profiles, personal information, and contact records." },
+        { name: "Department & Designation Management", desc: "Structured department assignments and designation hierarchies." },
+        { name: "Role-Based Access & Authentication", desc: "Secure multi-level permissions for administrators and staff members." },
+        { name: "Attendance Management", desc: "Systematic daily attendance logging and record tracking." },
+        { name: "Leave Management", desc: "Leave request filing, quota calculation, and multi-tier approval workflow." },
+        { name: "HR / Admin Dashboard", desc: "Centralized dashboard displaying workforce metrics, pending leave approvals, and employee statistics." },
+        { name: "Search & Filtering", desc: "Fast multi-field searching and dynamic data filtering across employee records." },
+        { name: "Secure Login & Session Management", desc: "PDO prepared queries and session security for authenticated access." },
+        { name: "Responsive Web Interface", desc: "Mobile-responsive user interface crafted with Bootstrap and custom CSS." }
+      ],
+      development: "Engineered using PHP backend architecture with PDO prepared statements against normalized MySQL tables, leveraging Bootstrap for structured administrative grid layouts.",
+      challenges: [
+        "Architecting complex relational database schemas connecting employees, departments, designations, attendance logs, and leave approval workflows while maintaining fast query performance."
+      ]
+    }
+  },
+  {
     id: "prayas-recruitment-portal",
     featured: true,
     isFlagship: true,

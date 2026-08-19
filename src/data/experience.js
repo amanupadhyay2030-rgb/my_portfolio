@@ -8,6 +8,21 @@
 
 export const DEVELOPMENT_JOURNEY = [
   {
+    id: "hrms-project-dev",
+    category: "Enterprise Web Development",
+    title: "HRMS – Human Resource Management System",
+    subtitle: "Real-World Business Application",
+    description: "Engineered a centralized web-based HR system designed to simplify and digitize core employee operations and administrative workflows. Built database-driven modules for employee profiles, department hierarchies, attendance logging, leave approval workflows, and role-based access control — marking key progression in developing practical business-oriented applications.",
+    technologies: ["PHP", "MySQL", "PDO", "HTML", "CSS", "JavaScript", "Bootstrap"],
+    highlights: [
+      "Built employee profile & personal information records management",
+      "Designed department & designation hierarchy management",
+      "Implemented role-based access control & secure session authentication",
+      "Developed attendance tracking & leave approval workflow engine",
+      "Created HR admin dashboard with dynamic multi-field search & filtering"
+    ]
+  },
+  {
     id: "prayas-recruitment-dev",
     category: "Full-Stack Development",
     title: "PRAYAS Student Recruitment Portal",

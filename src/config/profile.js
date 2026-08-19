@@ -32,7 +32,7 @@ export const PROFILE = {
     location: "India",
   },
 
-  aboutNarrative: `Abhishek Upadhyay is a software developer focused on building practical, reliable, and user-centered digital applications. With hands-on technical work spanning Core PHP and MySQL backends, Python automation scripts, IoT microcontroller telemetry, and custom LMS integrations, he specializes in delivering real-world software platforms like recruitment portals and educational systems.`,
+  aboutNarrative: `Abhishek Upadhyay is a software developer focused on building practical, reliable, and user-centered digital applications. With hands-on technical work spanning Core PHP and MySQL backends, Python automation scripts, IoT microcontroller telemetry, and custom LMS integrations, he specializes in delivering real-world software platforms like HR management systems, recruitment portals, and educational systems.`,
 
   focusAreas: [
     "Web Development",
