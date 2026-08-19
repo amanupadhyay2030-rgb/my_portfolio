@@ -50,19 +50,28 @@ export const GitHubSection = () => {
           className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 shadow-2xl mb-12 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-xl"
         >
           <div className="flex items-center gap-5 w-full md:w-auto">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-500 to-cyan-400 p-0.5 shadow-lg shrink-0">
-              {profile.avatar_url ? (
-                <img
-                  src={profile.avatar_url}
-                  alt={profile.name}
-                  className="w-full h-full object-cover rounded-[14px]"
-                />
-              ) : (
-                <div className="w-full h-full bg-slate-950 light:bg-slate-100 rounded-[14px] flex items-center justify-center text-cyan-400 light:text-indigo-600 font-extrabold font-mono text-xl">
-                  AU
-                </div>
-              )}
-            </div>
+            <a
+              href="#/dashboard"
+              className="relative group/avatar cursor-pointer block shrink-0"
+              title="Click to Open Developer Dashboard"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-500 to-cyan-400 p-0.5 shadow-lg shrink-0 group-hover/avatar:scale-105 transition-transform">
+                {profile.avatar_url ? (
+                  <img
+                    src={profile.avatar_url}
+                    alt={profile.name}
+                    className="w-full h-full object-cover rounded-[14px]"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-slate-950 light:bg-slate-100 rounded-[14px] flex items-center justify-center text-cyan-400 light:text-indigo-600 font-extrabold font-mono text-xl">
+                    AU
+                  </div>
+                )}
+              </div>
+              <div className="absolute inset-0 rounded-2xl bg-black/65 opacity-0 group-hover/avatar:opacity-100 flex items-center justify-center transition-opacity text-white text-[9px] font-mono font-bold">
+                Dashboard
+              </div>
+            </a>
 
             <div>
               <div className="flex items-center gap-2">

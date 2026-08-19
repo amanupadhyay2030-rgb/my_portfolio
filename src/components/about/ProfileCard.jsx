@@ -12,10 +12,14 @@ export const ProfileCard = () => {
       <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 via-cyan-500 to-teal-400 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500" />
 
       <div className="relative bg-slate-900/90 light:bg-white rounded-3xl border border-slate-800 light:border-slate-200 p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
-        {/* Header Avatar Placeholder & Status */}
+        {/* Header Avatar & Clickable Link to Dashboard */}
         <div className="flex items-center gap-5 pb-6 border-b border-slate-800/80 light:border-slate-200">
-          <div className="relative">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-indigo-600 to-cyan-400 p-0.5 shadow-lg">
+          <a
+            href="#/dashboard"
+            className="relative group/avatar cursor-pointer block shrink-0"
+            title="Click to Open Developer Dashboard"
+          >
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-indigo-600 to-cyan-400 p-0.5 shadow-lg group-hover/avatar:scale-105 transition-transform">
               {avatarUrl ? (
                 <img
                   src={avatarUrl}
@@ -29,15 +33,24 @@ export const ProfileCard = () => {
                 </div>
               )}
             </div>
-            <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-slate-900 light:border-white" title="Active Developer" />
-          </div>
+            <div className="absolute inset-0 rounded-2xl bg-black/65 opacity-0 group-hover/avatar:opacity-100 flex items-center justify-center transition-opacity text-white text-[10px] font-mono font-bold">
+              Dashboard
+            </div>
+            <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-slate-900 light:border-white z-10" title="Active Developer" />
+          </a>
 
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 light:text-indigo-600 font-semibold mb-1">
-              <Sparkles className="w-3.5 h-3.5" /> Verified Profile
-            </div>
+            <a
+              href="#/dashboard"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 light:text-indigo-600 font-semibold mb-1 hover:underline"
+              title="Click to Open Developer Dashboard"
+            >
+              <Sparkles className="w-3.5 h-3.5" /> Verified Profile ➔
+            </a>
             <h3 className="font-heading font-extrabold text-xl text-slate-100 light:text-slate-900">
-              {PROFILE.name}
+              <a href="#/dashboard" className="hover:text-cyan-400 light:hover:text-indigo-600 transition-colors">
+                {PROFILE.name}
+              </a>
             </h3>
             <p className="text-xs text-slate-400 light:text-slate-500 font-medium">
               {PROFILE.role}
