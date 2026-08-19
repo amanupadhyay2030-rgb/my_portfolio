@@ -10,7 +10,10 @@ export const GitHubSection = () => {
   const profileUrl = profile.html_url || `https://github.com/${githubUsername}`;
 
   return (
-    <section id="github" className="py-20 lg:py-28 relative overflow-hidden">
+    <section id="github" className="py-20 lg:py-28 relative overflow-hidden bg-dot-pattern">
+      {/* Background Ambient Glow Orb */}
+      <div className="absolute top-1/4 -right-40 w-96 h-96 rounded-full bg-cyan-500/10 light:bg-blue-200/40 blur-3xl pointer-events-none animate-pulse-glow" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}

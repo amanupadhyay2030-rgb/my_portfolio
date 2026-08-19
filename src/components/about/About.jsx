@@ -6,7 +6,10 @@ import { CheckCircle2 } from 'lucide-react';
 
 export const About = () => {
   return (
-    <section id="about" className="py-20 lg:py-28 relative overflow-hidden">
+    <section id="about" className="py-20 lg:py-28 relative overflow-hidden bg-dot-pattern">
+      {/* Background Ambient Glow Orb */}
+      <div className="absolute top-1/2 -right-40 -translate-y-1/2 w-96 h-96 rounded-full bg-indigo-500/10 light:bg-indigo-200/40 blur-3xl pointer-events-none animate-pulse-glow" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}

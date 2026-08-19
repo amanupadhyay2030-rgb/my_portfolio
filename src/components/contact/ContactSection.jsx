@@ -76,7 +76,10 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-28 relative overflow-hidden">
+    <section id="contact" className="py-20 lg:py-28 relative overflow-hidden bg-dot-pattern">
+      {/* Background Ambient Glow Orb */}
+      <div className="absolute bottom-10 -left-40 w-96 h-96 rounded-full bg-cyan-500/10 light:bg-blue-200/50 blur-3xl pointer-events-none animate-pulse-glow" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
