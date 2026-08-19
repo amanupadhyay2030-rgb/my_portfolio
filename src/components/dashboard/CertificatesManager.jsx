@@ -35,19 +35,19 @@ export const CertificatesManager = () => {
   const categories = ['All', 'Web Development', 'Python', 'Cloud', 'Database', 'IoT', 'Other'];
 
   const filtered = (certificates || []).filter((cert) => {
-    const matchesCategory = selectedCategory === 'All' || cert.category === selectedCategory;
+    const matchesCategory = selectedCategory === 'All' || cert?.category === selectedCategory;
     const matchesSearch =
-      cert.title.toLowerCase().includes(search.toLowerCase()) ||
-      cert.issuer.toLowerCase().includes(search.toLowerCase()) ||
-      (cert.skills && cert.skills.some((s) => s.toLowerCase().includes(search.toLowerCase())));
+      (cert?.title || '').toLowerCase().includes((search || '').toLowerCase()) ||
+      (cert?.issuer || '').toLowerCase().includes((search || '').toLowerCase()) ||
+      (cert?.skills && cert.skills.some((s) => (s || '').toLowerCase().includes((search || '').toLowerCase())));
     return matchesCategory && matchesSearch;
   });
 
   const sorted = [...filtered].sort((a, b) => {
-    if (sortBy === 'Newest') return new Date(b.issueDate || 0) - new Date(a.issueDate || 0);
-    if (sortBy === 'Oldest') return new Date(a.issueDate || 0) - new Date(b.issueDate || 0);
-    if (sortBy === 'Organization') return a.issuer.localeCompare(b.issuer);
-    return a.title.localeCompare(b.title);
+    if (sortBy === 'Newest') return new Date(b?.issueDate || 0) - new Date(a?.issueDate || 0);
+    if (sortBy === 'Oldest') return new Date(a?.issueDate || 0) - new Date(b?.issueDate || 0);
+    if (sortBy === 'Organization') return (a?.issuer || '').localeCompare(b?.issuer || '');
+    return (a?.title || '').localeCompare(b?.title || '');
   });
 
   const handleOpenAdd = () => {

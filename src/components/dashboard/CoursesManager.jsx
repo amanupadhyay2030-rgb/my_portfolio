@@ -34,11 +34,11 @@ export const CoursesManager = () => {
   const statuses = ['All', 'Currently Learning', 'Completed', 'Planned', 'Paused'];
 
   const filtered = (courses || []).filter((c) => {
-    const matchesStatus = selectedStatus === 'All' || c.status === selectedStatus;
+    const matchesStatus = selectedStatus === 'All' || c?.status === selectedStatus;
     const matchesSearch =
-      c.title.toLowerCase().includes(search.toLowerCase()) ||
-      c.platform.toLowerCase().includes(search.toLowerCase()) ||
-      c.instructor.toLowerCase().includes(search.toLowerCase());
+      (c?.title || '').toLowerCase().includes((search || '').toLowerCase()) ||
+      (c?.platform || '').toLowerCase().includes((search || '').toLowerCase()) ||
+      (c?.instructor || '').toLowerCase().includes((search || '').toLowerCase());
     return matchesStatus && matchesSearch;
   });
 

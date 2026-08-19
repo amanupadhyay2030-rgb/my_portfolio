@@ -23,21 +23,21 @@ export const CommandPalette = () => {
 
   // Aggregate all items for search
   const allItems = [
-    ...(certificates || []).map((c) => ({ type: 'Certificate', title: c.title, subtitle: c.issuer, tab: 'certificates', icon: Award })),
-    ...(courses || []).map((c) => ({ type: 'Course', title: c.title, subtitle: c.platform, tab: 'courses', icon: BookOpen })),
-    ...(notes || []).map((n) => ({ type: 'Note', title: n.title, subtitle: n.category, tab: 'notes', icon: FileText })),
-    ...(skills || []).map((s) => ({ type: 'Skill', title: s.name, subtitle: `${s.level} • ${s.category}`, tab: 'skills', icon: Cpu })),
-    ...(goals || []).map((g) => ({ type: 'Goal', title: g.title, subtitle: `Priority: ${g.priority}`, tab: 'goals', icon: Target })),
-    ...(projects || []).map((p) => ({ type: 'Project', title: p.title, subtitle: p.status, tab: 'projects', icon: FolderCode })),
-    ...(resources || []).map((r) => ({ type: 'Resource', title: r.title, subtitle: r.type, tab: 'resources', icon: Bookmark })),
+    ...(certificates || []).map((c) => ({ type: 'Certificate', title: c?.title || '', subtitle: c?.issuer || '', tab: 'certificates', icon: Award })),
+    ...(courses || []).map((c) => ({ type: 'Course', title: c?.title || '', subtitle: c?.platform || '', tab: 'courses', icon: BookOpen })),
+    ...(notes || []).map((n) => ({ type: 'Note', title: n?.title || '', subtitle: n?.category || '', tab: 'notes', icon: FileText })),
+    ...(skills || []).map((s) => ({ type: 'Skill', title: s?.name || '', subtitle: `${s?.level || ''} • ${s?.category || ''}`, tab: 'skills', icon: Cpu })),
+    ...(goals || []).map((g) => ({ type: 'Goal', title: g?.title || '', subtitle: `Priority: ${g?.priority || ''}`, tab: 'goals', icon: Target })),
+    ...(projects || []).map((p) => ({ type: 'Project', title: p?.title || '', subtitle: p?.status || '', tab: 'projects', icon: FolderCode })),
+    ...(resources || []).map((r) => ({ type: 'Resource', title: r?.title || '', subtitle: r?.type || '', tab: 'resources', icon: Bookmark })),
   ];
 
   const filtered = query.trim()
     ? allItems.filter(
         (item) =>
-          item.title.toLowerCase().includes(query.toLowerCase()) ||
-          item.subtitle.toLowerCase().includes(query.toLowerCase()) ||
-          item.type.toLowerCase().includes(query.toLowerCase())
+          (item.title || '').toLowerCase().includes(query.toLowerCase()) ||
+          (item.subtitle || '').toLowerCase().includes(query.toLowerCase()) ||
+          (item.type || '').toLowerCase().includes(query.toLowerCase())
       )
     : allItems.slice(0, 8);
 

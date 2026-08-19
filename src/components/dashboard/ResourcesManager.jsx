@@ -22,11 +22,11 @@ export const ResourcesManager = () => {
   const types = ['All', 'Documentation', 'Reference', 'Video', 'Article', 'GitHub', 'Course', 'Tool'];
 
   const filtered = (resources || []).filter((r) => {
-    const matchesType = selectedType === 'All' || r.type === selectedType;
+    const matchesType = selectedType === 'All' || r?.type === selectedType;
     const matchesSearch =
-      r.title.toLowerCase().includes(search.toLowerCase()) ||
-      r.description.toLowerCase().includes(search.toLowerCase()) ||
-      (r.tags && r.tags.some((t) => t.toLowerCase().includes(search.toLowerCase())));
+      (r?.title || '').toLowerCase().includes((search || '').toLowerCase()) ||
+      (r?.description || '').toLowerCase().includes((search || '').toLowerCase()) ||
+      (r?.tags && r.tags.some((t) => (t || '').toLowerCase().includes((search || '').toLowerCase())));
     return matchesType && matchesSearch;
   });
 

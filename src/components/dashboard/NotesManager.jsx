@@ -29,12 +29,12 @@ export const NotesManager = () => {
   const categories = ['All', 'Personal', 'PHP', 'Python', 'JavaScript', 'MySQL', 'AWS', 'IoT', 'Ideas'];
 
   const filtered = (notes || []).filter((note) => {
-    const matchesCat = selectedCategory === 'All' || note.category === selectedCategory;
+    const matchesCategory = selectedCategory === 'All' || note?.category === selectedCategory;
     const matchesSearch =
-      note.title.toLowerCase().includes(search.toLowerCase()) ||
-      note.content.toLowerCase().includes(search.toLowerCase()) ||
-      (note.tags && note.tags.some((t) => t.toLowerCase().includes(search.toLowerCase())));
-    return matchesCat && matchesSearch;
+      (note?.title || '').toLowerCase().includes((search || '').toLowerCase()) ||
+      (note?.content || '').toLowerCase().includes((search || '').toLowerCase()) ||
+      (note?.tags && note.tags.some((t) => (t || '').toLowerCase().includes((search || '').toLowerCase())));
+    return matchesCategory && matchesSearch;
   });
 
   // Sort pinned notes to top
