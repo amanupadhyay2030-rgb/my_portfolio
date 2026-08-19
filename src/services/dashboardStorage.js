@@ -19,7 +19,7 @@ export const OWNER_EMAIL = 'abhishek@portfolio.dev';
 // Authentic Real-World Data for Abhishek Upadhyay (Owner Account)
 const ABHISHEK_DATA = {
   auth: {
-    isAuthenticated: false,
+    isAuthenticated: true,
     user: {
       name: 'Abhishek Upadhyay',
       role: 'Full-Stack Software Developer',

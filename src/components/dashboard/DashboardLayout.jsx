@@ -315,7 +315,7 @@ export const DashboardLayout = ({ isDarkMode: isDarkModeProp, setIsDarkMode: set
                       const base64 = evt.target.result;
                       const updatedAuth = {
                         ...auth,
-                        user: { ...auth.user, avatar: base64 },
+                        user: { ...(auth?.user || {}), avatar: base64 },
                       };
                       saveDashboardData('auth', updatedAuth);
                       window.location.reload();

@@ -28,6 +28,8 @@ function MainAppContent() {
   const isDashboardRoute =
     currentHash === '#/dashboard' ||
     currentHash.startsWith('#/dashboard') ||
+    currentHash === '#dashboard' ||
+    currentHash.startsWith('#dashboard') ||
     window.location.pathname.endsWith('/dashboard');
 
   if (isDashboardRoute) {
