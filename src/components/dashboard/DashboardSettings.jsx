@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDashboard } from '../../context/DashboardContext';
 import { motion } from 'framer-motion';
 import { Settings, Download, Upload, RefreshCw, KeyRound, User, LogOut, ShieldCheck, FileSpreadsheet } from 'lucide-react';
+import { saveDashboardData } from '../../services/dashboardStorage';
 
 export const DashboardSettings = () => {
   const {
@@ -82,29 +83,94 @@ export const DashboardSettings = () => {
         </p>
       </div>
 
-      {/* User Info Card */}
-      <div className="p-6 rounded-3xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 shadow-xl flex items-center justify-between">
+      {/* User Info & Avatar Upload Card */}
+      <div className="p-6 rounded-3xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-500 text-white font-mono font-extrabold text-xl flex items-center justify-center shadow-lg">
-            AU
-          </div>
+          <label className="relative group cursor-pointer shrink-0" title="Click to Upload New Profile Avatar Picture">
+            {auth?.user?.avatar ? (
+              <img
+                src={auth.user.avatar}
+                alt={auth?.user?.name || 'User'}
+                className="w-16 h-16 rounded-2xl object-cover border-2 border-indigo-500 shadow-lg group-hover:opacity-80 transition-opacity"
+              />
+            ) : (
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-500 text-white font-mono font-extrabold text-2xl flex items-center justify-center shadow-lg group-hover:opacity-80 transition-opacity">
+                {auth?.user?.name ? auth.user.name.split(' ').map(n=>n[0]).join('').slice(0, 2).toUpperCase() : 'AU'}
+              </div>
+            )}
+            <div className="absolute inset-0 rounded-2xl bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-white text-[10px] font-mono font-bold">
+              Upload
+            </div>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (evt) => {
+                  const base64 = evt.target.result;
+                  saveDashboardData('auth', {
+                    ...auth,
+                    user: { ...auth.user, avatar: base64 },
+                  });
+                  showToast('Profile picture updated successfully!');
+                  setTimeout(() => window.location.reload(), 400);
+                };
+                reader.readAsDataURL(file);
+              }}
+              className="hidden"
+            />
+          </label>
+
           <div>
             <h3 className="font-heading font-extrabold text-lg text-slate-100 light:text-slate-900">
               {auth?.user?.name || 'Abhishek Upadhyay'}
             </h3>
-            <p className="text-xs font-mono text-cyan-400 light:text-indigo-600 font-semibold">
+            <p className="text-xs font-mono text-cyan-400 light:text-indigo-600 font-semibold mb-1">
               {auth?.user?.role || 'Full-Stack Software Developer'}
+            </p>
+            <p className="text-[11px] text-slate-400 font-mono">
+              {auth?.user?.email || 'abhishek@portfolio.dev'}
             </p>
           </div>
         </div>
 
-        <button
-          onClick={logout}
-          className="px-4 py-2 rounded-xl bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 border border-rose-500/30 text-xs font-mono font-semibold flex items-center gap-2 transition-all cursor-pointer"
-        >
-          <LogOut className="w-4 h-4" />
-          <span>Lock Dashboard</span>
-        </button>
+        <div className="flex items-center gap-3">
+          <label className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white text-xs font-mono font-bold shadow-md cursor-pointer transition-all flex items-center gap-2">
+            <Upload className="w-4 h-4" />
+            <span>Upload Photo</span>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (evt) => {
+                  const base64 = evt.target.result;
+                  const { saveDashboardData } = require('../../services/dashboardStorage');
+                  saveDashboardData('auth', {
+                    ...auth,
+                    user: { ...auth.user, avatar: base64 },
+                  });
+                  showToast('Profile picture updated!');
+                  setTimeout(() => window.location.reload(), 400);
+                };
+                reader.readAsDataURL(file);
+              }}
+              className="hidden"
+            />
+          </label>
+
+          <button
+            onClick={logout}
+            className="px-4 py-2 rounded-xl bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 border border-rose-500/30 text-xs font-mono font-semibold flex items-center gap-2 transition-all cursor-pointer"
+          >
+            <LogOut className="w-4 h-4" />
+            <span>Lock Dashboard</span>
+          </button>
+        </div>
       </div>
 
       {/* Export & Import JSON Data */}

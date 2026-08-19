@@ -36,6 +36,7 @@ import { ProjectsTracker } from './ProjectsTracker';
 import { ResourcesManager } from './ResourcesManager';
 import { ActivityStreak } from './ActivityStreak';
 import { DashboardSettings } from './DashboardSettings';
+import { saveDashboardData } from '../../services/dashboardStorage';
 
 export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
   const {
@@ -133,18 +134,52 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
       {/* Left Sidebar Navigation */}
       <aside className="w-full md:w-64 bg-slate-900/90 light:bg-white border-r border-slate-800/80 light:border-slate-200 shrink-0 p-5 flex flex-col justify-between sticky top-0 md:h-screen z-30">
         <div>
-          {/* Dashboard Header Logo */}
+          {/* Dashboard Header Logo & Profile Avatar */}
           <div className="pb-6 mb-4 border-b border-slate-800/80 light:border-slate-200 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-500 text-white flex items-center justify-center font-mono font-extrabold text-sm shadow-md">
-                OS
-              </div>
+              <label className="relative group cursor-pointer" title="Click to Upload Profile Avatar Image">
+                {auth?.user?.avatar ? (
+                  <img
+                    src={auth.user.avatar}
+                    alt={auth?.user?.name || 'User'}
+                    className="w-11 h-11 rounded-2xl object-cover border-2 border-indigo-500 shadow-md group-hover:opacity-80 transition-opacity"
+                  />
+                ) : (
+                  <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-500 text-white flex items-center justify-center font-mono font-extrabold text-sm shadow-md group-hover:opacity-80 transition-opacity">
+                    {auth?.user?.name ? auth.user.name.split(' ').map(n=>n[0]).join('').slice(0, 2).toUpperCase() : 'OS'}
+                  </div>
+                )}
+                <div className="absolute inset-0 rounded-2xl bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-white text-[10px] font-mono">
+                  Upload
+                </div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = (evt) => {
+                      const base64 = evt.target.result;
+                      const updatedAuth = {
+                        ...auth,
+                        user: { ...auth.user, avatar: base64 },
+                      };
+                      saveDashboardData('auth', updatedAuth);
+                      window.location.reload();
+                    };
+                    reader.readAsDataURL(file);
+                  }}
+                  className="hidden"
+                />
+              </label>
+
               <div>
                 <h2 className="font-heading font-extrabold text-base text-slate-100 light:text-slate-900 leading-tight">
-                  Abhishek OS
+                  {auth?.user?.name || 'Abhishek OS'}
                 </h2>
                 <span className="text-[10px] font-mono text-cyan-400 light:text-indigo-600 font-semibold uppercase tracking-wider">
-                  Developer Portal
+                  {auth?.user?.role || 'Developer Portal'}
                 </span>
               </div>
             </div>

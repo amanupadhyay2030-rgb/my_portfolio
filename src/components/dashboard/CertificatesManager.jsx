@@ -415,6 +415,34 @@ export const CertificatesManager = () => {
               </div>
 
               <div>
+                <label className="block text-slate-300 light:text-slate-700 font-mono font-semibold mb-1">Certificate Image / Badge</label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    value={formData.image}
+                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                    placeholder="https://images.unsplash.com/... or upload image file"
+                    className="flex-1 px-3 py-2.5 rounded-xl bg-slate-950 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400"
+                  />
+                  <label className="px-3.5 py-2.5 rounded-xl bg-slate-800 light:bg-slate-200 text-slate-200 light:text-slate-800 hover:text-white font-mono font-bold text-xs cursor-pointer shrink-0 transition-colors">
+                    <span>Upload Image</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => {
+                        const file = e.target.files[0];
+                        if (!file) return;
+                        const reader = new FileReader();
+                        reader.onload = (evt) => setFormData({ ...formData, image: evt.target.result });
+                        reader.readAsDataURL(file);
+                      }}
+                      className="hidden"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div>
                 <label className="block text-slate-300 light:text-slate-700 font-mono font-semibold mb-1">Description</label>
                 <textarea
                   rows={3}
