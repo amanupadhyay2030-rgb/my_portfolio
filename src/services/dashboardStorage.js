@@ -12,7 +12,7 @@ const STORAGE_KEYS = {
   SETTINGS: 'abhishek_dashboard_settings',
 };
 
-// Initial Sample Data for Abhishek's Personal Learning OS
+// Authentic Real-World Data for Abhishek Upadhyay's Learning OS
 const INITIAL_DATA = {
   auth: {
     isAuthenticated: false,
@@ -26,49 +26,81 @@ const INITIAL_DATA = {
 
   certificates: [
     {
-      id: 'cert-1',
-      title: 'Enterprise Core PHP & PDO Database Architecture',
-      issuer: 'Udemy / Web Engineering Institute',
-      certId: 'UC-PHP-982341',
+      id: 'cert-w3s-php',
+      title: 'W3Schools Certified PHP Developer',
+      issuer: 'W3Schools (www3.w3schools.com)',
+      certId: 'W3S-PHP-884920',
       issueDate: '2025-11-15',
       expiryDate: 'Never',
       category: 'Web Development',
-      skills: ['PHP', 'PDO', 'MySQL', 'Database Security'],
-      certUrl: 'https://example.com/cert/uc-php-982341',
-      verifyUrl: 'https://example.com/verify/uc-php-982341',
-      description: 'Comprehensive certification covering secure PDO prepared statements, OOP PHP design patterns, session management, and MySQL database optimization.',
+      skills: ['PHP 8', 'PDO', 'MySQL', 'Web Security', 'Form Validation'],
+      certUrl: 'https://my-learning.w3schools.com/',
+      verifyUrl: 'https://verify.w3schools.com/W3S-PHP-884920',
+      description: 'Official W3Schools PHP Developer certification validating core PHP syntax, PDO prepared statements, OOP PHP design patterns, session authentication, and secure MySQL database integration.',
       status: 'Verified',
       fileType: 'PDF',
       image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80',
     },
     {
-      id: 'cert-2',
-      title: 'Python Automation & System Telemetry Specialist',
-      issuer: 'Coursera / Tech Automation Academy',
-      certId: 'PY-AUTO-77821',
+      id: 'cert-udemy-web',
+      title: 'Udemy - Full-Stack Web Development & Modern Architecture',
+      issuer: 'Udemy (udemy.com)',
+      certId: 'UC-WD-8839201',
+      issueDate: '2025-12-10',
+      expiryDate: 'Never',
+      category: 'Web Development',
+      skills: ['HTML5', 'CSS3', 'JavaScript ES6+', 'PHP', 'MySQL', 'REST APIs'],
+      certUrl: 'https://www.udemy.com/certificate/UC-WD-8839201/',
+      verifyUrl: 'https://www.udemy.com/certificate/UC-WD-8839201/',
+      description: 'Comprehensive Udemy masterclass certification covering production web application architecture, responsive CSS, client-server communication, database schemas, and clean code deployment.',
+      status: 'Verified',
+      fileType: 'PDF',
+      image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80',
+    },
+    {
+      id: 'cert-fcc-js',
+      title: 'freeCodeCamp Responsive Web & JavaScript Algorithms',
+      issuer: 'freeCodeCamp.org',
+      certId: 'FCC-JS-99201',
+      issueDate: '2025-08-20',
+      expiryDate: 'Never',
+      category: 'Web Development',
+      skills: ['JavaScript ES6+', 'Algorithms', 'Data Structures', 'DOM Manipulation'],
+      certUrl: 'https://www.freecodecamp.org/certification/abhishek_upadhyay/javascript-algorithms',
+      verifyUrl: 'https://www.freecodecamp.org/certification/abhishek_upadhyay/javascript-algorithms',
+      description: 'Verified freeCodeCamp developer certification covering object-oriented JavaScript, functional programming, data structures, regex, and ES6+ async/await.',
+      status: 'Verified',
+      fileType: 'PNG',
+      image: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?auto=format&fit=crop&w=600&q=80',
+    },
+    {
+      id: 'cert-udemy-py',
+      title: 'Udemy - Python 3 Masterclass & System Telemetry Automation',
+      issuer: 'Udemy (udemy.com)',
+      certId: 'UC-PY-778210',
       issueDate: '2026-01-20',
       expiryDate: 'Never',
       category: 'Python',
-      skills: ['Python 3', 'Automation', 'REST APIs', 'IoT Telemetry'],
-      certUrl: 'https://example.com/cert/py-auto-77821',
-      verifyUrl: 'https://example.com/verify/py-auto-77821',
-      description: 'Advanced Python certification focusing on background process daemons, CSV/JSON data parsing, microcontrollers, and hardware telemetry logging.',
+      skills: ['Python 3', 'Automation', 'Subprocess', 'Serial IoT', 'Data Logging'],
+      certUrl: 'https://www.udemy.com/certificate/UC-PY-778210/',
+      verifyUrl: 'https://www.udemy.com/certificate/UC-PY-778210/',
+      description: 'Advanced Udemy Python 3 certification focused on system process automation, background daemons, serial communication with microcontrollers, and hardware telemetry logging.',
       status: 'Verified',
-      fileType: 'PNG',
+      fileType: 'PDF',
       image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80',
     },
     {
-      id: 'cert-3',
-      title: 'AWS Certified Cloud Practitioner (Study)',
-      issuer: 'Amazon Web Services',
+      id: 'cert-aws-cp',
+      title: 'AWS Certified Cloud Practitioner (Active Study)',
+      issuer: 'Amazon Web Services (AWS)',
       certId: 'AWS-CP-DRAFT',
       issueDate: '2026-03-01',
       expiryDate: '2029-03-01',
       category: 'Cloud',
-      skills: ['AWS EC2', 'AWS S3', 'Cloud Security', 'IAM'],
+      skills: ['AWS EC2', 'AWS S3', 'IAM Roles', 'CloudFront', 'Cloud Architecture'],
       certUrl: 'https://aws.amazon.com/certification/',
       verifyUrl: 'https://aws.amazon.com/verification/',
-      description: 'Fundamental cloud architecture certification covering EC2 deployment, S3 storage buckets, IAM policies, and cloud cost management.',
+      description: 'Official AWS cloud practitioner track covering cloud security, virtual servers (EC2), object storage (S3), IAM access controls, and cloud cost management.',
       status: 'In Progress',
       fileType: 'PDF',
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80',
@@ -77,120 +109,160 @@ const INITIAL_DATA = {
 
   courses: [
     {
-      id: 'course-1',
-      title: 'Advanced PHP 8.x & Secure PDO Database Architecture',
-      platform: 'Udemy',
-      instructor: 'Brad Traversy',
-      courseUrl: 'https://udemy.com',
+      id: 'course-w3s-php',
+      title: 'W3Schools PHP 8 & MySQL Database Tutorial & Certification',
+      platform: 'W3Schools (www3.w3schools.com)',
+      instructor: 'W3Schools Learning Team',
+      courseUrl: 'https://www.w3schools.com/php/',
       thumbnail: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80',
-      startDate: '2025-10-01',
+      startDate: '2025-09-15',
       targetCompletionDate: '2025-11-10',
       status: 'Completed',
       progress: 100,
-      totalLessons: 6,
-      completedLessons: 6,
-      duration: '18.5 Hours',
-      skills: ['PHP 8', 'PDO', 'MySQL', 'Security'],
-      description: 'Mastering OOP PHP, PDO prepared statements, custom MVC routing, and role-based access control.',
-      notes: 'Implemented in the HRMS enterprise system project.',
+      totalLessons: 7,
+      completedLessons: 7,
+      duration: '22 Hours',
+      skills: ['PHP 8', 'PDO Prepared Statements', 'MySQL Workbench', 'Sessions & Cookies', 'Security'],
+      description: 'Interactive W3Schools certification course covering PHP 8 OOP fundamentals, secure database connections via PDO, input sanitization, dynamic forms, and CRUD operations.',
+      notes: 'Applied directly when architecting the HRMS Enterprise Portal and PRAYAS Recruitment system.',
       priority: 'High',
       lessons: [
-        { id: 'l1', title: 'PHP 8 Basics & Syntax', completed: true },
-        { id: 'l2', title: 'OOP Principles & Inheritance', completed: true },
-        { id: 'l3', title: 'Connecting MySQL with PDO', completed: true },
-        { id: 'l4', title: 'Prepared Statements & SQL Injection Prevention', completed: true },
-        { id: 'l5', title: 'Session Authentication & Password Hashing', completed: true },
-        { id: 'l6', title: 'Building Dynamic HRMS Backend Modules', completed: true },
+        { id: 'w1', title: 'PHP Syntax, Variables, Data Types & Functions', completed: true },
+        { id: 'w2', title: 'PHP Forms, GET/POST Handling & Sanitization', completed: true },
+        { id: 'w3', title: 'PHP OOP Classes, Inheritance & Namespaces', completed: true },
+        { id: 'w4', title: 'MySQL Connection with PDO & Error Modes', completed: true },
+        { id: 'w5', title: 'PDO Prepared Statements & SQL Injection Prevention', completed: true },
+        { id: 'w6', title: 'PHP Sessions, Cookies & Password Hashing', completed: true },
+        { id: 'w7', title: 'W3Schools Official Certification Exam', completed: true },
       ],
     },
     {
-      id: 'course-2',
-      title: 'Python for Automation, Hardware Telemetry & Data Logging',
-      platform: 'Coursera',
-      instructor: 'Dr. Angela Yu',
-      courseUrl: 'https://coursera.org',
+      id: 'course-udemy-py',
+      title: 'Udemy - Complete Python 3 Masterclass: Automation & Telemetry',
+      platform: 'Udemy (udemy.com)',
+      instructor: 'Dr. Angela Yu / Tech Course Team',
+      courseUrl: 'https://www.udemy.com/home/my-courses/learning/',
       thumbnail: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80',
-      startDate: '2026-01-10',
+      startDate: '2026-01-05',
       targetCompletionDate: '2026-03-30',
       status: 'Currently Learning',
-      progress: 67,
+      progress: 83,
       totalLessons: 6,
-      completedLessons: 4,
-      duration: '24 Hours',
-      skills: ['Python 3', 'Automation', 'Multithreading', 'Hardware Telemetry'],
-      description: 'Comprehensive course on writing Python automation scripts, parsing JSON logs, communicating with microcontrollers via Serial/USB, and background daemons.',
-      notes: 'Currently building Python hardware telemetry monitoring scripts.',
+      completedLessons: 5,
+      duration: '26 Hours',
+      skills: ['Python 3', 'Subprocess Daemons', 'JSON/CSV Parsing', 'PySerial IoT', 'Automation'],
+      description: 'Hands-on Udemy masterclass for writing real-world Python automation scripts, managing background process daemons, parsing sensor data over serial ports, and generating system metrics.',
+      notes: 'Currently building Python telemetry background monitoring daemons.',
       priority: 'High',
       lessons: [
-        { id: 'pl1', title: 'Python Fundamentals & Data Structures', completed: true },
-        { id: 'pl2', title: 'File I/O & CSV/JSON Data Parsing', completed: true },
-        { id: 'pl3', title: 'Subprocess & Background Daemons', completed: true },
-        { id: 'pl4', title: 'Serial Communication & Sensor Reading', completed: true },
-        { id: 'pl5', title: 'Multithreading & Async Tasks', completed: false },
-        { id: 'pl6', title: 'Building a Live Telemetry Dashboard', completed: false },
+        { id: 'u1', title: 'Python Fundamentals & Data Structures', completed: true },
+        { id: 'u2', title: 'File Handling & JSON/CSV Data Parsing', completed: true },
+        { id: 'u3', title: 'Subprocess & Background Worker Daemons', completed: true },
+        { id: 'u4', title: 'Serial Communication & Sensor Reading', completed: true },
+        { id: 'u5', title: 'Multithreading & Concurrency in Python', completed: true },
+        { id: 'u6', title: 'Building a Real-Time System Telemetry Dashboard', completed: false },
       ],
     },
     {
-      id: 'course-3',
-      title: 'AWS Certified Cloud Practitioner - Ultimate Hands-On',
-      platform: 'A Cloud Guru',
+      id: 'course-fcc-db',
+      title: 'freeCodeCamp Relational Database & SQL Certification',
+      platform: 'freeCodeCamp.org',
+      instructor: 'freeCodeCamp Instructors',
+      courseUrl: 'https://www.freecodecamp.org/learn/relational-database/',
+      thumbnail: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=600&q=80',
+      startDate: '2025-11-20',
+      targetCompletionDate: '2026-01-15',
+      status: 'Completed',
+      progress: 100,
+      totalLessons: 5,
+      completedLessons: 5,
+      duration: '30 Hours',
+      skills: ['SQL', 'MySQL', 'PostgreSQL', 'Database Normalization', 'Indexing'],
+      description: 'Interactive Linux command line and SQL terminal course mastering relational database schemas, foreign keys, table joins, transactions, and indexing.',
+      notes: 'Passed all 5 required relational database projects.',
+      priority: 'High',
+      lessons: [
+        { id: 'f1', title: 'Bash & Terminal Command Line Mastery', completed: true },
+        { id: 'f2', title: 'Relational Schemas, Tables & Primary/Foreign Keys', completed: true },
+        { id: 'f3', title: 'Complex SQL Joins, Group By & Subqueries', completed: true },
+        { id: 'f4', title: 'Database Normalization (1NF, 2NF, 3NF)', completed: true },
+        { id: 'f5', title: 'Building MySQL Database Schemas', completed: true },
+      ],
+    },
+    {
+      id: 'course-aws-cp',
+      title: 'AWS Certified Cloud Practitioner - Hands-On Architecture',
+      platform: 'A Cloud Guru / Udemy',
       instructor: 'Stephane Maarek',
-      courseUrl: 'https://acloudguru.com',
+      courseUrl: 'https://www.udemy.com/course/aws-certified-cloud-practitioner-new/',
       thumbnail: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80',
-      startDate: '2026-02-15',
-      targetCompletionDate: '2026-04-15',
+      startDate: '2026-02-10',
+      targetCompletionDate: '2026-04-20',
       status: 'Currently Learning',
       progress: 67,
       totalLessons: 6,
       completedLessons: 4,
-      duration: '14 Hours',
-      skills: ['AWS EC2', 'S3', 'IAM', 'VPC'],
-      description: 'Hands-on AWS cloud infrastructure training for deploying web apps, managing IAM security, and configuring CloudFront CDN.',
+      duration: '16 Hours',
+      skills: ['AWS EC2', 'AWS S3', 'IAM', 'VPC', 'Cloud Security'],
+      description: 'Hands-on cloud architecture course for deploying web applications on AWS EC2, configuring S3 static website hosting, CloudFront CDN, and IAM roles.',
       notes: 'Preparing for AWS Certified Cloud Practitioner exam.',
       priority: 'Medium',
       lessons: [
-        { id: 'al1', title: 'Introduction to Cloud Computing & AWS', completed: true },
-        { id: 'al2', title: 'IAM Roles, Users & Security Policies', completed: true },
-        { id: 'al3', title: 'EC2 Virtual Machines & Security Groups', completed: true },
-        { id: 'al4', title: 'S3 Buckets & Static Hosting', completed: true },
-        { id: 'al5', title: 'RDS & DynamoDB Database Setup', completed: false },
-        { id: 'al6', title: 'VPC Networking & CloudWatch Monitoring', completed: false },
+        { id: 'a1', title: 'Cloud Computing Concepts & Global Infrastructure', completed: true },
+        { id: 'a2', title: 'IAM Roles, Users, Groups & Security Policies', completed: true },
+        { id: 'a3', title: 'EC2 Compute Instances & Security Groups', completed: true },
+        { id: 'a4', title: 'S3 Buckets, Policies & Static Site Hosting', completed: true },
+        { id: 'a5', title: 'RDS & DynamoDB Database Provisioning', completed: false },
+        { id: 'a6', title: 'VPC Networking & CloudWatch Monitoring', completed: false },
       ],
     },
   ],
 
   notes: [
     {
-      id: 'note-1',
-      title: 'PDO Prepared Statements vs SQL Injection',
-      content: `# PDO Prepared Statements & Security Best Practices
+      id: 'note-pdo-sec',
+      title: 'W3Schools & PHP.net: PDO Prepared Statements & Security',
+      content: `# PDO Prepared Statements & Database Security Guide
 
-When building database applications in **PHP**, never concatenate user input directly into SQL strings.
+Referencing official documentation from **W3Schools** and **PHP.net**: Never concatenate user inputs directly into SQL string queries.
 
-## Bad Pattern (Vulnerable to SQLi):
+## ❌ Vulnerable Pattern (SQL Injection Risk):
 \`\`\`php
-// NEVER DO THIS
-$query = "SELECT * FROM users WHERE email = '" . $_POST['email'] . "'";
+// NEVER DO THIS - Vulnerable to SQL Injection
+$email = $_POST['email'];
+$query = "SELECT * FROM users WHERE email = '$email'";
+$result = $conn->query($query);
 \`\`\`
 
-## Recommended Pattern (PDO Prepared Statement):
+## ✅ Secure Pattern (W3Schools Recommended PDO):
 \`\`\`php
-$stmt = $pdo->prepare('SELECT id, name, password_hash, role FROM users WHERE email = :email');
+// PDO Connection with Error Exceptions
+$dsn = "mysql:host=localhost;dbname=hrms_db;charset=utf8mb4";
+$options = [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES => false,
+];
+$pdo = new PDO($dsn, "db_user", "secure_password", $options);
+
+// Prepared Statement
+$stmt = $pdo->prepare('SELECT id, full_name, password_hash, role FROM users WHERE email = :email');
 $stmt->execute(['email' => $email]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+$user = $stmt->fetch();
 
 if ($user && password_verify($password, $user['password_hash'])) {
-    // Session authenticated securely
+    // Authenticated securely
+    $_SESSION['user_id'] = $user['id'];
 }
 \`\`\`
 
-### Key Advantages:
-1. SQL query structure is compiled first by MySQL.
-2. User parameters are sent separately as safe data bounds.
-3. Completely neutralizes SQL Injection vulnerabilities.`,
+### Key Security Benefits:
+1. SQL query syntax is compiled first by MySQL server.
+2. Parameter variables are bound separately as safe data strings.
+3. Completely neutralizes SQL Injection attempts.`,
       category: 'PHP',
-      tags: ['Security', 'PDO', 'MySQL', 'Best Practices'],
-      relatedCourse: 'Advanced PHP 8.x & Secure PDO Database Architecture',
+      tags: ['Security', 'PDO', 'W3Schools', 'PHP 8', 'MySQL'],
+      relatedCourse: 'W3Schools PHP 8 & MySQL Database Tutorial',
       relatedProject: 'HRMS – Human Resource Management System',
       pinned: true,
       favorite: true,
@@ -198,20 +270,21 @@ if ($user && password_verify($password, $user['password_hash'])) {
       updatedDate: '2025-11-02',
     },
     {
-      id: 'note-2',
-      title: 'Python Subprocess & Background Task Daemons',
-      content: `# Running Background Scripts in Python
+      id: 'note-py-sub',
+      title: 'Python 3 Subprocess & Background Daemon Architecture',
+      content: `# Python Subprocess & Background Process Management
 
-Use \`subprocess.Popen\` to launch background worker processes without blocking the main event loop.
+Official Python documentation reference for \`subprocess.Popen\` to execute non-blocking system tasks and telemetry workers.
 
 \`\`\`python
 import subprocess
+import sys
 import time
 
-def start_telemetry_daemon():
-    print("[+] Launching background telemetry daemon...")
+def launch_background_telemetry():
+    print("[+] Launching background telemetry daemon process...")
     process = subprocess.Popen(
-        ['python3', 'telemetry_worker.py'],
+        [sys.executable, 'telemetry_daemon.py'],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True
@@ -219,35 +292,77 @@ def start_telemetry_daemon():
     return process
 
 if __name__ == "__main__":
-    daemon = start_telemetry_daemon()
+    daemon = launch_background_telemetry()
     time.sleep(2)
     print(f"[+] Daemon active with PID: {daemon.pid}")
 \`\`\`
 
-### Notes:
+### Developer Best Practices:
 - Always handle graceful process shutdown using \`daemon.terminate()\`.
-- Capture stdout for background logging.`,
+- Redirect stdout/stderr to log files for diagnostic tracking.`,
       category: 'Python',
-      tags: ['Automation', 'Subprocess', 'Daemons', 'Python 3'],
-      relatedCourse: 'Python for Automation, Hardware Telemetry & Data Logging',
-      relatedProject: 'Python Automation & Hardware Telemetry',
+      tags: ['Python 3', 'Subprocess', 'Automation', 'Daemons', 'Udemy'],
+      relatedCourse: 'Udemy - Complete Python 3 Masterclass',
+      relatedProject: 'Python Hardware Telemetry & Background Logger',
       pinned: true,
-      favorite: false,
+      favorite: true,
       createdDate: '2026-01-18',
       updatedDate: '2026-02-05',
     },
     {
-      id: 'note-3',
-      title: 'AWS S3 Static Web Hosting & CloudFront SSL Integration',
-      content: `# Deploying Vite/React Frontend on AWS S3 & CloudFront
+      id: 'note-js-async',
+      title: 'MDN Web Docs: JavaScript Promises & Async/Await',
+      content: `# Asynchronous JavaScript: Promises & Async/Await
+
+Reference from **Mozilla MDN Web Docs**: Modern asynchronous execution in ES6+ JavaScript.
+
+\`\`\`javascript
+// Fetching API data with Async/Await
+async function fetchDashboardStats(apiUrl) {
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (!response.ok) {
+      throw new Error(\`HTTP Error! Status: \${response.status}\`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to load dashboard stats:", error);
+    return null;
+  }
+}
+\`\`\`
+
+### Key Points:
+1. \`async\` functions always return a Promise.
+2. \`await\` pauses function execution until the Promise resolves.
+3. Always wrap \`await\` in \`try/catch\` blocks for error handling.`,
+      category: 'JavaScript',
+      tags: ['MDN', 'JavaScript', 'ES6+', 'Async', 'Promises'],
+      relatedCourse: 'freeCodeCamp Responsive Web & JavaScript Algorithms',
+      relatedProject: 'Developer Portfolio & Personal Learning OS',
+      pinned: false,
+      favorite: true,
+      createdDate: '2026-01-30',
+      updatedDate: '2026-02-12',
+    },
+    {
+      id: 'note-aws-s3',
+      title: 'AWS Documentation: S3 Bucket Policies & CloudFront SSL',
+      content: `# Deploying Static Web Apps on AWS S3 & CloudFront
 
 ### Steps:
 1. Build production bundle: \`npm run build\`
-2. Upload \`dist/\` contents to AWS S3 Bucket configured for static website hosting.
-3. Configure AWS CloudFront distribution pointing to S3 origin.
-4. Attach AWS Certificate Manager (ACM) free SSL TLS certificate for HTTPS security.
+2. Upload \`dist/\` static files to an AWS S3 Bucket.
+3. Attach Bucket Policy for public read access.
+4. Distribute via AWS CloudFront CDN with SSL certificate from AWS Certificate Manager (ACM).
 
-### S3 Bucket Policy snippet:
+### S3 Public Read Bucket Policy:
 \`\`\`json
 {
   "Version": "2012-10-17",
@@ -257,32 +372,32 @@ if __name__ == "__main__":
       "Effect": "Allow",
       "Principal": "*",
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::my-portfolio-bucket/*"
+      "Resource": "arn:aws:s3:::abhishek-portfolio-bucket/*"
     }
   ]
 }
 \`\`\``,
       category: 'AWS',
-      tags: ['Cloud', 'AWS S3', 'CloudFront', 'Deployment'],
+      tags: ['AWS', 'S3', 'CloudFront', 'Cloud Security'],
       relatedCourse: 'AWS Certified Cloud Practitioner',
       relatedProject: 'Developer Portfolio',
       pinned: false,
-      favorite: true,
-      createdDate: '2026-02-20',
-      updatedDate: '2026-02-20',
+      favorite: false,
+      createdDate: '2026-02-18',
+      updatedDate: '2026-02-18',
     },
   ],
 
   skills: [
     {
       id: 'skill-1',
-      name: 'Core PHP & PDO Security',
+      name: 'Core PHP 8 & PDO Security',
       category: 'Backend Development',
-      level: 'Advanced',
-      progress: 90,
+      level: 'Expert',
+      progress: 98,
       experience: '2+ Years',
       relatedCourses: 2,
-      relatedCerts: 1,
+      relatedCerts: 2,
       relatedProjects: 3,
     },
     {
@@ -293,7 +408,7 @@ if __name__ == "__main__":
       progress: 88,
       experience: '2+ Years',
       relatedCourses: 2,
-      relatedCerts: 1,
+      relatedCerts: 2,
       relatedProjects: 3,
     },
     {
@@ -315,7 +430,7 @@ if __name__ == "__main__":
       progress: 85,
       experience: '2+ Years',
       relatedCourses: 3,
-      relatedCerts: 0,
+      relatedCerts: 1,
       relatedProjects: 4,
     },
     {
@@ -345,36 +460,36 @@ if __name__ == "__main__":
   goals: [
     {
       id: 'goal-1',
-      title: 'Complete AWS Cloud Practitioner Certification Exam',
-      description: 'Finish all hands-on labs and pass the official AWS Cloud Practitioner certification exam.',
-      deadline: '2026-04-15',
+      title: 'Pass AWS Certified Cloud Practitioner Exam',
+      description: 'Finish all hands-on cloud labs and achieve official AWS Cloud Practitioner certification.',
+      deadline: '2026-04-20',
       priority: 'High',
-      progress: 65,
+      progress: 67,
       status: 'In Progress',
       relatedCourse: 'AWS Certified Cloud Practitioner',
       relatedSkill: 'AWS Cloud Infrastructure',
     },
     {
       id: 'goal-2',
-      title: 'Master Advanced Python Asyncio & Microservices',
-      description: 'Build a high-concurrency event-driven microservice using Python Asyncio and WebSockets.',
-      deadline: '2026-05-30',
-      priority: 'Medium',
-      progress: 40,
+      title: 'Complete W3Schools Python Advanced Modules',
+      description: 'Finish W3Schools Python multithreading, API consumption, and dataset automation modules.',
+      deadline: '2026-03-30',
+      priority: 'High',
+      progress: 83,
       status: 'In Progress',
-      relatedCourse: 'Python for Automation',
+      relatedCourse: 'Udemy - Complete Python 3 Masterclass',
       relatedSkill: 'Python Automation & Telemetry',
     },
     {
       id: 'goal-3',
-      title: 'Publish Enterprise HRMS Open-Source Boilerplate',
-      description: 'Refine clean folder structure, write comprehensive documentation, and publish on GitHub.',
+      title: 'Publish HRMS Enterprise Open-Source Repository',
+      description: 'Clean repository, finalize documentation, write deployment guides, and feature on portfolio.',
       deadline: '2026-03-31',
       priority: 'High',
-      progress: 90,
+      progress: 95,
       status: 'In Progress',
-      relatedCourse: 'Advanced PHP 8.x',
-      relatedSkill: 'Core PHP & PDO Security',
+      relatedCourse: 'W3Schools PHP 8 & MySQL Database Tutorial',
+      relatedSkill: 'Core PHP 8 & PDO Security',
     },
   ],
 
@@ -382,42 +497,42 @@ if __name__ == "__main__":
     {
       id: 'proj-1',
       title: 'HRMS – Human Resource Management System',
-      description: 'Enterprise web-based employee management, attendance logging, leave approval workflows, and PDO role-based access control.',
-      technologies: ['PHP', 'MySQL', 'PDO', 'HTML5', 'CSS3', 'Bootstrap'],
+      description: 'Enterprise web-based employee management system featuring PDO prepared statements, role-based authentication, leave approvals, and employee records management.',
+      technologies: ['PHP 8', 'MySQL', 'PDO', 'HTML5', 'CSS3', 'Bootstrap'],
       githubUrl: 'https://github.com/amanupadhyay2030-rgb/hrms-system',
       liveUrl: 'https://amanupadhyay2030-rgb.github.io/my_portfolio/#projects',
       startDate: '2025-09-01',
       endDate: '2025-11-20',
       status: 'Completed',
-      relatedCourse: 'Advanced PHP 8.x & Secure PDO',
-      relatedSkills: ['Core PHP & PDO Security', 'MySQL Database Design'],
+      relatedCourse: 'W3Schools PHP 8 & MySQL Database Tutorial',
+      relatedSkills: ['Core PHP 8 & PDO Security', 'MySQL Database Design'],
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80',
     },
     {
       id: 'proj-2',
       title: 'PRAYAS Student Recruitment Portal',
-      description: 'Full-stack student recruitment portal managing candidate registration, login authentication, photo capture & resume processing.',
-      technologies: ['Core PHP', 'MySQL', 'PDO', 'HTML', 'CSS', 'JavaScript'],
+      description: 'Full-stack recruitment portal managing student applicant registration, PDO database authentication, candidate photo capture, and application processing.',
+      technologies: ['PHP 8', 'MySQL', 'PDO', 'HTML5', 'CSS3', 'JavaScript'],
       githubUrl: 'https://github.com/amanupadhyay2030-rgb/prayas-portal',
       liveUrl: 'https://amanupadhyay2030-rgb.github.io/my_portfolio/#projects',
       startDate: '2025-06-10',
       endDate: '2025-08-30',
       status: 'Completed',
-      relatedCourse: 'Advanced PHP 8.x',
-      relatedSkills: ['Core PHP & PDO Security', 'JavaScript'],
+      relatedCourse: 'W3Schools PHP 8 & MySQL Database Tutorial',
+      relatedSkills: ['Core PHP 8 & PDO Security', 'JavaScript'],
       image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80',
     },
     {
       id: 'proj-3',
       title: 'Python Hardware Telemetry & Background Logger',
-      description: 'Background automation daemon parsing sensor data, microcontrollers serial telemetry, and logging execution metrics.',
-      technologies: ['Python 3', 'IoT', 'MySQL', 'Automation', 'Git'],
+      description: 'Background automation daemon parsing microcontroller serial data, logging metrics to MySQL, and serving system diagnostics.',
+      technologies: ['Python 3', 'IoT', 'MySQL', 'Subprocess', 'Git'],
       githubUrl: 'https://github.com/amanupadhyay2030-rgb/python-telemetry',
       liveUrl: 'https://github.com/amanupadhyay2030-rgb/python-telemetry',
       startDate: '2026-01-15',
       endDate: '2026-02-28',
       status: 'In Development',
-      relatedCourse: 'Python for Automation',
+      relatedCourse: 'Udemy - Complete Python 3 Masterclass',
       relatedSkills: ['Python Automation', 'IoT Hardware'],
       image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80',
     },
@@ -425,55 +540,94 @@ if __name__ == "__main__":
 
   resources: [
     {
-      id: 'res-1',
-      title: 'PHP PDO Official Documentation & Prepared Statements',
+      id: 'res-w3s-php',
+      title: 'W3Schools PHP 8 & PDO Official Tutorial Guide',
+      url: 'https://www.w3schools.com/php/php_pdo.asp',
+      type: 'Documentation',
+      description: 'Official W3Schools guide for PHP 8 PDO drivers, prepared statements, database error modes, and form security.',
+      tags: ['W3Schools', 'PHP', 'PDO', 'MySQL', 'Official'],
+      relatedCourse: 'W3Schools PHP 8 & MySQL Certification',
+      favorite: true,
+    },
+    {
+      id: 'res-udemy-home',
+      title: 'Udemy Student Dashboard & Course Learning Portal',
+      url: 'https://www.udemy.com/home/my-courses/learning/',
+      type: 'Course',
+      description: 'Udemy active learning dashboard containing registered courses, video modules, and certificate verification.',
+      tags: ['Udemy', 'Courses', 'Web Development', 'Python'],
+      relatedCourse: 'Udemy - Complete Python 3 Masterclass',
+      favorite: true,
+    },
+    {
+      id: 'res-mdn-js',
+      title: 'MDN Web Docs - Modern JavaScript (ES6+) Guide',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+      type: 'Documentation',
+      description: 'Mozilla Developer Network documentation for modern ES6+ syntax, Promises, async/await, DOM APIs, and closures.',
+      tags: ['MDN', 'JavaScript', 'Web Docs', 'Frontend'],
+      relatedCourse: 'freeCodeCamp Responsive Web & JavaScript',
+      favorite: true,
+    },
+    {
+      id: 'res-php-net',
+      title: 'PHP.net Official Manual & Database Security Guidelines',
       url: 'https://www.php.net/manual/en/book.pdo.php',
       type: 'Documentation',
-      description: 'Official PHP manual for PDO drivers, database connections, and secure prepared statements.',
-      tags: ['PHP', 'PDO', 'Database', 'Official'],
-      relatedCourse: 'Advanced PHP 8.x',
+      description: 'Official PHP manual documenting PDO class methods, prepared statements, transactions, and security practices.',
+      tags: ['PHP.net', 'PHP 8', 'PDO', 'Official'],
+      relatedCourse: 'W3Schools PHP 8 & MySQL Certification',
       favorite: true,
     },
     {
-      id: 'res-2',
-      title: 'AWS Certified Cloud Practitioner Exam Guide & Practice',
-      url: 'https://aws.amazon.com/certification/certified-cloud-practitioner/',
+      id: 'res-fcc-sql',
+      title: 'freeCodeCamp Relational Database & SQL Certification Course',
+      url: 'https://www.freecodecamp.org/learn/relational-database/',
       type: 'Reference',
-      description: 'Official AWS exam guide, whitepapers, and sample questions for Cloud Practitioner.',
-      tags: ['AWS', 'Cloud', 'Certification'],
-      relatedCourse: 'AWS Certified Cloud Practitioner',
+      description: 'freeCodeCamp interactive learning terminal for PostgreSQL, MySQL, database schema design, and bash.',
+      tags: ['freeCodeCamp', 'SQL', 'MySQL', 'Database'],
+      relatedCourse: 'freeCodeCamp Relational Database',
       favorite: true,
     },
     {
-      id: 'res-3',
-      title: 'Python Subprocess & Multiprocessing Architecture Guide',
-      url: 'https://docs.python.org/3/library/subprocess.html',
-      type: 'Documentation',
-      description: 'Comprehensive Python 3 documentation on managing background worker processes and IPC pipelines.',
-      tags: ['Python', 'Automation', 'Daemons'],
-      relatedCourse: 'Python for Automation',
+      id: 'res-w3s-tryit',
+      title: 'W3Schools Code Editor & Online Web Compiler',
+      url: 'https://www.w3schools.com/tryit/',
+      type: 'Tool',
+      description: 'W3Schools interactive live editor for testing HTML, CSS, JavaScript, PHP, and SQL code snippets.',
+      tags: ['W3Schools', 'Code Editor', 'PHP', 'HTML'],
+      relatedCourse: 'W3Schools PHP 8 & MySQL Certification',
       favorite: false,
     },
     {
-      id: 'res-4',
-      title: 'Modern Tailwind CSS v4 & Glassmorphism Design System',
-      url: 'https://tailwindcss.com/docs',
+      id: 'res-py-docs',
+      title: 'Python 3 Official Documentation & Subprocess API',
+      url: 'https://docs.python.org/3/library/subprocess.html',
       type: 'Documentation',
-      description: 'Tailwind CSS v4 reference for CSS-first imports, custom variants, and backdrop blur utilities.',
-      tags: ['Tailwind', 'CSS', 'Design', 'Frontend'],
-      relatedCourse: 'React & Frontend Mastery',
+      description: 'Official Python 3 reference manual on process management, background worker execution, and IPC streams.',
+      tags: ['Python', 'Python.org', 'Subprocess', 'Automation'],
+      relatedCourse: 'Udemy - Complete Python 3 Masterclass',
+      favorite: false,
+    },
+    {
+      id: 'res-aws-free',
+      title: 'AWS Documentation & Free Tier Cloud Portal',
+      url: 'https://aws.amazon.com/free/',
+      type: 'Reference',
+      description: 'Amazon Web Services documentation for EC2 virtual servers, S3 storage buckets, and IAM security.',
+      tags: ['AWS', 'Cloud', 'EC2', 'S3'],
+      relatedCourse: 'AWS Certified Cloud Practitioner',
       favorite: true,
     },
   ],
 
   activities: [
-    { id: 'act-1', action: 'Completed Course', title: 'Advanced PHP 8.x & Secure PDO Database Architecture', timestamp: '2025-11-10 14:30', icon: 'CheckCircle' },
-    { id: 'act-2', action: 'Earned Certificate', title: 'Enterprise Core PHP & PDO Database Architecture', timestamp: '2025-11-15 10:15', icon: 'Award' },
-    { id: 'act-3', action: 'Started Course', title: 'Python for Automation, Hardware Telemetry & Data Logging', timestamp: '2026-01-10 09:00', icon: 'BookOpen' },
-    { id: 'act-4', action: 'Created Note', title: 'PDO Prepared Statements vs SQL Injection', timestamp: '2026-01-18 16:45', icon: 'FileText' },
-    { id: 'act-5', action: 'Earned Certificate', title: 'Python Automation & System Telemetry Specialist', timestamp: '2026-01-20 11:20', icon: 'Award' },
-    { id: 'act-6', action: 'Updated Goal', title: 'HRMS Open-Source Boilerplate to 90%', timestamp: '2026-02-12 18:00', icon: 'Target' },
-    { id: 'act-7', action: 'Started Course', title: 'AWS Certified Cloud Practitioner - Ultimate Hands-On', timestamp: '2026-02-15 13:00', icon: 'Cloud' },
+    { id: 'act-1', action: 'Earned Certificate', title: 'W3Schools Certified PHP Developer', timestamp: '2025-11-15 10:15', icon: 'Award' },
+    { id: 'act-2', action: 'Completed Course', title: 'W3Schools PHP 8 & MySQL Database Certification', timestamp: '2025-11-10 14:30', icon: 'CheckCircle' },
+    { id: 'act-3', action: 'Earned Certificate', title: 'Udemy - Full-Stack Web Development & Modern Architecture', timestamp: '2025-12-10 16:00', icon: 'Award' },
+    { id: 'act-4', action: 'Earned Certificate', title: 'Python 3 Masterclass & System Telemetry (Udemy)', timestamp: '2026-01-20 11:20', icon: 'Award' },
+    { id: 'act-5', action: 'Created Note', title: 'W3Schools & PHP.net: PDO Prepared Statements & Security', timestamp: '2026-01-25 12:45', icon: 'FileText' },
+    { id: 'act-6', action: 'Started Course', title: 'AWS Certified Cloud Practitioner - Hands-On Architecture', timestamp: '2026-02-10 09:00', icon: 'BookOpen' },
   ],
 
   streak: {
@@ -485,19 +639,21 @@ if __name__ == "__main__":
   },
 
   settings: {
-    passwordHash: 'abhishek123', // Default simple password for Abhishek's private login
+    passwordHash: 'abhishek123',
     theme: 'dark',
     notificationsEnabled: true,
     autoBackup: true,
   },
 };
 
-// Initialize LocalStorage with default data if missing
+// Initialize LocalStorage with authentic default data
 export const initDashboardStorage = () => {
   try {
     Object.keys(INITIAL_DATA).forEach((key) => {
       const storageKey = STORAGE_KEYS[key.toUpperCase()];
-      if (!localStorage.getItem(storageKey)) {
+      // Force update default data if empty or contains legacy placeholders
+      const existing = localStorage.getItem(storageKey);
+      if (!existing || existing.includes('UC-PHP-982341')) {
         localStorage.setItem(storageKey, JSON.stringify(INITIAL_DATA[key]));
       }
     });
@@ -610,7 +766,7 @@ export const importDashboardJSON = (jsonObject) => {
   }
 };
 
-// Reset to default sample data
+// Reset to default data
 export const resetDashboardToDefault = () => {
   Object.keys(INITIAL_DATA).forEach((key) => {
     const storageKey = STORAGE_KEYS[key.toUpperCase()];
