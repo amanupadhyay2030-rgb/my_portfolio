@@ -22,6 +22,7 @@ export const Navbar = () => {
     { name: 'Journey', href: '#experience' },
     { name: 'Resume', href: '#resume' },
     { name: 'Contact', href: '#contact' },
+    { name: 'Dashboard', href: '#/dashboard' },
   ];
 
   useEffect(() => {
