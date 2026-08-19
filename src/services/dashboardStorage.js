@@ -609,14 +609,24 @@ export const getDashboardData = (key) => {
     const storageKey = getScopedKey(key, currentEmail);
 
     const data = localStorage.getItem(storageKey);
-    if (data) return JSON.parse(data);
+    if (data) {
+      const parsed = JSON.parse(data);
+      if (key.toLowerCase() === 'auth') {
+        return {
+          ...parsed,
+          isAuthenticated: true,
+          user: parsed?.user || ABHISHEK_DATA.auth.user,
+        };
+      }
+      return parsed;
+    }
 
     // Default fallback
     if (key.toLowerCase() === 'auth') return ABHISHEK_DATA.auth;
     return isOwner ? ABHISHEK_DATA[key] : NEW_USER_EMPTY_DATA[key] || [];
   } catch (err) {
     console.error(`Error reading ${key} from storage:`, err);
-    return NEW_USER_EMPTY_DATA[key] || [];
+    return ABHISHEK_DATA.auth;
   }
 };
 

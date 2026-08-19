@@ -26,11 +26,8 @@ function MainAppContent() {
   }, []);
 
   const isDashboardRoute =
-    currentHash === '#/dashboard' ||
-    currentHash.startsWith('#/dashboard') ||
-    currentHash === '#dashboard' ||
-    currentHash.startsWith('#dashboard') ||
-    window.location.pathname.endsWith('/dashboard');
+    currentHash.includes('dashboard') ||
+    window.location.pathname.includes('/dashboard');
 
   if (isDashboardRoute) {
     return <DashboardLayout isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />;

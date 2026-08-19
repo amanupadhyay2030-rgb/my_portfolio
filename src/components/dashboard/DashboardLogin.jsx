@@ -249,6 +249,16 @@ export const DashboardLogin = () => {
               </motion.div>
             )}
 
+            {/* 1-Click Instant Demo Button */}
+            <button
+              type="button"
+              onClick={() => login('abhishek123', 'abhishek@portfolio.dev', true)}
+              className="w-full mb-5 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm shadow-md transition-all cursor-pointer flex items-center justify-center gap-2"
+            >
+              <Sparkles className="w-4 h-4 text-cyan-300" />
+              <span>Enter Live Workspace (Instant 1-Click Access)</span>
+            </button>
+
             {/* Main Form */}
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Extra Sign Up Name Input */}
