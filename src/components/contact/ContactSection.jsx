@@ -122,14 +122,14 @@ export const ContactSection = () => {
 
               {/* Email Card (Rendered if email is provided) */}
               {hasEmail && (
-                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 flex items-center justify-between">
+                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200/90 flex items-center justify-between shadow-sm light:shadow-md">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 light:text-indigo-600">
+                    <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 light:bg-indigo-50 light:text-indigo-600">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-xs text-slate-400 font-mono block">Email Address</span>
-                      <span className="text-sm font-semibold text-slate-200 light:text-slate-800">
+                      <span className="text-xs text-slate-400 light:text-slate-500 font-mono block">Email Address</span>
+                      <span className="text-sm font-semibold text-slate-200 light:text-slate-900">
                         {PROFILE.email}
                       </span>
                     </div>
@@ -138,7 +138,7 @@ export const ContactSection = () => {
                   <button
                     onClick={copyEmailToClipboard}
                     title="Copy Email"
-                    className="p-2 rounded-xl bg-slate-800 light:bg-white hover:bg-slate-700 text-slate-300 light:text-slate-700 transition-colors border border-slate-700 light:border-slate-200"
+                    className="p-2 rounded-xl bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-slate-300 light:text-slate-700 transition-colors border border-slate-700 light:border-slate-200"
                   >
                     {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                   </button>
@@ -147,18 +147,18 @@ export const ContactSection = () => {
 
               {/* LinkedIn Profile Card */}
               {hasLinkedIn && (
-                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 flex items-center justify-between">
+                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200/90 flex items-center justify-between shadow-sm light:shadow-md">
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 light:text-indigo-600 shrink-0">
+                    <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 light:bg-indigo-50 light:text-indigo-600 shrink-0">
                       <Linkedin className="w-5 h-5" />
                     </div>
                     <div className="min-w-0">
-                      <span className="text-xs text-slate-400 font-mono block">LinkedIn ID</span>
+                      <span className="text-xs text-slate-400 light:text-slate-500 font-mono block">LinkedIn ID</span>
                       <a
                         href={PROFILE.socials.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-semibold text-cyan-400 hover:text-cyan-300 hover:underline truncate block font-mono"
+                        className="text-sm font-semibold text-cyan-400 light:text-indigo-600 hover:text-cyan-300 light:hover:text-indigo-700 hover:underline truncate block font-mono"
                       >
                         {PROFILE.socials.linkedin ? PROFILE.socials.linkedin.replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//, '').replace(/\/$/, '') : 'LinkedIn'}
                       </a>
@@ -170,7 +170,7 @@ export const ContactSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Visit LinkedIn Profile"
-                    className="px-3 py-1.5 rounded-xl bg-slate-800 light:bg-white hover:bg-slate-700 text-cyan-400 text-xs font-mono font-medium transition-colors border border-slate-700 light:border-slate-200 shrink-0"
+                    className="px-3 py-1.5 rounded-xl bg-slate-800 light:bg-indigo-50 hover:bg-slate-700 light:hover:bg-indigo-100 text-cyan-400 light:text-indigo-700 text-xs font-mono font-medium transition-colors border border-slate-700 light:border-indigo-200 shrink-0"
                   >
                     Open ↗
                   </a>
@@ -179,13 +179,13 @@ export const ContactSection = () => {
 
               {/* Phone Card (Rendered if phone is provided) */}
               {hasPhone && (
-                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400">
+                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200/90 flex items-center gap-3 shadow-sm light:shadow-md">
+                  <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 light:bg-indigo-50 light:text-indigo-600">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-400 font-mono block">Phone</span>
-                    <span className="text-sm font-semibold text-slate-200 light:text-slate-800">
+                    <span className="text-xs text-slate-400 light:text-slate-500 font-mono block">Phone</span>
+                    <span className="text-sm font-semibold text-slate-200 light:text-slate-900">
                       {PROFILE.phone}
                     </span>
                   </div>
@@ -194,13 +194,13 @@ export const ContactSection = () => {
 
               {/* Location Card */}
               {hasLocation && (
-                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400">
+                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200/90 flex items-center gap-3 shadow-sm light:shadow-md">
+                  <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 light:bg-amber-50 light:text-amber-600">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-400 font-mono block">Location</span>
-                    <span className="text-sm font-semibold text-slate-200 light:text-slate-800">
+                    <span className="text-xs text-slate-400 light:text-slate-500 font-mono block">Location</span>
+                    <span className="text-sm font-semibold text-slate-200 light:text-slate-900">
                       {PROFILE.location}
                     </span>
                   </div>
@@ -210,7 +210,7 @@ export const ContactSection = () => {
               {/* Social Channels (Rendered only if valid URLs exist) */}
               {(hasGitHub || hasLinkedIn) && (
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-3">
+                  <span className="text-xs font-mono uppercase tracking-wider text-slate-400 light:text-slate-600 font-semibold block mb-3">
                     Professional Networks:
                   </span>
 
@@ -220,9 +220,9 @@ export const ContactSection = () => {
                         href={githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-950/80 light:bg-slate-100 hover:bg-slate-800 text-slate-200 light:text-slate-800 font-medium text-xs border border-slate-800 light:border-slate-200 transition-colors"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-950/80 light:bg-white hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-semibold text-xs border border-slate-800 light:border-slate-300 transition-all shadow-sm"
                       >
-                        <Github className="w-4 h-4" /> GitHub
+                        <Github className="w-4 h-4 text-slate-400 light:text-slate-700" /> GitHub
                       </a>
                     )}
 
@@ -231,9 +231,9 @@ export const ContactSection = () => {
                         href={PROFILE.socials.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-950/80 light:bg-slate-100 hover:bg-slate-800 text-slate-200 light:text-slate-800 font-medium text-xs border border-slate-800 light:border-slate-200 transition-colors"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-950/80 light:bg-white hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-semibold text-xs border border-slate-800 light:border-slate-300 transition-all shadow-sm"
                       >
-                        <Linkedin className="w-4 h-4 text-cyan-400" /> LinkedIn
+                        <Linkedin className="w-4 h-4 text-cyan-400 light:text-indigo-600" /> LinkedIn
                       </a>
                     )}
                   </div>
@@ -271,8 +271,8 @@ export const ContactSection = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Your Name"
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 focus:outline-none transition-colors ${
-                        errors.name ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500'
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 light:placeholder-slate-400 focus:outline-none transition-colors ${
+                        errors.name ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600 light:focus:bg-white'
                       }`}
                     />
                   </div>
@@ -290,8 +290,8 @@ export const ContactSection = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="your.email@example.com"
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 focus:outline-none transition-colors ${
-                        errors.email ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500'
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 light:placeholder-slate-400 focus:outline-none transition-colors ${
+                        errors.email ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600 light:focus:bg-white'
                       }`}
                     />
                   </div>
@@ -309,8 +309,8 @@ export const ContactSection = () => {
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   placeholder="Software Inquiry / Project Discussion"
-                  className={`w-full px-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 focus:outline-none transition-colors ${
-                    errors.subject ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500'
+                  className={`w-full px-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 light:placeholder-slate-400 focus:outline-none transition-colors ${
+                    errors.subject ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600 light:focus:bg-white'
                   }`}
                 />
                 {errors.subject && <p className="text-xs text-red-400 mt-1 font-mono">{errors.subject}</p>}
@@ -326,8 +326,8 @@ export const ContactSection = () => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Hi Abhishek, I would like to get in touch regarding..."
-                  className={`w-full px-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 focus:outline-none transition-colors resize-none ${
-                    errors.message ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500'
+                  className={`w-full px-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 light:placeholder-slate-400 focus:outline-none transition-colors resize-none ${
+                    errors.message ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600 light:focus:bg-white'
                   }`}
                 />
                 {errors.message && <p className="text-xs text-red-400 mt-1 font-mono">{errors.message}</p>}
@@ -337,7 +337,7 @@ export const ContactSection = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-semibold text-sm shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all duration-200 disabled:opacity-50"
+                className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 light:from-indigo-600 light:to-indigo-700 hover:from-indigo-500 hover:to-cyan-500 text-white font-bold text-sm shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all duration-200 disabled:opacity-50 hover:scale-[1.01] active:scale-[0.99]"
               >
                 {isSubmitting ? (
                   <span>Sending Message...</span>

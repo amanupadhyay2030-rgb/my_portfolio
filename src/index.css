@@ -18,13 +18,13 @@
   }
 
   html.light {
-    background-color: #ffffff !important;
+    background-color: #f8fafc !important;
     color: #0f172a !important;
     color-scheme: light;
   }
 
   html.light body {
-    background-color: #ffffff !important;
+    background-color: #f8fafc !important;
     color: #0f172a !important;
   }
 
@@ -46,10 +46,11 @@
 }
 
 .light .glass-panel {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
 }
 
 .bg-grid-pattern {
@@ -62,16 +63,24 @@
 .light .bg-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(79, 70, 229, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(79, 70, 229, 0.05) 1px, transparent 1px);
 }
 
 .glow-cyan {
   box-shadow: 0 0 35px -5px rgba(6, 182, 212, 0.25);
 }
 
+.light .glow-cyan {
+  box-shadow: 0 10px 30px -5px rgba(79, 70, 229, 0.12);
+}
+
 .glow-indigo {
   box-shadow: 0 0 35px -5px rgba(99, 102, 241, 0.3);
+}
+
+.light .glow-indigo {
+  box-shadow: 0 10px 30px -5px rgba(79, 70, 229, 0.15);
 }
 
 /* Custom Scrollbar */

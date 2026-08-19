@@ -13,37 +13,37 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-slate-950 light:bg-slate-900 border-t border-slate-800 text-slate-400 py-12 relative overflow-hidden">
+    <footer className="bg-slate-950 light:bg-slate-100/90 border-t border-slate-800 light:border-slate-200 text-slate-400 light:text-slate-600 py-12 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-between pb-8 border-b border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-between pb-8 border-b border-slate-800/80 light:border-slate-200">
           
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-2">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-400 p-[1px]">
-                <div className="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center text-cyan-400">
+                <div className="w-full h-full bg-slate-950 light:bg-white rounded-[11px] flex items-center justify-center text-cyan-400 light:text-indigo-600">
                   <Code2 className="w-4 h-4" />
                 </div>
               </div>
-              <span className="font-heading font-extrabold text-lg text-slate-100 tracking-wider">
+              <span className="font-heading font-extrabold text-lg text-slate-100 light:text-slate-900 tracking-wider">
                 {PROFILE.name}
               </span>
             </div>
 
-            <p className="text-xs text-slate-400 max-w-sm font-sans">
+            <p className="text-xs text-slate-400 light:text-slate-600 max-w-sm font-sans">
               {PROFILE.subheading}
             </p>
           </div>
 
           {/* Nav Links */}
           <div className="md:col-span-5 flex flex-wrap items-center gap-4 text-xs font-medium">
-            <a href="#home" className="hover:text-cyan-400 transition-colors">Home</a>
-            <a href="#about" className="hover:text-cyan-400 transition-colors">About</a>
-            <a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a>
-            <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
-            <a href="#experience" className="hover:text-cyan-400 transition-colors">Journey</a>
-            <a href="#resume" className="hover:text-cyan-400 transition-colors">Resume</a>
-            <a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a>
+            <a href="#home" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Home</a>
+            <a href="#about" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">About</a>
+            <a href="#skills" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Skills</a>
+            <a href="#projects" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Projects</a>
+            <a href="#experience" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Journey</a>
+            <a href="#resume" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Resume</a>
+            <a href="#contact" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Contact</a>
           </div>
 
           {/* Socials & Back to Top */}
@@ -54,7 +54,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
-                className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-colors"
+                className="p-2 rounded-xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 text-slate-400 light:text-slate-700 hover:text-white light:hover:text-indigo-600 hover:border-slate-700 light:hover:border-indigo-300 transition-colors shadow-sm"
               >
                 <Github className="w-4 h-4" />
               </a>
@@ -66,7 +66,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
-                className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 transition-colors"
+                className="p-2 rounded-xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 text-slate-400 light:text-slate-700 hover:text-cyan-400 light:hover:text-indigo-600 hover:border-slate-700 light:hover:border-indigo-300 transition-colors shadow-sm"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -75,7 +75,7 @@ export const Footer = () => {
             <button
               onClick={scrollToTop}
               aria-label="Scroll back to top"
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-cyan-400 hover:text-cyan-300 transition-colors ml-2"
+              className="p-2 rounded-xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 text-cyan-400 light:text-indigo-600 hover:text-cyan-300 light:hover:text-indigo-700 transition-colors ml-2 shadow-sm"
             >
               <ArrowUp className="w-4 h-4" />
             </button>
@@ -84,7 +84,7 @@ export const Footer = () => {
         </div>
 
         {/* Copyright Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-mono gap-2">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 light:text-slate-600 font-mono gap-2">
           <div>
             © 2026 {PROFILE.name}. All rights reserved.
           </div>
