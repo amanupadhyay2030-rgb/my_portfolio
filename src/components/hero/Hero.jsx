@@ -14,7 +14,7 @@ export const Hero = () => {
   const githubUrl = PROFILE.socials?.github || (PROFILE.githubUsername ? `https://github.com/${PROFILE.githubUsername}` : '');
 
   return (
-    <section id="home" className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+    <section id="home" className="relative pt-28 pb-12 lg:pt-32 lg:pb-16 overflow-hidden">
       {/* Dynamic Background Mesh Grids & Glow Orbs */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-tr from-indigo-600/10 via-cyan-500/10 to-teal-400/5 blur-3xl rounded-full pointer-events-none" />
       <div className="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none" />

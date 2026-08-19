@@ -10,7 +10,7 @@ export const GitHubSection = () => {
   const profileUrl = profile.html_url || `https://github.com/${githubUsername}`;
 
   return (
-    <section id="github" className="py-20 lg:py-28 relative overflow-hidden bg-dot-pattern">
+    <section id="github" className="py-14 lg:py-20 relative overflow-hidden bg-dot-pattern">
       {/* Background Ambient Glow Orb */}
       <div className="absolute top-1/4 -right-40 w-96 h-96 rounded-full bg-cyan-500/10 light:bg-blue-200/40 blur-3xl pointer-events-none animate-pulse-glow" />
 
@@ -22,7 +22,7 @@ export const GitHubSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-10"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 light:text-indigo-600 text-xs font-mono font-semibold mb-3 border border-cyan-500/20">
             <Github className="w-3.5 h-3.5" />
