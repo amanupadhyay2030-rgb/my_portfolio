@@ -267,6 +267,46 @@ export const DashboardOverview = () => {
           </div>
         </div>
       </div>
+
+      {/* Personal Notes Quick Workspace Section */}
+      <div className="pt-4 space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="font-heading font-extrabold text-lg sm:text-xl text-slate-100 light:text-slate-900 flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-indigo-400 light:text-indigo-600" />
+            <span>Personal & Study Notes</span>
+          </h2>
+          <button
+            onClick={() => setActiveTab('notes')}
+            className="text-xs font-mono font-semibold text-cyan-400 light:text-indigo-600 hover:underline flex items-center gap-1"
+          >
+            <span>Open All Notes ({notes?.length || 0})</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {notes?.slice(0, 2).map((note) => (
+            <div
+              key={note.id}
+              onClick={() => setActiveTab('notes')}
+              className="p-5 rounded-2xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 hover:border-indigo-500/50 transition-all shadow-md cursor-pointer space-y-2 group"
+            >
+              <div className="flex items-center justify-between">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-extrabold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                  {note.category}
+                </span>
+                <span className="text-[10px] font-mono text-slate-500">{note.updatedDate}</span>
+              </div>
+              <h4 className="font-heading font-bold text-sm text-slate-100 light:text-slate-900 group-hover:text-cyan-400 transition-colors">
+                {note.title}
+              </h4>
+              <p className="text-xs text-slate-400 light:text-slate-600 line-clamp-2 font-mono">
+                {note.content}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

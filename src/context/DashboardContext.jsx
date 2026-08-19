@@ -43,7 +43,7 @@ export const DashboardProvider = ({ children }) => {
   };
 
   // Auth Methods
-  const login = (password, rememberMe = true) => {
+  const login = (password, email = 'abhishek@portfolio.dev', rememberMe = true) => {
     const currentSettings = getDashboardData('settings');
     const expectedPassword = currentSettings?.passwordHash || 'abhishek123';
 
@@ -51,19 +51,46 @@ export const DashboardProvider = ({ children }) => {
       const updatedAuth = {
         isAuthenticated: true,
         user: {
-          name: 'Abhishek Upadhyay',
-          role: 'Full-Stack Software Developer',
-          email: 'abhishek@portfolio.dev',
+          name: currentSettings?.userName || 'Abhishek Upadhyay',
+          role: currentSettings?.userRole || 'Full-Stack Software Developer',
+          email: currentSettings?.userEmail || email || 'abhishek@portfolio.dev',
         },
         rememberMe,
       };
       setAuth(updatedAuth);
       saveDashboardData('auth', updatedAuth);
-      showToast('Welcome back, Abhishek! Session authenticated.');
+      showToast(`Welcome back, ${updatedAuth.user.name}!`);
       return { success: true };
     } else {
       return { success: false, error: 'Incorrect security password' };
     }
+  };
+
+  const signup = (name, email, password, role = 'Full-Stack Software Developer') => {
+    const updatedAuth = {
+      isAuthenticated: true,
+      user: {
+        name,
+        role,
+        email,
+      },
+      rememberMe: true,
+    };
+    const currentSettings = getDashboardData('settings') || {};
+    const updatedSettings = {
+      ...currentSettings,
+      passwordHash: password,
+      userEmail: email,
+      userName: name,
+      userRole: role,
+    };
+
+    saveDashboardData('auth', updatedAuth);
+    saveDashboardData('settings', updatedSettings);
+    setAuth(updatedAuth);
+    setSettings(updatedSettings);
+    showToast(`Account created successfully! Welcome, ${name}!`);
+    return { success: true };
   };
 
   const logout = () => {
@@ -183,6 +210,7 @@ export const DashboardProvider = ({ children }) => {
       value={{
         auth,
         login,
+        signup,
         logout,
         activeTab,
         setActiveTab,

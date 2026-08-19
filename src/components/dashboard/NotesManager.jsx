@@ -25,7 +25,7 @@ export const NotesManager = () => {
     favorite: false,
   });
 
-  const categories = ['All', 'PHP', 'Python', 'JavaScript', 'MySQL', 'AWS', 'IoT', 'Ideas'];
+  const categories = ['All', 'Personal', 'PHP', 'Python', 'JavaScript', 'MySQL', 'AWS', 'IoT', 'Ideas'];
 
   const filtered = (notes || []).filter((note) => {
     const matchesCat = selectedCategory === 'All' || note.category === selectedCategory;
@@ -259,6 +259,7 @@ export const NotesManager = () => {
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                     className="w-full px-3 py-2.5 rounded-xl bg-slate-950 light:bg-slate-50 text-slate-100 light:text-slate-900 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-cyan-400"
                   >
+                    <option value="Personal">Personal</option>
                     <option value="PHP">PHP</option>
                     <option value="Python">Python</option>
                     <option value="JavaScript">JavaScript</option>
