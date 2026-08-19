@@ -135,38 +135,43 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
       <CommandPalette />
 
       {/* ======================================================== */}
-      {/* MOBILE STICKY TOP BAR (VISIBLE ON SMALL SCREENS) */}
+      {/* CLEAN MOBILE STICKY HEADER (ONLY SHOWS LOGO + HAMBURGER BUTTON) */}
       {/* ======================================================== */}
-      <div className="md:hidden sticky top-0 z-40 bg-slate-900/95 light:bg-white/95 border-b border-slate-800 light:border-slate-200 backdrop-blur-xl px-4 py-3">
+      <div className="md:hidden sticky top-0 z-40 bg-slate-900/95 light:bg-white/95 border-b border-slate-800 light:border-slate-200 backdrop-blur-xl px-4 py-3 shadow-sm">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          {/* Logo & Current Tab Title */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="flex items-center gap-2.5 text-left focus:outline-none cursor-pointer"
+          >
             {auth?.user?.avatar ? (
               <img
                 src={auth.user.avatar}
                 alt={auth?.user?.name || 'User'}
-                className="w-9 h-9 rounded-xl object-cover border border-indigo-500 shadow-sm"
+                className="w-8 h-8 rounded-xl object-cover border border-indigo-500 shadow-sm"
               />
             ) : (
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 text-white font-mono font-extrabold text-xs flex items-center justify-center shadow-sm">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 text-white font-mono font-extrabold text-xs flex items-center justify-center shadow-sm">
                 {auth?.user?.name ? auth.user.name.split(' ').map(n=>n[0]).join('').slice(0, 2).toUpperCase() : 'OS'}
               </div>
             )}
 
-            <div>
-              <h2 className="font-heading font-extrabold text-sm text-slate-100 light:text-slate-900 leading-tight">
+            <div className="flex flex-col">
+              <span className="font-heading font-extrabold text-sm text-slate-100 light:text-slate-900 leading-none">
                 {auth?.user?.name || 'Abhishek OS'}
-              </h2>
-              <span className="text-[10px] font-mono text-cyan-400 light:text-indigo-600 font-semibold uppercase">
-                {activeNavItem.label}
+              </span>
+              <span className="text-[10px] font-mono text-cyan-400 light:text-indigo-600 font-bold uppercase mt-0.5">
+                {activeNavItem.label} ▾
               </span>
             </div>
-          </div>
+          </button>
 
+          {/* Right Action Icons & Hamburger Toggle */}
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsCommandPaletteOpen(true)}
               className="p-2 rounded-xl bg-slate-800/80 light:bg-slate-100 text-slate-300 light:text-slate-700"
-              title="Search"
+              title="Search..."
             >
               <Search className="w-4 h-4" />
             </button>
@@ -178,52 +183,34 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
               {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-600" />}
             </button>
 
+            {/* Hamburger Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md font-bold"
-              aria-label="Toggle Mobile Menu"
+              className="p-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md font-bold cursor-pointer"
+              aria-label="Toggle Navigation Menu"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
-
-        {/* Horizontal Touch Scrollable Quick Bar */}
-        <div className="flex items-center gap-2 overflow-x-auto pt-3 pb-1 no-scrollbar border-t border-slate-800/60 light:border-slate-200 mt-2">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => {
-                  setActiveTab(item.id);
-                  setIsMobileMenuOpen(false);
-                }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-mono font-semibold shrink-0 flex items-center gap-1.5 transition-all cursor-pointer ${
-                  isActive
-                    ? 'bg-cyan-500/20 text-cyan-300 light:bg-indigo-600 light:text-white border border-cyan-500/30'
-                    : 'bg-slate-950/60 light:bg-slate-100 text-slate-400 light:text-slate-600 border border-slate-800 light:border-slate-200'
-                }`}
-              >
-                <Icon className="w-3.5 h-3.5" />
-                <span>{item.label}</span>
-              </button>
-            );
-          })}
-        </div>
       </div>
 
-      {/* Mobile Slide-Down Drawer Menu Overlay */}
+      {/* ======================================================== */}
+      {/* MOBILE SLIDE-DOWN DRAWER MENU OVERLAY (ONLY APPEARS ON CLICK) */}
+      {/* ======================================================== */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden sticky top-28 z-30 bg-slate-950/95 light:bg-white/95 border-b border-slate-800 light:border-slate-200 backdrop-blur-xl px-5 py-4 shadow-2xl space-y-3"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden fixed inset-x-0 top-[57px] z-50 bg-slate-950/95 light:bg-white/95 border-b border-slate-800 light:border-slate-200 backdrop-blur-2xl p-4 shadow-2xl max-h-[85vh] overflow-y-auto"
           >
+            <div className="text-[11px] font-mono text-slate-400 light:text-slate-500 uppercase tracking-wider mb-2 font-bold px-1">
+              Dashboard Navigation
+            </div>
+
             <div className="grid grid-cols-2 gap-2">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -238,10 +225,10 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
                     className={`flex items-center justify-between p-3 rounded-2xl text-xs font-mono font-semibold transition-all cursor-pointer ${
                       isActive
                         ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md'
-                        : 'bg-slate-900/60 light:bg-slate-100 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-200'
+                        : 'bg-slate-900/80 light:bg-slate-100 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-200'
                     }`}
                   >
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center gap-2">
                       <Icon className="w-4 h-4" />
                       <span>{item.label}</span>
                     </div>
@@ -255,21 +242,24 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
               })}
             </div>
 
-            <div className="pt-3 border-t border-slate-800 light:border-slate-200 flex items-center justify-between text-xs font-mono">
+            <div className="pt-4 mt-3 border-t border-slate-800 light:border-slate-200 flex items-center justify-between text-xs font-mono">
               <a
                 href="#home"
-                className="text-slate-400 hover:text-cyan-400 flex items-center gap-1"
+                className="text-slate-400 light:text-slate-600 hover:text-cyan-400 flex items-center gap-1 font-medium"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>Return to Portfolio</span>
               </a>
 
               <button
-                onClick={logout}
-                className="text-rose-400 font-bold flex items-center gap-1"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  logout();
+                }}
+                className="text-rose-400 font-bold flex items-center gap-1 cursor-pointer"
               >
                 <LogOut className="w-3.5 h-3.5" />
-                <span>Lock</span>
+                <span>Lock Session</span>
               </button>
             </div>
           </motion.div>
@@ -277,7 +267,7 @@ export const DashboardLayout = ({ isDarkMode, setIsDarkMode }) => {
       </AnimatePresence>
 
       {/* ======================================================== */}
-      {/* DESKTOP STICKY SIDEBAR (VISIBLE ON MD+ SCREENS) */}
+      {/* DESKTOP STICKY SIDEBAR (VISIBLE ONLY ON MD+ SCREENS) */}
       {/* ======================================================== */}
       <aside className="hidden md:flex w-64 bg-slate-900/90 light:bg-white border-r border-slate-800/80 light:border-slate-200 shrink-0 p-5 flex-col justify-between sticky top-0 h-screen z-30">
         <div>
