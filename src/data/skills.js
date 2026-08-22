@@ -1,75 +1,73 @@
 /**
- * SKILLS & TECHNICAL COMPETENCIES DATA
- * 
- * Verified skills and production competencies for Abhishek Upadhyay.
+ * TECH STACK DATA
+ * Exact specification: Languages, Frontend, Backend, Database, Tools, Other
  */
 
 export const SKILLS_CATEGORIES = [
   {
-    id: "programming",
-    title: "Languages & Runtimes",
+    id: "languages",
+    title: "Languages",
     icon: "Code2",
-    tagline: "Core Logic & Scripting",
+    tagline: "Core Programming Languages",
     skills: [
-      { name: "Python", desc: "Automated scripting, data parsing pipelines, and MQTT telemetry daemons." },
-      { name: "Core PHP", desc: "Prepared PDO data layers, secure session controls, and custom MVC architecture." },
-      { name: "JavaScript (ES6+)", desc: "Dynamic DOM manipulation, asynchronous REST API integration, and interactive UI logic." }
+      { name: "Python", desc: "Automated scripting, data parsing pipelines, and background daemons." },
+      { name: "PHP", desc: "Prepared PDO data layers, secure sessions, and custom web applications." },
+      { name: "JavaScript", desc: "Dynamic UI logic, asynchronous REST API integration, and DOM scripting." }
     ]
   },
   {
-    id: "web",
-    title: "Web & CMS Architecture",
+    id: "frontend",
+    title: "Frontend",
     icon: "Layout",
-    tagline: "Frontend & Web Systems",
+    tagline: "User Interface & Styling",
     skills: [
-      { name: "HTML5 & Semantic Web", desc: "Accessible markup, structured SEO data, and clean DOM hierarchy." },
-      { name: "CSS3 & Modern Layouts", desc: "Responsive styling, modern glassmorphism UI tokens, and fluid CSS animations." },
-      { name: "WordPress Ecosystem", desc: "Custom theme styling, plugin integration, and CMS deployment." }
+      { name: "HTML", desc: "Semantic markup, structured accessibility, and web standards." },
+      { name: "CSS", desc: "Responsive layouts, custom styling design tokens, and smooth animations." },
+      { name: "JavaScript", desc: "Interactive client-side interactivity and event handling." }
+    ]
+  },
+  {
+    id: "backend",
+    title: "Backend",
+    icon: "Cpu",
+    tagline: "Server Architecture & APIs",
+    skills: [
+      { name: "PHP", desc: "Server-side business logic, session control, and database controllers." },
+      { name: "Python", desc: "Automation scripts, backend tooling, and data processing routines." },
+      { name: "REST APIs", desc: "JSON web service endpoints, HTTP requests, and integration interfaces." }
     ]
   },
   {
     id: "database",
-    title: "Database & Data Layers",
+    title: "Database",
     icon: "Database",
-    tagline: "Persistence & Security",
+    tagline: "Data Persistence",
     skills: [
-      { name: "MySQL & MariaDB", desc: "Relational schema design, indexed query optimization, and transactional safety." },
-      { name: "PDO Prepared Statements", desc: "Parameterized SQL queries, injection protection, and secure data access layers." },
-      { name: "Database Administration", desc: "Table normalization, backup automation, and relational data management." }
+      { name: "MySQL", desc: "Relational table schemas, indexed queries, and secure PDO access layers." }
     ]
   },
   {
     id: "tools",
-    title: "Developer Workstation",
+    title: "Tools",
     icon: "Wrench",
-    tagline: "Tooling & Environments",
+    tagline: "Development & Hosting Environment",
     skills: [
-      { name: "Git & Version Control", desc: "Branching workflows, commit tracking, and repository management." },
-      { name: "GitHub", desc: "Remote code hosting, collaborative workflows, and release publishing." },
-      { name: "XAMPP & Apache", desc: "Local Apache web server, MySQL runtime, and PHP stack orchestration." }
+      { name: "Git", desc: "Distributed version control and branch management." },
+      { name: "GitHub", desc: "Source code repository hosting and workflow management." },
+      { name: "XAMPP", desc: "Local Apache web server, MySQL runtime, and PHP stack." },
+      { name: "AWS", desc: "Cloud server instances and deployment infrastructure." }
     ]
   },
   {
-    id: "lms",
-    title: "E-Learning & LMS Platforms",
+    id: "other",
+    title: "Other",
     icon: "GraduationCap",
-    tagline: "EdTech & LMS Platforms",
+    tagline: "Specialized Domains & Platforms",
     skills: [
-      { name: "Tutor LMS", desc: "Automated grading workflows, course architecture, and enrollment systems." },
-      { name: "Moodle LMS", desc: "Enterprise E-learning setup, portal configuration, and course management." },
-      { name: "Chamilo LMS", desc: "Open-source LMS customization, user permissions, and learning portal delivery." }
-    ]
-  },
-  {
-    id: "cloud-other",
-    title: "Cloud, IoT & Automation",
-    icon: "Cpu",
-    tagline: "Telemetry & Infrastructure",
-    skills: [
-      { name: "AWS Cloud", desc: "EC2 instance hosting, security group management, and cloud deployment." },
-      { name: "IoT Hardware Telemetry", desc: "ESP32 microcontroller integration, sensor telemetry, and MQTT protocols." },
-      { name: "Workflow Automation", desc: "Background worker daemons, scheduled cron scripts, and system automation." }
+      { name: "IoT", desc: "Connecting hardware, telemetry data, and software systems." },
+      { name: "Automation", desc: "Reducing repetitive manual tasks and streamlining workflows." },
+      { name: "WordPress", desc: "CMS deployment, custom theme styling, and platform setup." },
+      { name: "Tutor LMS", desc: "E-learning course management, quizzes, and learning portals." }
     ]
   }
 ];
-

@@ -1,16 +1,14 @@
 import React from 'react';
 import { PROFILE } from '../../config/profile';
 import { DeveloperDashboard } from './DeveloperDashboard';
-import { HeroStats } from './HeroStats';
 import { motion } from 'framer-motion';
-import { ArrowRight, FileText, Mail } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 import { Github, Linkedin } from '../ui/Icons';
 
 export const Hero = () => {
   const hasGitHub = Boolean(PROFILE.socials?.github || PROFILE.githubUsername);
   const hasLinkedIn = Boolean(PROFILE.socials?.linkedin);
   const hasEmail = Boolean(PROFILE.email || PROFILE.socials?.email);
-  const hasResume = Boolean(PROFILE.resume);
   const githubUrl = PROFILE.socials?.github || (PROFILE.githubUsername ? `https://github.com/${PROFILE.githubUsername}` : '');
 
   return (
@@ -37,16 +35,19 @@ export const Hero = () => {
               </div>
             )}
 
-            {/* Greeting */}
-            <h2 className="text-lg sm:text-xl font-mono text-cyan-400 light:text-indigo-600 font-semibold mb-3 tracking-wide flex items-center gap-2">
-              <span>Hi, I'm {PROFILE.name}</span>
+            {/* Name & Title */}
+            <h2 className="text-xl sm:text-2xl font-heading font-bold text-cyan-400 light:text-indigo-600 tracking-wide mb-1">
+              {PROFILE.name}
             </h2>
+            <h3 className="text-sm font-mono text-slate-400 light:text-slate-500 uppercase tracking-widest font-semibold mb-4">
+              {PROFILE.title}
+            </h3>
 
-            {/* Main Headline */}
+            {/* Main Tagline */}
             <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-slate-100 light:text-slate-900 tracking-tight leading-[1.1] mb-6">
-              {PROFILE.title || 'Software Developer'} building{' '}
+              I build software that{' '}
               <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400 light:from-indigo-600 light:to-cyan-600 bg-clip-text text-transparent">
-                real-world digital solutions.
+                works.
               </span>
             </h1>
 
@@ -61,26 +62,20 @@ export const Hero = () => {
                 href="#projects"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-medium text-base shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 transition-all duration-200 focus:outline-none"
               >
-                <span>View My Work</span>
+                <span>View Work</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
-              {/* Show Download Resume button ONLY when resume file URL is available */}
-              {hasResume && (
-                <a
-                  href={PROFILE.resume}
-                  download
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-slate-900/80 light:bg-white text-slate-200 light:text-slate-800 hover:text-white light:hover:text-slate-900 border border-slate-700/80 light:border-slate-300 hover:border-slate-600 light:hover:border-slate-400 font-medium text-base hover:bg-slate-800/80 transition-all duration-200 backdrop-blur-sm"
-                >
-                  <FileText className="w-4 h-4 text-cyan-400 light:text-indigo-600" />
-                  <span>Download Resume</span>
-                </a>
-              )}
+              <a
+                href="#contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-slate-900/80 light:bg-white text-slate-200 light:text-slate-800 hover:text-white light:hover:text-slate-900 border border-slate-700/80 light:border-slate-300 hover:border-slate-600 light:hover:border-slate-400 font-medium text-base hover:bg-slate-800/80 transition-all duration-200 backdrop-blur-sm"
+              >
+                <Mail className="w-4 h-4 text-cyan-400 light:text-indigo-600" />
+                <span>Contact Me</span>
+              </a>
             </div>
 
-            {/* Secondary Quick Social Links (Only rendered if links are present) */}
+            {/* Secondary Quick Social Links */}
             {(hasGitHub || hasLinkedIn || hasEmail) && (
               <div className="flex items-center gap-6 pt-4 border-t border-slate-800/60 light:border-slate-200/80 w-full">
                 <span className="text-xs font-mono text-slate-400 uppercase tracking-widest">
@@ -134,9 +129,6 @@ export const Hero = () => {
             <DeveloperDashboard />
           </motion.div>
         </div>
-
-        {/* Hero Statistics Component */}
-        <HeroStats />
       </div>
     </section>
   );

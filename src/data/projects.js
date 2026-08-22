@@ -1,69 +1,41 @@
 /**
- * REAL PROJECTS ONLY
- * 
- * CORE RULE — NO FAKE INFORMATION:
- * Only display projects and features actually implemented.
- * Do not invent fake URLs, fake performance numbers, or fake client reviews.
- * 
- * Project Status System:
- * - 'live': Real publicly accessible URL exists in liveDemo
- * - 'github': Real public GitHub repo URL exists in github
- * - 'private': Project exists but source code/system is private
- * - 'in-development': Active ongoing project
- * - 'archived': Completed legacy project
+ * PROJECTS DATA
+ * Exact specification: 5 Real-World Projects
  */
 
 export const PROJECTS_DATA = [
   {
-    id: "hrms-management-system",
+    id: "hrms",
     featured: true,
     isFlagship: true,
-    title: "HRMS – Human Resource Management System",
+    title: "HRMS",
     status: "private",
     category: "Web",
-    subCategory: "Core PHP & MySQL Enterprise HR System",
-    shortDescription: "A centralized, real-world Human Resource Management System engineered to simplify and digitize HR operations, employee records, attendance tracking, leave management, department structures, and role-based access control.",
-    technologies: [
-      "PHP",
-      "MySQL",
-      "PDO",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Bootstrap"
-    ],
+    subCategory: "Practical HR Management System",
+    shortDescription: "A practical HR management system for handling employees, leave, attendance, and HR operations.",
+    technologies: ["PHP", "MySQL", "JavaScript"],
     highlights: [
-      "Employee Profile & Personal Information Management",
-      "Department & Designation Hierarchy Management",
-      "Role-Based Access Control & Secure Authentication",
-      "Attendance Management & Daily Record Tracking",
-      "Leave Request Application & Approval Workflow",
-      "HR & Admin Dashboard with Search & Data Filtering"
+      "Employee records & profile administration",
+      "Attendance management & log tracking",
+      "Leave request filing & approval workflows",
+      "HR admin control panel"
     ],
     github: "",
     liveDemo: "",
     screenshots: [],
     caseStudy: {
-      overview: "HRMS (Human Resource Management System) is a web-based enterprise software system designed to simplify and digitize HR and employee-management processes through a centralized web platform.",
-      problem: "Organizations often struggle with fragmented employee records, manual leave approval delays, untracked attendance logs, and inefficient administrative workflows across departments.",
-      solution: "Developed a database-driven HR platform using PHP and MySQL PDO featuring secure role-based login, comprehensive employee profile management, department structures, attendance logging, leave approval workflows, and administrative search filtering.",
-      technologies: ["PHP", "MySQL", "PDO", "HTML", "CSS", "JavaScript", "Bootstrap"],
+      overview: "A practical HR management system for handling employees, leave, attendance, and HR operations.",
+      problem: "Organizations need a centralized system to manage workforce data, attendance records, and leave requests efficiently.",
+      solution: "Engineered a streamlined HR software platform using PHP and MySQL for employee record management, leave workflows, and administrative tracking.",
+      technologies: ["PHP", "MySQL", "JavaScript"],
       features: [
-        { name: "Employee Management", desc: "Centralized employee record management and profile tracking." },
-        { name: "Personal Information Management", desc: "Detailed tracking of employee profiles, personal information, and contact records." },
-        { name: "Department & Designation Management", desc: "Structured department assignments and designation hierarchies." },
-        { name: "Role-Based Access & Authentication", desc: "Secure multi-level permissions for administrators and staff members." },
-        { name: "Attendance Management", desc: "Systematic daily attendance logging and record tracking." },
-        { name: "Leave Management", desc: "Leave request filing, quota calculation, and multi-tier approval workflow." },
-        { name: "HR / Admin Dashboard", desc: "Centralized dashboard displaying workforce metrics, pending leave approvals, and employee statistics." },
-        { name: "Search & Filtering", desc: "Fast multi-field searching and dynamic data filtering across employee records." },
-        { name: "Secure Login & Session Management", desc: "PDO prepared queries and session security for authenticated access." },
-        { name: "Responsive Web Interface", desc: "Mobile-responsive user interface crafted with Bootstrap and custom CSS." }
+        { name: "Employee Management", desc: "Handling complete workforce records and profiles." },
+        { name: "Attendance Tracking", desc: "Daily attendance logging and record administration." },
+        { name: "Leave Management", desc: "Leave applications and multi-tier approval workflows." },
+        { name: "HR Operations", desc: "Centralized administrative controls for HR functions." }
       ],
-      development: "Engineered using PHP backend architecture with PDO prepared statements against normalized MySQL tables, leveraging Bootstrap for structured administrative grid layouts.",
-      challenges: [
-        "Architecting complex relational database schemas connecting employees, departments, designations, attendance logs, and leave approval workflows while maintaining fast query performance."
-      ]
+      development: "Developed using PHP backend controllers with PDO queries against MySQL relational tables.",
+      challenges: ["Designing intuitive approval workflows for leave and attendance handling."]
     }
   },
   {
@@ -73,52 +45,31 @@ export const PROJECTS_DATA = [
     title: "PRAYAS Student Recruitment Portal",
     status: "private",
     category: "Web",
-    subCategory: "Core PHP & MySQL Recruitment System",
-    shortDescription: "A full-stack recruitment portal managing candidate registration, profiles, resume uploads, interactive resume building, webcam photo capture, video intros, timed aptitude examinations, auto-graded exam results, candidate management, notifications, and PDF resume generation.",
-    technologies: [
-      "Core PHP",
-      "MySQL",
-      "PDO",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "XAMPP"
-    ],
+    subCategory: "Complete Candidate Recruitment Platform",
+    shortDescription: "A recruitment platform built for the complete candidate journey — registration, profiles, aptitude tests, video introduction, resumes, and admin management.",
+    technologies: ["PHP", "MySQL", "JavaScript"],
     highlights: [
-      "Candidate Registration & Login Authentication",
-      "Candidate Profile & Interactive Resume Builder",
-      "Webcam Photo Capture & Video Introduction Upload",
-      "Timed Aptitude Examination Engine with Instant Results",
-      "Admin Dashboard for Candidate Roster & Evaluation",
-      "System Notifications & Resume PDF Generation"
+      "Candidate registration & profile creation",
+      "Timed aptitude examination module",
+      "Webcam photo capture & video introduction upload",
+      "Interactive resume builder & admin candidate evaluation"
     ],
-    github: "", // Empty string hides GitHub button automatically
-    liveDemo: "", // Empty string hides Live Demo button automatically
-    screenshots: [
-      // Add real screenshot objects here when available:
-      // { url: "/assets/projects/prayas_dashboard.png", caption: "Candidate Dashboard Interface", type: "desktop" }
-    ],
+    github: "",
+    liveDemo: "",
+    screenshots: [],
     caseStudy: {
-      overview: "The PRAYAS Student Recruitment Portal is an end-to-end recruitment platform designed to handle applicant registration, candidate profile management, identity verification, structured aptitude testing, and administrative candidate tracking.",
-      problem: "Student recruitment workflows often rely on disjointed paper submissions, unstandardized resumes, unverified applicant identity, and manual aptitude exam grading.",
-      solution: "Engineered a consolidated web portal built on Core PHP and secure PDO MySQL database operations. The platform digitizes applicant registration, offers a built-in resume builder with PDF rendering, captures applicant photo/video credentials, and automates timed exam proctoring with instant evaluation.",
-      technologies: ["Core PHP", "MySQL", "PDO", "HTML", "CSS", "JavaScript", "XAMPP"],
+      overview: "A recruitment platform built for the complete candidate journey — registration, profiles, aptitude tests, video introduction, resumes, and admin management.",
+      problem: "Managing applicant registration, video introductions, timed exams, and resume evaluations across separate manual platforms.",
+      solution: "Engineered a unified PHP & MySQL recruitment portal digitizing candidate profiles, video intros, proctored aptitude exams, and admin rosters.",
+      technologies: ["PHP", "MySQL", "JavaScript"],
       features: [
-        { name: "Candidate Registration & Login", desc: "Account creation and authentication for candidates." },
-        { name: "Candidate Profile Management", desc: "Structured profile forms for candidate details and contact info." },
-        { name: "Resume Upload & Resume Builder", desc: "Support for uploading existing resumes or building standardized resumes interactively." },
-        { name: "Webcam Photo Capture & Video Intro", desc: "Browser Media API integration for live photo capture and video introduction uploads." },
-        { name: "Aptitude Examination System", desc: "Structured testing module with timed question sets and countdown logic." },
-        { name: "Instant Exam Results & Grading", desc: "Automated scoring of aptitude exams upon test completion or timer expiry." },
-        { name: "Candidate & Admin Dashboards", desc: "Dedicated portals for candidate self-service and administrative management." },
-        { name: "Candidate Roster Management", desc: "Admin control tools to review candidate profiles, test scores, and application status." },
-        { name: "System Notifications & PDF Export", desc: "Candidate status updates and automated PDF resume generation." }
+        { name: "Registration & Profiles", desc: "Candidate account creation and personal profile management." },
+        { name: "Aptitude Tests", desc: "Timed online examinations with instant scoring." },
+        { name: "Video Introduction", desc: "Candidate webcam photo and video introduction uploads." },
+        { name: "Admin Management", desc: "Comprehensive candidate review roster and evaluation dashboard." }
       ],
-      development: "Built from scratch using Core PHP with PDO prepared statements for database operations against MySQL in a XAMPP environment. Module architecture separates candidate workflows from administrative assessment controls.",
-      challenges: [
-        "Implementing reliable timed exam state persistence across browser reloads.",
-        "Ensuring secure file handling for uploaded video introductions and PDF resume renders."
-      ]
+      development: "Built with Core PHP, secure PDO queries, and custom JavaScript media integration.",
+      challenges: ["Persisting exam state accurately during timed candidate sessions."]
     }
   },
   {
@@ -128,41 +79,96 @@ export const PROJECTS_DATA = [
     title: "PRAYAS – The Automation Academy",
     status: "private",
     category: "LMS",
-    subCategory: "WordPress & Tutor LMS E-Learning Portal",
-    shortDescription: "An industrial automation e-learning platform delivering structured course content, Tutor LMS lesson navigation, interactive video learning, progress tracking, and student quiz assessments.",
-    technologies: [
-      "WordPress",
-      "PHP",
-      "Tutor LMS",
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
+    subCategory: "Industrial Automation Learning Platform",
+    shortDescription: "A learning platform focused on industrial automation and workforce training. Courses, learning content, certificates, and student management in one place.",
+    technologies: ["WordPress", "Tutor LMS", "Elementor"],
     highlights: [
-      "WordPress & Tutor LMS E-Learning Integration",
-      "Industrial Automation Course Catalog & Lesson Delivery",
-      "Student Progress Tracking & Course Navigation",
-      "Interactive Quiz Assessments & Evaluation",
-      "Responsive Layout for Desktop & Mobile Learning"
+      "Industrial automation course catalog",
+      "Structured video & text lesson player",
+      "Student progress tracking & certificates",
+      "Quiz evaluation & student management"
     ],
     github: "",
     liveDemo: "",
     screenshots: [],
     caseStudy: {
-      overview: "PRAYAS – The Automation Academy is a specialized online learning platform focused on delivering industrial automation technical courses and workforce training.",
-      problem: "Engineering students and automation technicians needed a centralized portal to access structured course modules, video lectures, and self-assessment quizzes.",
-      solution: "Configured and customized a WordPress platform powered by Tutor LMS, implementing custom PHP styling, structured course taxonomies, lesson progress indicators, and automated quiz evaluation.",
-      technologies: ["WordPress", "PHP", "Tutor LMS", "HTML", "CSS", "JavaScript"],
+      overview: "A learning platform focused on industrial automation and workforce training. Courses, learning content, certificates, and student management in one place.",
+      problem: "Providing students and automation engineers structured course delivery, certificate issuing, and progress tracking.",
+      solution: "Customized a WordPress and Tutor LMS platform with Elementor layout designs, course taxonomies, and certificate delivery.",
+      technologies: ["WordPress", "Tutor LMS", "Elementor"],
       features: [
-        { name: "Course Curriculum Management", desc: "Organized module hierarchies for industrial automation topics." },
-        { name: "Tutor LMS Lesson Delivery", desc: "Video and text lesson player with course completion markers." },
-        { name: "Quiz Assessment Engine", desc: "Interactive student self-evaluations and test tracking." },
-        { name: "Student Progress Dashboard", desc: "Personalized dashboard tracking enrolled courses and progress percentage." }
+        { name: "Courses & Content", desc: "Structured training modules for industrial automation topics." },
+        { name: "Student Management", desc: "Enrollment tracking, student dashboards, and progress indicators." },
+        { name: "Certificates", desc: "Automated certificate issuance upon course completion." }
       ],
-      development: "Developed by customizing WordPress theme templates and extending Tutor LMS hooks using PHP and responsive CSS.",
-      challenges: [
-        "Structuring course navigation for complex multi-part technical training modules while maintaining fast page performance."
-      ]
+      development: "Built using WordPress core, Tutor LMS engine, and custom Elementor components.",
+      challenges: ["Structuring complex multi-module industrial automation curricula clearly."]
+    }
+  },
+  {
+    id: "iot-automation-systems",
+    featured: true,
+    isFlagship: false,
+    title: "IoT & Automation Systems",
+    status: "private",
+    category: "IoT",
+    subCategory: "Hardware Telemetry & Software Workflows",
+    shortDescription: "Software connected with real-world hardware and automation workflows. Built around data, control, monitoring, and practical use cases.",
+    technologies: ["Python", "IoT", "APIs", "Automation"],
+    highlights: [
+      "Hardware telemetry & sensor data monitoring",
+      "Background Python automation scripts",
+      "REST API & messaging integration",
+      "Practical real-world control workflows"
+    ],
+    github: "",
+    liveDemo: "",
+    screenshots: [],
+    caseStudy: {
+      overview: "Software connected with real-world hardware and automation workflows. Built around data, control, monitoring, and practical use cases.",
+      problem: "Connecting physical hardware sensors and automation workflows to software monitoring platforms.",
+      solution: "Developed Python automation routines and IoT API daemons for data capture, telemetry monitoring, and task execution.",
+      technologies: ["Python", "IoT", "APIs", "Automation"],
+      features: [
+        { name: "Hardware Connection", desc: "Linking physical hardware and sensors to software." },
+        { name: "Data Monitoring", desc: "Capturing, processing, and displaying telemetry data." },
+        { name: "Automation Workflows", desc: "Automating repetitive data handling tasks and triggers." }
+      ],
+      development: "Built with Python scripts, API integration layers, and IoT hardware protocols.",
+      challenges: ["Ensuring reliable data communication between hardware devices and software servers."]
+    }
+  },
+  {
+    id: "personal-portfolio",
+    featured: true,
+    isFlagship: false,
+    title: "Personal Portfolio",
+    status: "live",
+    category: "Web",
+    subCategory: "Developer Showcase Site",
+    shortDescription: "This website. Built to showcase what I actually work on — not a list of buzzwords.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    highlights: [
+      "Clean, modern UI layout & dark theme styling",
+      "Developer dashboard & interactive portfolio sections",
+      "Fast static rendering & GitHub Pages deployment",
+      "Responsive design across all devices"
+    ],
+    github: "https://github.com/abhishekcodee/my_portfolio",
+    liveDemo: "https://abhishekcodee.github.io/my_portfolio/",
+    screenshots: [],
+    caseStudy: {
+      overview: "This website. Built to showcase what I actually work on — not a list of buzzwords.",
+      problem: "Creating a clean, authentic developer portfolio showcasing real projects and skills without fluff.",
+      solution: "Designed and engineered a responsive, high-performance portfolio featuring interactive project cards, technical stack breakdowns, and live developer dashboard.",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      features: [
+        { name: "Authentic Project Showcase", desc: "Focusing on real engineering work and practical solutions." },
+        { name: "Responsive Layout", desc: "Tailored experience across desktop, tablet, and mobile screens." },
+        { name: "Interactive Dashboard", desc: "Built-in developer control hub and live preview controls." }
+      ],
+      development: "Engineered with React, Vite, Tailwind CSS, and Framer Motion.",
+      challenges: ["Building a fast, responsive site with seamless deployment on GitHub Pages."]
     }
   }
 ];
@@ -170,32 +176,26 @@ export const PROJECTS_DATA = [
 export const PROJECT_LIFECYCLE = [
   {
     step: "01",
-    phase: "Requirement Analysis",
-    title: "Defining Core Functional Scope",
-    desc: "Collaborate to clarify exact operational needs — such as candidate registration, timed exams, video uploads, or LMS course structures."
+    phase: "Understand",
+    title: "01 — Understand",
+    desc: "Figure out what actually needs to be solved."
   },
   {
     step: "02",
-    phase: "Database & Architecture",
-    title: "Designing PDO MySQL & Backend Schemas",
-    desc: "Structure normalized database tables, PDO query logic, and clean folder architecture for reliable performance."
+    phase: "Build",
+    title: "02 — Build",
+    desc: "Write the simplest solution that gets the job done."
   },
   {
     step: "03",
-    phase: "Core Development",
-    title: "Building Clean, Modular Code",
-    desc: "Implement backend logic in PHP/Python, craft responsive frontend UIs, integrate LMS tools or IoT hardware daemons."
+    phase: "Test",
+    title: "03 — Test",
+    desc: "Break it. Fix it. Test it again."
   },
   {
     step: "04",
-    phase: "Testing & Validation",
-    title: "Functional & Anti-Cheat Validation",
-    desc: "Verify form security, timed examination rules, file uploads, PDF rendering, and mobile responsiveness."
-  },
-  {
-    step: "05",
-    phase: "Deployment & Delivery",
-    title: "Environment Setup & Launch",
-    desc: "Deploy on Apache/XAMPP or Linux/AWS hosting, configure security headers, and verify system integrity."
+    phase: "Improve",
+    title: "04 — Improve",
+    desc: "Make it faster, cleaner, and easier to maintain."
   }
 ];

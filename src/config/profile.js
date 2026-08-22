@@ -3,16 +3,16 @@ export const PROFILE = {
   brandName: "ABHISHEK",
   title: "Software Developer",
   role: "Software Developer",
-  headline: "Software Developer building real-world digital solutions.",
-  subheading: "Software developer focused on web development, backend systems, IoT, LMS platforms, and automation.",
+  headline: "I build software that works.",
+  subheading: "Web apps, automation systems, IoT projects, and internal tools.",
   statusBadge: "Available for Opportunities",
   location: "India",
   email: "amanupadhyay2030@gmail.com",
   phone: "",
-  githubUsername: "amanupadhyay2030-rgb",
+  githubUsername: "abhishekcodee",
   
   socials: {
-    github: "https://github.com/amanupadhyay2030-rgb",
+    github: "https://github.com/abhishekcodee",
     linkedin: "https://www.linkedin.com/in/abhishek-upadhyay-a20617376",
     email: "mailto:amanupadhyay2030@gmail.com",
     twitter: "",
@@ -28,22 +28,58 @@ export const PROFILE = {
     name: "Abhishek Upadhyay",
     role: "Software Developer",
     focus: "Web & Backend Development",
-    interests: ["Web Development", "Backend Development", "IoT Development", "LMS Development", "Automation"],
+    interests: ["Web Development", "Automation", "IoT", "Problem Solving"],
     location: "India",
   },
 
-  aboutNarrative: `Abhishek Upadhyay is a software developer focused on building practical, reliable, and user-centered digital applications. With hands-on technical work spanning Core PHP and MySQL backends, Python automation scripts, IoT microcontroller telemetry, and custom LMS integrations, he specializes in delivering real-world software platforms like HR management systems, recruitment portals, and educational systems.`,
+  aboutHeading: "I Build Things.",
+  aboutNarrative: `I'm a software developer who likes solving real problems with code. I work with Python, PHP, JavaScript, MySQL, HTML, and CSS, and I build applications from the database to the UI. Most of my work is practical: business systems, automation, recruitment platforms, HR tools, and IoT applications.`,
 
-  focusAreas: [
-    "Web Development",
-    "Backend Development",
-    "Core PHP & MySQL (PDO)",
-    "IoT Development",
-    "LMS Development (WordPress / Tutor LMS)",
-    "Automation & Scripting (Python)",
-    "Cloud (AWS)",
+  whatIDo: [
+    {
+      title: "Web Development",
+      description: "Full-stack web applications with clean UI, backend logic, APIs, and databases.",
+      icon: "Layout"
+    },
+    {
+      title: "Automation",
+      description: "Software and systems that reduce repetitive work and make processes easier to manage.",
+      icon: "Cpu"
+    },
+    {
+      title: "IoT",
+      description: "Connecting hardware, data, and software to build useful real-world systems.",
+      icon: "Zap"
+    },
+    {
+      title: "Problem Solving",
+      description: "If something is broken, slow, repetitive, or badly designed — I like fixing it.",
+      icon: "Wrench"
+    }
   ],
 
-  // Education information. Left empty if unverified to prevent fabrication.
+  howIWork: [
+    { step: "01", title: "Understand", description: "Figure out what actually needs to be solved." },
+    { step: "02", title: "Build", description: "Write the simplest solution that gets the job done." },
+    { step: "03", title: "Test", description: "Break it. Fix it. Test it again." },
+    { step: "04", title: "Improve", description: "Make it faster, cleaner, and easier to maintain." }
+  ],
+
+  currently: [
+    "Building software.",
+    "Learning new technologies.",
+    "Working on automation and IoT.",
+    "Turning ideas into working products."
+  ],
+
+  focusAreas: [
+    "Python & PHP Backend",
+    "Full-Stack Web Development",
+    "MySQL Database Design",
+    "IoT & Hardware Systems",
+    "Workflow Automation",
+    "Tutor LMS & E-Learning",
+  ],
+
   education: [],
 };

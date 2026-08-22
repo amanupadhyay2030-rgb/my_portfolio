@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PROFILE } from '../../config/profile';
 import { Toast } from '../ui/Toast';
 import { motion } from 'framer-motion';
-import { Mail, Send, Copy, Check, MapPin, User, AtSign, Phone } from 'lucide-react';
+import { Mail, Send, Copy, Check, User, AtSign } from 'lucide-react';
 import { Github, Linkedin } from '../ui/Icons';
 
 export const ContactSection = () => {
@@ -19,8 +19,6 @@ export const ContactSection = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const hasEmail = Boolean(PROFILE.email);
-  const hasPhone = Boolean(PROFILE.phone);
-  const hasLocation = Boolean(PROFILE.location);
   const hasGitHub = Boolean(PROFILE.socials?.github || PROFILE.githubUsername);
   const hasLinkedIn = Boolean(PROFILE.socials?.linkedin);
   const githubUrl = PROFILE.socials?.github || (PROFILE.githubUsername ? `https://github.com/${PROFILE.githubUsername}` : '');
@@ -54,7 +52,6 @@ export const ContactSection = () => {
       `Name: ${formData.name}\nSender Email: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`
     )}`;
 
-    // Trigger direct email sending via user's email client
     window.location.href = mailtoUrl;
 
     setTimeout(() => {
@@ -76,7 +73,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-14 lg:py-20 relative overflow-hidden bg-dot-pattern">
+    <section id="contact" className="py-16 lg:py-24 relative overflow-hidden bg-dot-pattern">
       {/* Background Ambient Glow Orb */}
       <div className="absolute bottom-10 -left-40 w-96 h-96 rounded-full bg-cyan-500/10 light:bg-blue-200/50 blur-3xl pointer-events-none animate-pulse-glow" />
 
@@ -88,29 +85,29 @@ export const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-10"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 light:text-indigo-600 text-xs font-mono font-semibold mb-3 border border-cyan-500/20">
             <Mail className="w-3.5 h-3.5" />
-            <span>GET IN TOUCH</span>
+            <span>CONTACT</span>
           </div>
 
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-100 light:text-slate-900 tracking-tight">
-            Let's connect &{' '}
+            Have something to build?{' '}
             <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400 light:from-indigo-600 light:to-cyan-600 bg-clip-text text-transparent">
-              collaborate.
+              Let's talk.
             </span>
           </h2>
 
-          <p className="text-slate-400 light:text-slate-600 text-base sm:text-lg mt-4 font-sans">
-            Have a question, software inquiry, or project opportunity? Send a message below.
+          <p className="text-slate-300 light:text-slate-600 text-base sm:text-lg mt-4 font-sans">
+            I'm open to interesting projects, collaborations, and opportunities.
           </p>
         </motion.div>
 
         {/* Grid Container */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Column: Direct Info & Social Cards */}
+          {/* Left Column: Contact Methods & Social Links */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -118,20 +115,20 @@ export const ContactSection = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5 space-y-6"
           >
-            <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 shadow-2xl backdrop-blur-xl space-y-6">
+            <div className="p-8 rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 shadow-2xl backdrop-blur-xl space-y-6">
               <h3 className="font-heading font-extrabold text-xl text-slate-100 light:text-slate-900">
-                Contact Details
+                Direct Contact
               </h3>
 
-              {/* Email Card (Rendered if email is provided) */}
+              {/* Email Card */}
               {hasEmail && (
-                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200/90 flex items-center justify-between shadow-sm light:shadow-md">
+                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 flex items-center justify-between shadow-sm">
                   <div className="flex items-center gap-3">
                     <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 light:bg-indigo-50 light:text-indigo-600">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-xs text-slate-400 light:text-slate-500 font-mono block">Email Address</span>
+                      <span className="text-xs text-slate-400 light:text-slate-500 font-mono block">Email</span>
                       <span className="text-sm font-semibold text-slate-200 light:text-slate-900">
                         {PROFILE.email}
                       </span>
@@ -141,111 +138,59 @@ export const ContactSection = () => {
                   <button
                     onClick={copyEmailToClipboard}
                     title="Copy Email"
-                    className="p-2 rounded-xl bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-slate-300 light:text-slate-700 transition-colors border border-slate-700 light:border-slate-200"
+                    className="p-2 rounded-xl bg-slate-800 light:bg-slate-200 hover:bg-slate-700 light:hover:bg-slate-300 text-slate-300 light:text-slate-700 transition-colors border border-slate-700 light:border-slate-300"
                   >
                     {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
               )}
 
-              {/* LinkedIn Profile Card */}
-              {hasLinkedIn && (
-                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200/90 flex items-center justify-between shadow-sm light:shadow-md">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 light:bg-indigo-50 light:text-indigo-600 shrink-0">
-                      <Linkedin className="w-5 h-5" />
-                    </div>
-                    <div className="min-w-0">
-                      <span className="text-xs text-slate-400 light:text-slate-500 font-mono block">LinkedIn ID</span>
-                      <a
-                        href={PROFILE.socials.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm font-semibold text-cyan-400 light:text-indigo-600 hover:text-cyan-300 light:hover:text-indigo-700 hover:underline truncate block font-mono"
-                      >
-                        {PROFILE.socials.linkedin ? PROFILE.socials.linkedin.replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//, '').replace(/\/$/, '') : 'LinkedIn'}
-                      </a>
-                    </div>
-                  </div>
+              {/* Quick Links Row: GitHub · LinkedIn · Email */}
+              <div className="pt-2">
+                <span className="text-xs font-mono uppercase tracking-wider text-slate-400 light:text-slate-600 font-semibold block mb-3">
+                  Links:
+                </span>
 
-                  <a
-                    href={PROFILE.socials.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Visit LinkedIn Profile"
-                    className="px-3 py-1.5 rounded-xl bg-slate-800 light:bg-indigo-50 hover:bg-slate-700 light:hover:bg-indigo-100 text-cyan-400 light:text-indigo-700 text-xs font-mono font-medium transition-colors border border-slate-700 light:border-indigo-200 shrink-0"
-                  >
-                    Open ↗
-                  </a>
+                <div className="grid grid-cols-3 gap-3">
+                  {hasGitHub && (
+                    <a
+                      href={githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center gap-1.5 p-3 rounded-2xl bg-slate-950/80 light:bg-slate-50 hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-medium text-xs border border-slate-800 light:border-slate-200 transition-all shadow-sm group"
+                    >
+                      <Github className="w-5 h-5 text-slate-400 group-hover:text-cyan-400" />
+                      <span>GitHub</span>
+                    </a>
+                  )}
+
+                  {hasLinkedIn && (
+                    <a
+                      href={PROFILE.socials.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center gap-1.5 p-3 rounded-2xl bg-slate-950/80 light:bg-slate-50 hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-medium text-xs border border-slate-800 light:border-slate-200 transition-all shadow-sm group"
+                    >
+                      <Linkedin className="w-5 h-5 text-cyan-400 group-hover:text-indigo-600" />
+                      <span>LinkedIn</span>
+                    </a>
+                  )}
+
+                  {hasEmail && (
+                    <a
+                      href={`mailto:${PROFILE.email}`}
+                      className="flex flex-col items-center justify-center gap-1.5 p-3 rounded-2xl bg-slate-950/80 light:bg-slate-50 hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-medium text-xs border border-slate-800 light:border-slate-200 transition-all shadow-sm group"
+                    >
+                      <Mail className="w-5 h-5 text-teal-400 group-hover:text-emerald-500" />
+                      <span>Email</span>
+                    </a>
+                  )}
                 </div>
-              )}
-
-              {/* Phone Card (Rendered if phone is provided) */}
-              {hasPhone && (
-                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200/90 flex items-center gap-3 shadow-sm light:shadow-md">
-                  <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 light:bg-indigo-50 light:text-indigo-600">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-xs text-slate-400 light:text-slate-500 font-mono block">Phone</span>
-                    <span className="text-sm font-semibold text-slate-200 light:text-slate-900">
-                      {PROFILE.phone}
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {/* Location Card */}
-              {hasLocation && (
-                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200/90 flex items-center gap-3 shadow-sm light:shadow-md">
-                  <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 light:bg-amber-50 light:text-amber-600">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-xs text-slate-400 light:text-slate-500 font-mono block">Location</span>
-                    <span className="text-sm font-semibold text-slate-200 light:text-slate-900">
-                      {PROFILE.location}
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {/* Social Channels (Rendered only if valid URLs exist) */}
-              {(hasGitHub || hasLinkedIn) && (
-                <div>
-                  <span className="text-xs font-mono uppercase tracking-wider text-slate-400 light:text-slate-600 font-semibold block mb-3">
-                    Professional Networks:
-                  </span>
-
-                  <div className="flex gap-3">
-                    {hasGitHub && (
-                      <a
-                        href={githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-950/80 light:bg-white hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-semibold text-xs border border-slate-800 light:border-slate-300 transition-all shadow-sm"
-                      >
-                        <Github className="w-4 h-4 text-slate-400 light:text-slate-700" /> GitHub
-                      </a>
-                    )}
-
-                    {hasLinkedIn && (
-                      <a
-                        href={PROFILE.socials.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-950/80 light:bg-white hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-semibold text-xs border border-slate-800 light:border-slate-300 transition-all shadow-sm"
-                      >
-                        <Linkedin className="w-4 h-4 text-cyan-400 light:text-indigo-600" /> LinkedIn
-                      </a>
-                    )}
-                  </div>
-                </div>
-              )}
+              </div>
             </div>
           </motion.div>
 
-          {/* Right Column: Direct Contact Form */}
+          {/* Right Column: Direct Message Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -258,10 +203,9 @@ export const ContactSection = () => {
               className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 shadow-2xl backdrop-blur-xl space-y-5"
             >
               <h3 className="font-heading font-extrabold text-xl text-slate-100 light:text-slate-900 mb-2">
-                Send a Direct Message
+                Send a Message
               </h3>
 
-              {/* Name & Email Row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs font-mono text-slate-300 light:text-slate-700 font-semibold mb-2">
@@ -275,7 +219,7 @@ export const ContactSection = () => {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Your Name"
                       className={`w-full pl-10 pr-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 light:placeholder-slate-400 focus:outline-none transition-colors ${
-                        errors.name ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600 light:focus:bg-white'
+                        errors.name ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600'
                       }`}
                     />
                   </div>
@@ -294,7 +238,7 @@ export const ContactSection = () => {
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="your.email@example.com"
                       className={`w-full pl-10 pr-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 light:placeholder-slate-400 focus:outline-none transition-colors ${
-                        errors.email ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600 light:focus:bg-white'
+                        errors.email ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600'
                       }`}
                     />
                   </div>
@@ -302,7 +246,6 @@ export const ContactSection = () => {
                 </div>
               </div>
 
-              {/* Subject */}
               <div>
                 <label className="block text-xs font-mono text-slate-300 light:text-slate-700 font-semibold mb-2">
                   Subject *
@@ -311,15 +254,14 @@ export const ContactSection = () => {
                   type="text"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  placeholder="Software Inquiry / Project Discussion"
+                  placeholder="Project Inquiry / Collaboration"
                   className={`w-full px-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 light:placeholder-slate-400 focus:outline-none transition-colors ${
-                    errors.subject ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600 light:focus:bg-white'
+                    errors.subject ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600'
                   }`}
                 />
                 {errors.subject && <p className="text-xs text-red-400 mt-1 font-mono">{errors.subject}</p>}
               </div>
 
-              {/* Message */}
               <div>
                 <label className="block text-xs font-mono text-slate-300 light:text-slate-700 font-semibold mb-2">
                   Message *
@@ -328,22 +270,21 @@ export const ContactSection = () => {
                   rows={5}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Hi Abhishek, I would like to get in touch regarding..."
+                  placeholder="Hi Abhishek, I'd like to talk about..."
                   className={`w-full px-4 py-3 rounded-xl bg-slate-950/80 light:bg-slate-50 border text-sm text-slate-100 light:text-slate-900 placeholder-slate-500 light:placeholder-slate-400 focus:outline-none transition-colors resize-none ${
-                    errors.message ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600 light:focus:bg-white'
+                    errors.message ? 'border-red-500/80' : 'border-slate-800 light:border-slate-300 focus:border-cyan-500 light:focus:border-indigo-600'
                   }`}
                 />
                 {errors.message && <p className="text-xs text-red-400 mt-1 font-mono">{errors.message}</p>}
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 light:from-indigo-600 light:to-indigo-700 hover:from-indigo-500 hover:to-cyan-500 text-white font-bold text-sm shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all duration-200 disabled:opacity-50 hover:scale-[1.01] active:scale-[0.99]"
+                className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-bold text-sm shadow-lg shadow-indigo-500/25 transition-all duration-200 disabled:opacity-50"
               >
                 {isSubmitting ? (
-                  <span>Sending Message...</span>
+                  <span>Sending...</span>
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
@@ -356,7 +297,6 @@ export const ContactSection = () => {
 
         </div>
 
-        {/* Toast Notification */}
         <Toast
           message={toast.message}
           type={toast.type}

@@ -30,8 +30,8 @@ export const Footer = () => {
               </span>
             </div>
 
-            <p className="text-xs text-slate-400 light:text-slate-600 max-w-sm font-sans">
-              {PROFILE.subheading}
+            <p className="text-xs text-slate-400 light:text-slate-600 max-w-sm font-mono font-medium">
+              {PROFILE.title}
             </p>
           </div>
 
@@ -39,10 +39,9 @@ export const Footer = () => {
           <div className="md:col-span-5 flex flex-wrap items-center gap-4 text-xs font-medium">
             <a href="#home" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Home</a>
             <a href="#about" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">About</a>
-            <a href="#skills" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Skills</a>
+            <a href="#skills" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Tech Stack</a>
             <a href="#projects" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Projects</a>
-            <a href="#experience" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Journey</a>
-            <a href="#resume" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Resume</a>
+            <a href="#experience" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Experience</a>
             <a href="#contact" className="hover:text-cyan-400 light:hover:text-indigo-600 light:text-slate-700 transition-colors">Contact</a>
           </div>
 
@@ -54,7 +53,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
-                className="p-2 rounded-xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 text-slate-400 light:text-slate-700 hover:text-white light:hover:text-indigo-600 hover:border-slate-700 light:hover:border-indigo-300 transition-colors shadow-sm"
+                className="p-2 rounded-xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 text-slate-400 light:text-slate-700 hover:text-white light:hover:text-indigo-600 hover:border-slate-700 transition-colors shadow-sm"
               >
                 <Github className="w-4 h-4" />
               </a>
@@ -66,7 +65,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
-                className="p-2 rounded-xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 text-slate-400 light:text-slate-700 hover:text-cyan-400 light:hover:text-indigo-600 hover:border-slate-700 light:hover:border-indigo-300 transition-colors shadow-sm"
+                className="p-2 rounded-xl bg-slate-900 light:bg-white border border-slate-800 light:border-slate-200 text-slate-400 light:text-slate-700 hover:text-cyan-400 light:hover:text-indigo-600 hover:border-slate-700 transition-colors shadow-sm"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -84,13 +83,13 @@ export const Footer = () => {
         </div>
 
         {/* Copyright Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 light:text-slate-600 font-mono gap-2">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 light:text-slate-600 font-mono gap-2">
           <div>
-            © 2026 {PROFILE.name}. All rights reserved.
+            © 2026 {PROFILE.name}. Built with code, not templates.
           </div>
 
           <div>
-            Engineered with React • Vite • Tailwind CSS • Framer Motion
+            Software Developer
           </div>
         </div>
 
