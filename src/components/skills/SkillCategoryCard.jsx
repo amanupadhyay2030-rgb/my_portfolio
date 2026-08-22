@@ -12,12 +12,12 @@ const iconMap = {
 };
 
 const categoryColorMap = {
-  programming: 'from-cyan-500 to-indigo-500 text-cyan-400 border-cyan-500/30',
-  web: 'from-indigo-500 to-violet-500 text-indigo-400 border-indigo-500/30',
-  database: 'from-blue-500 to-cyan-500 text-blue-400 border-blue-500/30',
+  languages: 'from-cyan-500 to-indigo-500 text-cyan-400 border-cyan-500/30',
+  frontend: 'from-indigo-500 to-violet-500 text-indigo-400 border-indigo-500/30',
+  backend: 'from-blue-500 to-cyan-500 text-blue-400 border-blue-500/30',
+  database: 'from-teal-500 to-emerald-500 text-teal-400 border-teal-500/30',
   tools: 'from-amber-500 to-orange-500 text-amber-400 border-amber-500/30',
-  lms: 'from-emerald-500 to-teal-500 text-emerald-400 border-emerald-500/30',
-  'cloud-other': 'from-teal-500 to-cyan-400 text-teal-300 border-teal-500/30',
+  other: 'from-emerald-500 to-teal-500 text-emerald-400 border-emerald-500/30',
 };
 
 export const SkillCategoryCard = ({ category, index, isCarousel = false }) => {

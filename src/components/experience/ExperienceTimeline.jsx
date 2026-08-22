@@ -31,18 +31,18 @@ export const ExperienceTimeline = () => {
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 light:bg-indigo-50 light:text-indigo-600 text-xs font-mono font-semibold mb-2.5 border border-cyan-500/20 light:border-indigo-200 shadow-xs">
             <GitBranch className="w-3.5 h-3.5" />
-            <span>VERIFIED PROJECTS & ENGINEERING</span>
+            <span>WORK EXPERIENCE</span>
           </div>
 
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-slate-100 light:text-slate-900 tracking-tight">
-            Development{' '}
+            Professional{' '}
             <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400 light:from-indigo-600 light:to-cyan-600 bg-clip-text text-transparent">
-              Journey.
+              Experience.
             </span>
           </h2>
 
           <p className="text-slate-400 light:text-slate-600 text-sm sm:text-base mt-2 font-sans">
-            Chronological progression from core backend structures to enterprise HR platforms & Python automation.
+            Real-world software engineering, IoT solutions, hardware telemetry, and automated business tools.
           </p>
         </motion.div>
 
