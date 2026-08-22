@@ -115,21 +115,21 @@ export const ContactSection = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5 space-y-6"
           >
-            <div className="p-8 rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 shadow-2xl backdrop-blur-xl space-y-6">
-              <h3 className="font-heading font-extrabold text-xl text-slate-100 light:text-slate-900">
+            <div className="p-4 sm:p-8 border-l-2 border-l-cyan-400 sm:border-l-0 sm:border border-slate-800 light:border-slate-200 rounded-r-2xl sm:rounded-3xl bg-slate-900/40 sm:bg-slate-900/80 light:bg-white sm:shadow-2xl backdrop-blur-xl space-y-5 sm:space-y-6">
+              <h3 className="font-heading font-extrabold text-lg sm:text-xl text-slate-100 light:text-slate-900">
                 Direct Contact
               </h3>
 
               {/* Email Card */}
               {hasEmail && (
-                <div className="p-4 rounded-2xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 flex items-center justify-between shadow-sm">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 light:bg-indigo-50 light:text-indigo-600">
-                      <Mail className="w-5 h-5" />
+                <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 flex items-center justify-between gap-2 shadow-sm">
+                  <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                    <div className="p-2 sm:p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 light:bg-indigo-50 light:text-indigo-600 shrink-0">
+                      <Mail className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
                     </div>
-                    <div>
-                      <span className="text-xs text-slate-400 light:text-slate-500 font-mono block">Email</span>
-                      <span className="text-sm font-semibold text-slate-200 light:text-slate-900">
+                    <div className="min-w-0 flex-1">
+                      <span className="text-[11px] sm:text-xs text-slate-400 light:text-slate-500 font-mono block">Email</span>
+                      <span className="text-xs sm:text-sm font-semibold text-slate-200 light:text-slate-900 truncate block">
                         {PROFILE.email}
                       </span>
                     </div>
@@ -138,7 +138,7 @@ export const ContactSection = () => {
                   <button
                     onClick={copyEmailToClipboard}
                     title="Copy Email"
-                    className="p-2 rounded-xl bg-slate-800 light:bg-slate-200 hover:bg-slate-700 light:hover:bg-slate-300 text-slate-300 light:text-slate-700 transition-colors border border-slate-700 light:border-slate-300"
+                    className="p-2 rounded-xl bg-slate-800 light:bg-slate-200 hover:bg-slate-700 light:hover:bg-slate-300 text-slate-300 light:text-slate-700 transition-colors border border-slate-700 light:border-slate-300 shrink-0"
                   >
                     {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                   </button>
@@ -146,21 +146,21 @@ export const ContactSection = () => {
               )}
 
               {/* Quick Links Row: GitHub · LinkedIn · Email */}
-              <div className="pt-2">
-                <span className="text-xs font-mono uppercase tracking-wider text-slate-400 light:text-slate-600 font-semibold block mb-3">
+              <div className="pt-1 sm:pt-2">
+                <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-slate-400 light:text-slate-600 font-semibold block mb-2.5 sm:mb-3">
                   Links:
                 </span>
 
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-3 gap-2 sm:gap-3">
                   {hasGitHub && (
                     <a
                       href={githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex flex-col items-center justify-center gap-1.5 p-3 rounded-2xl bg-slate-950/80 light:bg-slate-50 hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-medium text-xs border border-slate-800 light:border-slate-200 transition-all shadow-sm group"
+                      className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-950/80 light:bg-slate-50 hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-medium text-xs border border-slate-800 light:border-slate-200 transition-all shadow-sm group"
                     >
-                      <Github className="w-5 h-5 text-slate-400 group-hover:text-cyan-400" />
-                      <span>GitHub</span>
+                      <Github className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-cyan-400" />
+                      <span className="text-[11px] sm:text-xs">GitHub</span>
                     </a>
                   )}
 
@@ -169,20 +169,20 @@ export const ContactSection = () => {
                       href={PROFILE.socials.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex flex-col items-center justify-center gap-1.5 p-3 rounded-2xl bg-slate-950/80 light:bg-slate-50 hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-medium text-xs border border-slate-800 light:border-slate-200 transition-all shadow-sm group"
+                      className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-950/80 light:bg-slate-50 hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-medium text-xs border border-slate-800 light:border-slate-200 transition-all shadow-sm group"
                     >
-                      <Linkedin className="w-5 h-5 text-cyan-400 group-hover:text-indigo-600" />
-                      <span>LinkedIn</span>
+                      <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 group-hover:text-indigo-600" />
+                      <span className="text-[11px] sm:text-xs">LinkedIn</span>
                     </a>
                   )}
 
                   {hasEmail && (
                     <a
                       href={`mailto:${PROFILE.email}`}
-                      className="flex flex-col items-center justify-center gap-1.5 p-3 rounded-2xl bg-slate-950/80 light:bg-slate-50 hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-medium text-xs border border-slate-800 light:border-slate-200 transition-all shadow-sm group"
+                      className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-950/80 light:bg-slate-50 hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-medium text-xs border border-slate-800 light:border-slate-200 transition-all shadow-sm group"
                     >
-                      <Mail className="w-5 h-5 text-teal-400 group-hover:text-emerald-500" />
-                      <span>Email</span>
+                      <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-teal-400 group-hover:text-emerald-500" />
+                      <span className="text-[11px] sm:text-xs">Email</span>
                     </a>
                   )}
                 </div>
@@ -200,7 +200,7 @@ export const ContactSection = () => {
           >
             <form
               onSubmit={handleSubmit}
-              className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 shadow-2xl backdrop-blur-xl space-y-5"
+              className="p-4 sm:p-8 border-l-2 border-l-indigo-400 sm:border-l-0 sm:border border-slate-800 light:border-slate-200 rounded-r-2xl sm:rounded-3xl bg-slate-900/40 sm:bg-slate-900/80 light:bg-white sm:shadow-2xl backdrop-blur-xl space-y-4 sm:space-y-5"
             >
               <h3 className="font-heading font-extrabold text-xl text-slate-100 light:text-slate-900 mb-2">
                 Send a Message
