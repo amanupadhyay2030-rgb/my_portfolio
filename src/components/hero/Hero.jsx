@@ -57,10 +57,10 @@ export const Hero = () => {
             </p>
 
             {/* Primary Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 mb-10 w-full sm:w-auto">
+            <div className="flex flex-row items-center gap-3 sm:gap-4 mb-10 w-full sm:w-auto">
               <a
                 href="#projects"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-medium text-base shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 transition-all duration-200 focus:outline-none"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-2.5 px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-medium text-sm sm:text-base shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 transition-all duration-200 focus:outline-none whitespace-nowrap"
               >
                 <span>View Work</span>
                 <ArrowRight className="w-4 h-4" />
@@ -68,7 +68,7 @@ export const Hero = () => {
 
               <a
                 href="#contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-slate-900/80 light:bg-white text-slate-200 light:text-slate-800 hover:text-white light:hover:text-slate-900 border border-slate-700/80 light:border-slate-300 hover:border-slate-600 light:hover:border-slate-400 font-medium text-base hover:bg-slate-800/80 transition-all duration-200 backdrop-blur-sm"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-2.5 px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-slate-900/80 light:bg-white text-slate-200 light:text-slate-800 hover:text-white light:hover:text-slate-900 border border-slate-700/80 light:border-slate-300 hover:border-slate-600 light:hover:border-slate-400 font-medium text-sm sm:text-base hover:bg-slate-800/80 transition-all duration-200 backdrop-blur-sm whitespace-nowrap"
               >
                 <Mail className="w-4 h-4 text-cyan-400 light:text-indigo-600" />
                 <span>Contact Me</span>
