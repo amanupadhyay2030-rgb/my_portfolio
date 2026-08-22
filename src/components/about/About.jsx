@@ -56,17 +56,17 @@ export const About = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-6"
           >
-            <div className="p-8 rounded-3xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+            <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 shadow-xl sm:shadow-2xl backdrop-blur-xl relative overflow-hidden">
               <div className="h-1.5 w-full absolute top-0 left-0 bg-gradient-to-r from-cyan-400 via-indigo-500 to-teal-400" />
               
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-3 mb-5 sm:mb-6">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
                 <h3 className="font-mono text-xs uppercase tracking-widest text-cyan-400 light:text-indigo-600 font-extrabold">
                   CURRENTLY
                 </h3>
               </div>
 
-              <ul className="space-y-4">
+              <ul className="space-y-3 sm:space-y-4">
                 {PROFILE.currently.map((item, idx) => (
                   <motion.li
                     key={idx}
@@ -74,9 +74,9 @@ export const About = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: idx * 0.1 }}
-                    className="flex items-center gap-3 text-slate-200 light:text-slate-800 font-medium text-base sm:text-lg"
+                    className="flex items-center gap-2.5 sm:gap-3 text-slate-200 light:text-slate-800 font-medium text-sm sm:text-lg"
                   >
-                    <ArrowRight className="w-4 h-4 text-cyan-400 light:text-indigo-600 shrink-0" />
+                    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 light:text-indigo-600 shrink-0" />
                     <span>{item}</span>
                   </motion.li>
                 ))}
@@ -92,13 +92,13 @@ export const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-12"
+            className="text-center max-w-3xl mx-auto mb-10 sm:mb-12"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 light:text-indigo-600 text-xs font-mono font-semibold mb-3 border border-cyan-500/20">
               <span>WHAT I DO</span>
             </div>
 
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-100 light:text-slate-900 tracking-tight">
+            <h2 className="font-heading font-extrabold text-2xl sm:text-4xl lg:text-5xl text-slate-100 light:text-slate-900 tracking-tight">
               Practical Solutions &{' '}
               <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400 light:from-indigo-600 light:to-cyan-600 bg-clip-text text-transparent">
                 Capabilities.
@@ -106,7 +106,7 @@ export const About = () => {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {PROFILE.whatIDo.map((item, idx) => {
               const IconComp = whatIDoIcons[item.icon] || Layout;
               return (
@@ -116,18 +116,18 @@ export const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="p-6 rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 hover:border-cyan-500/50 transition-all duration-300 shadow-xl group flex flex-col justify-between"
+                  className="p-4.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 hover:border-cyan-500/50 transition-all duration-300 shadow-lg flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 light:bg-indigo-50 light:text-indigo-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                      <IconComp className="w-6 h-6" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-cyan-500/10 text-cyan-400 light:bg-indigo-50 light:text-indigo-600 flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
+                      <IconComp className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
 
-                    <h3 className="font-heading font-extrabold text-xl text-slate-100 light:text-slate-900 mb-3">
+                    <h3 className="font-heading font-extrabold text-base sm:text-xl text-slate-100 light:text-slate-900 mb-2 sm:mb-3">
                       {item.title}
                     </h3>
 
-                    <p className="text-slate-400 light:text-slate-600 text-sm leading-relaxed font-sans">
+                    <p className="text-slate-400 light:text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">
                       {item.description}
                     </p>
                   </div>
@@ -144,18 +144,18 @@ export const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-12"
+            className="text-center max-w-3xl mx-auto mb-10 sm:mb-12"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 light:text-indigo-600 text-xs font-mono font-semibold mb-3 border border-indigo-500/20">
               <span>HOW I WORK</span>
             </div>
 
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-100 light:text-slate-900 tracking-tight">
+            <h2 className="font-heading font-extrabold text-2xl sm:text-4xl lg:text-5xl text-slate-100 light:text-slate-900 tracking-tight">
               My Development Process
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {PROFILE.howIWork.map((step, idx) => (
               <motion.div
                 key={idx}
@@ -163,17 +163,17 @@ export const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="p-6 rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 shadow-xl relative overflow-hidden group hover:border-indigo-500/50 transition-all"
+                className="p-4.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 shadow-lg relative overflow-hidden group hover:border-indigo-500/50 transition-all"
               >
-                <div className="text-3xl font-mono font-extrabold text-cyan-400/30 light:text-indigo-400/30 mb-4 group-hover:text-cyan-400 transition-colors">
+                <div className="text-2xl sm:text-3xl font-mono font-extrabold text-cyan-400/30 light:text-indigo-400/30 mb-3 sm:mb-4 group-hover:text-cyan-400 transition-colors">
                   {step.step}
                 </div>
 
-                <h3 className="font-heading font-extrabold text-xl text-slate-100 light:text-slate-900 mb-2">
+                <h3 className="font-heading font-extrabold text-base sm:text-xl text-slate-100 light:text-slate-900 mb-1.5 sm:mb-2">
                   {step.title}
                 </h3>
 
-                <p className="text-slate-400 light:text-slate-600 text-sm leading-relaxed font-sans">
+                <p className="text-slate-400 light:text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">
                   {step.description}
                 </p>
               </motion.div>

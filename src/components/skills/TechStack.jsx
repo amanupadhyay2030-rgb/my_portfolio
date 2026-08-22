@@ -24,35 +24,39 @@ export const TechStack = () => {
     ? SKILLS_CATEGORIES
     : SKILLS_CATEGORIES.filter(c => c.id === selectedCategory);
 
-  // Sync scroll position with pagination dots
+  // Sync scroll position with active card index
   const handleScroll = () => {
     if (scrollContainerRef.current) {
-      const { scrollLeft, clientWidth } = scrollContainerRef.current;
-      if (clientWidth > 0) {
-        const page = Math.round(scrollLeft / clientWidth);
-        setActivePageIndex(page);
+      const container = scrollContainerRef.current;
+      const cardWidth = container.firstElementChild?.offsetWidth || 300;
+      const gap = 24;
+      if (cardWidth > 0) {
+        const index = Math.round(container.scrollLeft / (cardWidth + gap));
+        setActivePageIndex(index);
       }
     }
   };
 
-  const totalPages = Math.ceil(filteredCategories.length / 3) || 1;
+  const totalPages = filteredCategories.length;
 
-  const scrollToPage = (pageIndex) => {
+  const scrollToCard = (index) => {
     if (scrollContainerRef.current) {
-      const width = scrollContainerRef.current.clientWidth;
-      scrollContainerRef.current.scrollTo({ left: pageIndex * width, behavior: 'smooth' });
-      setActivePageIndex(pageIndex);
+      const container = scrollContainerRef.current;
+      const cardWidth = container.firstElementChild?.offsetWidth || 300;
+      const gap = 24;
+      container.scrollTo({ left: index * (cardWidth + gap), behavior: 'smooth' });
+      setActivePageIndex(index);
     }
   };
 
   const handlePrevSlide = () => {
     const nextIndex = activePageIndex > 0 ? activePageIndex - 1 : totalPages - 1;
-    scrollToPage(nextIndex);
+    scrollToCard(nextIndex);
   };
 
   const handleNextSlide = () => {
     const nextIndex = activePageIndex < totalPages - 1 ? activePageIndex + 1 : 0;
-    scrollToPage(nextIndex);
+    scrollToCard(nextIndex);
   };
 
   // Auto-play timer effect
@@ -238,7 +242,7 @@ export const TechStack = () => {
                   {Array.from({ length: totalPages }).map((_, dotIdx) => (
                     <button
                       key={dotIdx}
-                      onClick={() => scrollToPage(dotIdx)}
+                      onClick={() => scrollToCard(dotIdx)}
                       aria-label={`Go to slide page ${dotIdx + 1}`}
                       className={`h-2.5 rounded-full transition-all duration-300 ${
                         activePageIndex === dotIdx
