@@ -17,10 +17,11 @@ export const ProjectCard = ({ project, onOpenCaseStudy }) => {
 
   const getStatusBadge = () => {
     switch (project.status) {
+      case 'localhost':
       case 'live':
         return (
           <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 light:bg-emerald-50 light:text-emerald-700 border border-emerald-500/30 flex items-center gap-1.5 shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live System
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Localhost
           </span>
         );
       case 'github':
@@ -184,7 +185,7 @@ export const ProjectCard = ({ project, onOpenCaseStudy }) => {
               href={project.liveDemo}
               target="_blank"
               rel="noopener noreferrer"
-              title="View Live Demo"
+              title="View Localhost Link"
               className="p-2.5 rounded-xl bg-slate-950/80 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-cyan-400 light:hover:text-indigo-600 border border-slate-800 light:border-slate-200 transition-colors shadow-xs"
             >
               <ExternalLink className="w-4 h-4" />

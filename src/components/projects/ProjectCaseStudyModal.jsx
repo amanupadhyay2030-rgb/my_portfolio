@@ -249,7 +249,7 @@ export const ProjectCaseStudyModal = ({ project, onClose }) => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white text-xs font-medium shadow-md hover:shadow-lg transition-all"
                 >
-                  <ExternalLink className="w-4 h-4" /> Live Demo
+                  <ExternalLink className="w-4 h-4" /> Localhost Link
                 </a>
               )}
 

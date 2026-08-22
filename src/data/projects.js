@@ -143,7 +143,7 @@ export const PROJECTS_DATA = [
     featured: true,
     isFlagship: false,
     title: "Personal Portfolio",
-    status: "live",
+    status: "localhost",
     category: "Web",
     subCategory: "Developer Showcase Site",
     shortDescription: "This website. Built to showcase what I actually work on — not a list of buzzwords.",
@@ -155,7 +155,7 @@ export const PROJECTS_DATA = [
       "Responsive design across all devices"
     ],
     github: "https://github.com/abhishekcodee/my_portfolio",
-    liveDemo: "https://abhishekcodee.github.io/my_portfolio/",
+    liveDemo: "http://localhost:8080",
     screenshots: [],
     caseStudy: {
       overview: "This website. Built to showcase what I actually work on — not a list of buzzwords.",
