@@ -30,10 +30,10 @@ export const SkillCategoryCard = ({ category, index, isCarousel = false }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className={`group relative border-l-2 border-l-cyan-400 sm:border-l-0 sm:border border-slate-800/80 light:border-slate-200/90 rounded-r-2xl sm:rounded-3xl bg-slate-900/40 sm:bg-slate-900/80 light:bg-white hover:border-cyan-500/40 light:hover:border-indigo-400/50 transition-all duration-300 sm:shadow-xl overflow-hidden flex flex-col justify-between ${
+      className={`group relative border-l-2 border-l-cyan-400 sm:border-l-0 sm:border border-slate-800/80 light:border-slate-200/90 rounded-r-2xl sm:rounded-3xl bg-slate-900/40 sm:bg-slate-900/80 light:bg-white hover:border-cyan-500/40 light:hover:border-indigo-400/50 transition-all duration-300 sm:shadow-xl overflow-hidden flex flex-col justify-between h-full min-h-[380px] sm:min-h-[420px] ${
         isCarousel
-          ? 'w-[80vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start h-full'
-          : 'w-full h-full'
+          ? 'w-[80vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start'
+          : 'w-full'
       }`}
     >
       {/* Top Gradient Accent Line (Desktop) */}

@@ -229,7 +229,7 @@ export const TechStack = () => {
               <div
                 ref={scrollContainerRef}
                 onScroll={handleScroll}
-                className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none max-w-full"
+                className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none max-w-full"
               >
                 {filteredCategories.map((category, idx) => (
                   <SkillCategoryCard key={category.id} category={category} index={idx} isCarousel={true} />

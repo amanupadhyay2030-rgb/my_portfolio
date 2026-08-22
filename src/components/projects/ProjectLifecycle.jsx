@@ -97,7 +97,7 @@ export const ProjectLifecycle = () => {
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-6 pb-6 no-scrollbar"
+          className="flex items-stretch overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-6 pb-6 no-scrollbar"
         >
           {PROJECT_LIFECYCLE.map((item, idx) => {
             const IconComp = stepIcons[idx] || Compass;
@@ -107,7 +107,7 @@ export const ProjectLifecycle = () => {
               <div
                 key={idx}
                 onClick={() => scrollToStep(idx)}
-                className={`w-[82vw] sm:w-[calc((100%-3rem)/3)] lg:w-[calc((100%-4rem)/5)] shrink-0 snap-center rounded-2xl sm:rounded-3xl bg-slate-900/90 light:bg-white border transition-all duration-300 shadow-xl cursor-pointer flex flex-col justify-between overflow-hidden ${
+                className={`w-[82vw] sm:w-[calc((100%-3rem)/3)] lg:w-[calc((100%-4rem)/5)] shrink-0 snap-center rounded-2xl sm:rounded-3xl bg-slate-900/90 light:bg-white border transition-all duration-300 shadow-xl cursor-pointer flex flex-col justify-between overflow-hidden h-full min-h-[310px] sm:min-h-[330px] ${
                   isActive
                     ? 'border-cyan-400 light:border-indigo-600 ring-2 ring-cyan-500/30 light:ring-indigo-500/30'
                     : 'border-slate-800/90 light:border-slate-200/90 hover:border-cyan-500/40'
