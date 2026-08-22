@@ -176,26 +176,37 @@ export const PROJECTS_DATA = [
 export const PROJECT_LIFECYCLE = [
   {
     step: "01",
-    phase: "Understand",
-    title: "01 — Understand",
-    desc: "Figure out what actually needs to be solved."
+    phase: "DISCOVERY",
+    title: "Understand & Scope",
+    desc: "Analyze operational bottlenecks, map user workflows, and define clear database & system requirements.",
+    focus: "Workflow Mapping · Scope Definition"
   },
   {
     step: "02",
-    phase: "Build",
-    title: "02 — Build",
-    desc: "Write the simplest solution that gets the job done."
+    phase: "ARCHITECTURE",
+    title: "Database & Backend Design",
+    desc: "Structure normalized MySQL tables, PDO query layers, API controllers, and secure data access patterns.",
+    focus: "MySQL Schema · PDO Prepared Queries"
   },
   {
     step: "03",
-    phase: "Test",
-    title: "03 — Test",
-    desc: "Break it. Fix it. Test it again."
+    phase: "DEVELOPMENT",
+    title: "Clean & Modular Build",
+    desc: "Develop responsive UIs, core PHP/Python backend endpoints, LMS plugins, and IoT telemetry daemons.",
+    focus: "PHP · Python · JS · IoT Daemons"
   },
   {
     step: "04",
-    phase: "Improve",
-    title: "04 — Improve",
-    desc: "Make it faster, cleaner, and easier to maintain."
+    phase: "TESTING & AUDIT",
+    title: "Quality & Security Audit",
+    desc: "Test timed exam rules, form security, media uploads, multi-role authentication, and mobile responsiveness.",
+    focus: "Role Auth · Exam Logic · Anti-Cheat"
+  },
+  {
+    step: "05",
+    phase: "DEPLOYMENT",
+    title: "Production Launch",
+    desc: "Deploy to server environments, configure security headers, verify database backups, and monitor live performance.",
+    focus: "Vite · GitHub Pages · XAMPP / AWS"
   }
 ];
