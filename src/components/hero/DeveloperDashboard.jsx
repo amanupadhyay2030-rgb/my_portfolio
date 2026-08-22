@@ -186,7 +186,7 @@ client.loop_start()`;
               <div className="flex items-center justify-between pb-2 mb-3 border-b border-slate-800 text-[11px] text-slate-400">
                 <span className="text-cyan-400"># ESP32 MQTT Telemetry Daemon</span>
                 <span className="flex items-center gap-1 text-emerald-400">
-                  <Play className="w-3 h-3 fill-current" /> Live Listener
+                  <Play className="w-3 h-3 fill-current" /> Localhost Listener
                 </span>
               </div>
               <pre className="text-slate-200 leading-relaxed font-mono overflow-x-auto">
