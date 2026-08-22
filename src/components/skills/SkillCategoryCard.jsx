@@ -30,28 +30,26 @@ export const SkillCategoryCard = ({ category, index, isCarousel = false }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className={`group relative rounded-2xl sm:rounded-3xl bg-slate-900/80 light:bg-white border border-slate-800/80 light:border-slate-200/90 hover:border-cyan-500/40 light:hover:border-indigo-400/50 transition-all duration-300 shadow-lg sm:shadow-xl overflow-hidden flex flex-col justify-between ${
+      className={`group relative border-l-2 border-l-cyan-400 sm:border-l-0 sm:border border-slate-800/80 light:border-slate-200/90 rounded-r-2xl sm:rounded-3xl bg-slate-900/40 sm:bg-slate-900/80 light:bg-white hover:border-cyan-500/40 light:hover:border-indigo-400/50 transition-all duration-300 sm:shadow-xl overflow-hidden flex flex-col justify-between ${
         isCarousel
-          ? 'w-[75vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start h-full'
+          ? 'w-[80vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start h-full'
           : 'w-full h-full'
       }`}
     >
-      {/* Top Gradient Accent Line */}
-      <div className={`h-1 w-full bg-gradient-to-r ${accentGradient}`} />
+      {/* Top Gradient Accent Line (Desktop) */}
+      <div className={`hidden sm:block h-1 w-full bg-gradient-to-r ${accentGradient}`} />
 
-      <div className="p-4 sm:p-6 flex flex-col justify-between h-full">
+      <div className="p-3.5 sm:p-6 flex flex-col justify-between h-full">
         <div>
           {/* Category Header */}
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-800/60 light:border-slate-200">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-indigo-600/30 to-cyan-500/30 light:from-indigo-100 light:to-cyan-100 p-[1px]">
-                <div className="w-full h-full bg-slate-950/90 light:bg-white rounded-[11px] sm:rounded-[15px] flex items-center justify-center text-cyan-400 light:text-indigo-600 group-hover:scale-110 transition-transform duration-300">
-                  <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
-                </div>
+          <div className="flex items-center justify-between mb-3.5 pb-2.5 sm:mb-4 sm:pb-3 border-b border-slate-800/60 light:border-slate-200">
+            <div className="flex items-center gap-2 sm:gap-2.5">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-2xl bg-cyan-500/10 light:bg-indigo-100 flex items-center justify-center text-cyan-400 light:text-indigo-600 shrink-0">
+                <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
 
               <div>
-                <h3 className="font-heading font-extrabold text-sm sm:text-base text-slate-100 light:text-slate-900 group-hover:text-cyan-400 light:group-hover:text-indigo-600 transition-colors">
+                <h3 className="font-heading font-extrabold text-xs sm:text-base text-slate-100 light:text-slate-900 group-hover:text-cyan-400 light:group-hover:text-indigo-600 transition-colors">
                   {category.title}
                 </h3>
                 {category.tagline && (
@@ -63,16 +61,16 @@ export const SkillCategoryCard = ({ category, index, isCarousel = false }) => {
             </div>
 
             <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-slate-950/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-[10px] text-slate-400 font-mono font-semibold shrink-0">
-              {category.skills.length} {category.skills.length === 1 ? 'Tech' : 'Techs'}
+              {category.skills.length} Techs
             </span>
           </div>
 
           {/* Skill Items */}
-          <div className="space-y-2.5 sm:space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {category.skills.map((skill, idx) => (
               <div
                 key={idx}
-                className="group/item flex items-start gap-2 p-1.5 sm:p-2 rounded-xl hover:bg-slate-800/40 light:hover:bg-slate-100/70 transition-all duration-200"
+                className="group/item flex items-start gap-2 p-1 sm:p-2 rounded-lg sm:rounded-xl hover:bg-slate-800/40 light:hover:bg-slate-100/70 transition-all duration-200"
               >
                 <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan-400 light:bg-indigo-600 shrink-0 group-hover/item:scale-125 transition-transform" />
                 
@@ -95,8 +93,8 @@ export const SkillCategoryCard = ({ category, index, isCarousel = false }) => {
           </div>
         </div>
 
-        {/* Footer Pill */}
-        <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-slate-800/50 light:border-slate-200/60 flex items-center justify-between text-[10px] font-mono text-slate-500">
+        {/* Footer */}
+        <div className="mt-3 sm:mt-4 pt-2 sm:pt-3 border-t border-slate-800/50 light:border-slate-200/60 flex items-center justify-between text-[10px] font-mono text-slate-500">
           <span>Verified Stack</span>
           <span className="text-cyan-400/80 font-bold">100% Core</span>
         </div>

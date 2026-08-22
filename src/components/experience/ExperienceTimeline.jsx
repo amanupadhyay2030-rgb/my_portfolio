@@ -84,7 +84,7 @@ export const ExperienceTimeline = () => {
                     transition={{ duration: 0.2 }}
                     className="w-full sm:w-[calc(50%-3rem)]"
                   >
-                    <div className="p-4.5 sm:p-7 rounded-2xl sm:rounded-3xl bg-slate-900/90 light:bg-white border border-slate-800/90 light:border-slate-200/90 hover:border-cyan-500/60 light:hover:border-indigo-500/60 transition-all duration-300 shadow-lg sm:shadow-xl hover:shadow-2xl relative overflow-hidden">
+                    <div className="p-3.5 sm:p-7 border-l-2 border-l-cyan-400 sm:border-l-0 sm:border border-slate-800/90 light:border-slate-200/90 rounded-r-2xl sm:rounded-3xl bg-slate-900/40 sm:bg-slate-900/90 light:bg-white hover:border-cyan-500/60 light:hover:border-indigo-500/60 transition-all duration-300 sm:shadow-xl hover:shadow-2xl relative overflow-hidden">
                       {/* Animated Top Accent Gradient Bar */}
                       <div className="h-1.5 w-full absolute top-0 left-0 bg-gradient-to-r from-indigo-500 via-cyan-400 to-teal-400 group-hover:from-cyan-400 group-hover:via-indigo-500 group-hover:to-teal-300 transition-all duration-500" />
 

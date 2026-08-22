@@ -54,12 +54,12 @@ export const ProjectCard = ({ project, onOpenCaseStudy }) => {
       viewport={{ once: true }}
       whileHover={{ y: -6, scale: 1.01 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className="group relative rounded-2xl sm:rounded-3xl bg-slate-900/90 light:bg-white border border-slate-800/90 light:border-slate-200/90 hover:border-cyan-500/50 light:hover:border-indigo-500/50 transition-all duration-300 shadow-lg sm:shadow-xl hover:shadow-2xl overflow-hidden flex flex-col justify-between h-full"
+      className="group relative border-l-2 border-l-cyan-400 sm:border-l-0 sm:border border-slate-800/90 light:border-slate-200/90 rounded-r-2xl sm:rounded-3xl bg-slate-900/40 sm:bg-slate-900/90 light:bg-white hover:border-cyan-500/50 light:hover:border-indigo-500/50 transition-all duration-300 sm:shadow-xl hover:shadow-2xl overflow-hidden flex flex-col justify-between h-full"
     >
-      {/* Top Border Accent */}
-      <div className="h-1.5 w-full bg-gradient-to-r from-indigo-500 via-cyan-400 to-teal-400 group-hover:from-cyan-400 group-hover:via-indigo-500 transition-all duration-500" />
+      {/* Top Border Accent (Desktop) */}
+      <div className="hidden sm:block h-1.5 w-full bg-gradient-to-r from-indigo-500 via-cyan-400 to-teal-400 group-hover:from-cyan-400 group-hover:via-indigo-500 transition-all duration-500" />
 
-      <div className="p-4.5 sm:p-7 flex flex-col justify-between h-full space-y-4 sm:space-y-5">
+      <div className="p-3.5 sm:p-7 flex flex-col justify-between h-full space-y-3.5 sm:space-y-5">
         <div>
           {/* Card Top Category & Badges */}
           <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3.5 border-b border-slate-800/60 light:border-slate-200/80">
